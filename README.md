@@ -1,3 +1,3 @@
 # Robotica-Movil-Grupo-3
-
-hola
+Grupo 3 conformado por:
+* x
