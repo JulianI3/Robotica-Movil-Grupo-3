@@ -102,6 +102,72 @@ Haciendo disposición del modelo [EV-R3P](https://github.com/albmardom/EV-R3P), 
 </p>
 
 
+## Código empleado en CoppeliaSim
+
+Se utilizó un Script creado en **LUA** enlazado al modelo del robot para simular la misma rutina hecha en el laboratorio.
+
+```lua
+function sysCall_init()
+    -- Obtener handles de los motores del robot EV3
+    leftMotor = sim.getObjectHandle("Motor_B")   -- motor izquierdo
+    rightMotor = sim.getObjectHandle("Motor_C")  -- motor derecho
+end
+
+function sysCall_thread()
+    -- Definir velocidades
+    local speed = 5.0  -- velocidad base (ajustable)
+    -- 1) Mueve recto por 5 segundos al 30%
+    sim.setJointTargetVelocity(leftMotor, speed)
+    sim.setJointTargetVelocity(rightMotor, speed)
+    sim.wait(5.0)
+    -- 2) Gira (motor B) por 1.3 segundos al 30%
+    sim.setJointTargetVelocity(leftMotor, speed)
+    sim.setJointTargetVelocity(rightMotor, 0)
+    sim.wait(1.3)
+    -- Detener ambos motores
+    sim.setJointTargetVelocity(leftMotor, 0)
+    sim.setJointTargetVelocity(rightMotor, 0)
+    sim.wait(0.5)
+    -- 3) Gira suavemente a la izquierda (left = -speed, right = speed) durante 5 seg
+    sim.setJointTargetVelocity(leftMotor, 4.7)
+    sim.setJointTargetVelocity(rightMotor, speed)
+    sim.wait(5.0)
+    sim.setJointTargetVelocity(leftMotor, 0)
+    sim.setJointTargetVelocity(rightMotor, 0)
+    sim.wait(0.2)
+    -- 4) Gira en su lugar con motor D por 1.5 seg (solo motor derecho)
+    sim.setJointTargetVelocity(leftMotor, 0)
+    sim.setJointTargetVelocity(rightMotor, speed)
+    sim.wait(1.5)
+    sim.setJointTargetVelocity(leftMotor, 0)
+    sim.setJointTargetVelocity(rightMotor, 0)
+    sim.wait(0.2)
+    -- 5) Avanza recto por 2.5 segundos al 30%
+    sim.setJointTargetVelocity(leftMotor, speed)
+    sim.setJointTargetVelocity(rightMotor, speed)
+    sim.wait(2.5)
+    sim.setJointTargetVelocity(leftMotor, 0)
+    sim.setJointTargetVelocity(rightMotor, 0)
+    sim.wait(0.2)
+    -- 6) Gira en su eje (1 rotaci?n): izq avanza, der retrocede
+    sim.setJointTargetVelocity(leftMotor, speed)
+    sim.setJointTargetVelocity(rightMotor, -speed)
+    sim.wait(1.0)  -- ajustar seg?n el robot para 1 giro
+    sim.setJointTargetVelocity(leftMotor, 0)
+    sim.setJointTargetVelocity(rightMotor, 0)
+    sim.wait(0.2)
+    -- 7) Ambos motores recto por 3 seg
+    sim.setJointTargetVelocity(leftMotor, speed)
+    sim.setJointTargetVelocity(rightMotor, speed)
+    sim.wait(3.0)
+    -- 8) Detener
+    sim.setJointTargetVelocity(leftMotor, 0)
+    sim.setJointTargetVelocity(rightMotor, 0)
+end
+
+
+```
+
 
 ### 3.7 Programa simple de movimiento
 ### 3.8 Reflexión y discusión
