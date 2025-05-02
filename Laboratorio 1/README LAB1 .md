@@ -23,8 +23,11 @@
 #### 3.5.1 Sensores del robot EV3
 El robot EV3 de la marca lego cuenta con diversa cantidad de sensores que le permiten interactuar con el entorno junto a la herramienta propia de la empresa; en el laboratorio se logró trabajar con 5 sensores los cuales se muestran a continuación:
 
+Sensor de ultrasonido: Este sensor permite determinar distancias por medio de la medición del tiempo que tarda en viajar una onda ultrasónica emitida por el mismo, la resolución del dispositivo visualizada en el software es de 0.1cm de diferencia entre mediciones. Este sensor permite que el robot mida a que distancia se encuentran objetos de el respecto a la orientación del sensor, permitiendo la toma de acciones en función del valor medido.
 
-<img src="https://github.com/JulianI3/Robotica-Movil-Grupo-3/blob/main/Laboratorio%201/Imagenes/Sensor%20de%20ultrasonido.png?raw=true" alt="Sensor EV3" style="width:350px;">
+<img src="https://github.com/JulianI3/Robotica-Movil-Grupo-3/blob/main/Laboratorio%201/Imagenes/Sensor%20de%20ultrasonido.png?raw=true" alt="Sensor de ultrasonido" style="width:350px;">
+
+En la siguiente imagen se aprecia como se registra la medición del sensor dentro del software Education EV3 Classroom.
 
 
 
