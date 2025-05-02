@@ -21,6 +21,10 @@
 ### 3.4 Herramientas de desarrollo propias
 ### 3.5 Sensores del robot
 #### 3.5.1 Sensores del robot EV3
+El robot EV3 de la marca lego cuenta con diversa cantidad de sensores que le permiten interactuar con el entorno junto a la herramienta propia de la empresa; en el laboratorio se logró trabajar con 5 sensores los cuales se muestran a continuación:
+
+
+
 ### 3.6 Modelado de los robots
 ### 3.7 Programa simple de movimiento
 ### 3.8 Reflexión y discusión
