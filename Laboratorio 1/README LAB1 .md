@@ -29,11 +29,15 @@ El robot EV3 de la marca lego cuenta con diversa cantidad de sensores que le per
 <img src="https://github.com/JulianI3/Robotica-Movil-Grupo-3/blob/main/Laboratorio%201/Imagenes/Sensor%20de%20ultrasonido.png?raw=true" alt="Sensor de ultrasonido" style="width:350px;">
 </p>
 
-En la siguiente imagen se aprecia como se registra la medición del sensor dentro del software Education EV3 Classroom, allí se observa no solo el dato medido sino también el canal al cuál se encuentra conectado
+En la siguiente imagen se aprecia como se registra la medición del sensor dentro del software Education EV3 Classroom, allí se observa no solo el dato medido sino también el canal al cuál se encuentra conectado, para el caso se encuentra en el canal 2.
 
 <p align="center">
 <img src="https://github.com/JulianI3/Robotica-Movil-Grupo-3/blob/2f0023e0737243841457d766d6df322e7618aec6/Laboratorio%201/Imagenes/Ultrasonico%20software.png" style="width:450px;">
 </p>
+
+**Sensor infrarojo:** Este sensor al igual que el anterior es utilizado para medir distancias entre el robot y un objeto ubicado en frente del plano de emisión de onda electromagneticas infrarojas del sensor; sin embargo, en este caso el valor medido se presenta en forma de porcentaje, siendo 100% un objeto muy lejano y 0% un objeto muy cercano, el sensor infrarojo es capaz de medir distancias hasta 70 centíemtros.
+
+
 
 
 ### 3.6 Modelado de los robots
