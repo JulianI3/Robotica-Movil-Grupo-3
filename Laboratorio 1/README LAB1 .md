@@ -176,4 +176,28 @@ https://github.com/user-attachments/assets/31f8fee7-eaf8-4b98-b97a-1c2e73c6789d
 
 
 ### 3.7 Programa simple de movimiento
+
+#### Programa de movimiento para el EV3
+
+En el laboratorio se realizó la ejecución de un programa sencillo de movimiento programado en el software Education EV3 Classroom, el programa buscaba ejecutar una rutina de movimiento que involucrase el uso de alguno de los sensores disponibles para el robot; por ello, se ejecutó un código que desplaza el robot hacia adelante una vez se pulse el sensor tactil, luego girase el mismo aproximadamente 90 grados, luego un nuevo movimiento recto hasta que el sensor ultrasónico detectase un obstáculo, cuando se alcanzaba cierta medida de distancia se volvía a ejecutar un giro para esquivar el obstáculo y finalmente la rutina culminaba con la detención del robot y un sonido característico cuando se encontraba otro obstáculo en el camino.
+
+El programa utilizado para la ejecución del movimiento descrito anteriormente corresponde al siguiente.
+
+
+<p align="center">
+<img src="https://github.com/JulianI3/Robotica-Movil-Grupo-3/blob/2d5d2b11c032eeda34bfaedd5671d5484ea2e218/Laboratorio%201/Imagenes/Rutina%20EV3.png" style="width:350px;">
+</p>
+
+
+La rutina de movimiento del robot EV3 corresponde a la siguiente.
+
+
+https://github.com/user-attachments/assets/45263156-bc22-4b56-a7cd-2d424d29bfe7
+
+
+
+
+
+
+
 ### 3.8 Reflexión y discusión
