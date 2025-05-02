@@ -171,9 +171,8 @@ end
 #### Video de simulación en CoppeliaSim
 
 
-<p align="center">
-<img src="https://github.com/JulianI3/Robotica-Movil-Grupo-3/blob/c86af46e6ba849646f5b356e3e775dc81ba99532/Laboratorio%201/Imagenes/Simulaci%C3%B3n%20EV3.mp4" style="width:350px;">
-</p>
+https://github.com/user-attachments/assets/31f8fee7-eaf8-4b98-b97a-1c2e73c6789d
+
 
 
 ### 3.7 Programa simple de movimiento
