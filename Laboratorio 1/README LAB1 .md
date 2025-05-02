@@ -22,7 +22,7 @@
 ### 3.5 Sensores del robot
 #### 3.5.1 Sensores del robot EV3
 El robot EV3 de la marca lego cuenta con diversa cantidad de sensores que le permiten interactuar con el entorno junto a la herramienta propia de la empresa; en el laboratorio se logró trabajar con 5 sensores los cuales se muestran a continuación:
-<img src="https://github.com/.../Sensor%20de%20ultrasonido.png" alt="Image_Alt" width="200"/>
+<img src="[https://github.com/.../Sensor%20de%20ultrasonido.png](https://github.com/JulianI3/Robotica-Movil-Grupo-3/blob/2b20a3b6d468c6795c8340d48a003316706c7c4c/Laboratorio%201/Imagenes/Sensor%20de%20ultrasonido.png)" alt="Image_Alt" width="200"/>
 
 
 
