@@ -92,7 +92,7 @@ En el software el simbolo que representa la conexión tendrá unicamente 2 estad
 
 ### 3.6 Simulación de robot EV3 en CoppeliaSim
 
-## 3.6.1 Modelo del robot EV3
+#### 3.6.1 Modelo del robot EV3
 
 Haciendo disposición del modelo [EV-R3P](https://github.com/albmardom/EV-R3P), el cual posee gran calidad en el modelado y simulación, se logró hacer una rutina simple como primer acercamiento a la programación del robot.
 
@@ -102,7 +102,7 @@ Haciendo disposición del modelo [EV-R3P](https://github.com/albmardom/EV-R3P), 
 </p>
 
 
-## Código empleado en CoppeliaSim
+#### Código empleado en CoppeliaSim
 
 Se utilizó un Script creado en **LUA** enlazado al modelo del robot para simular la misma rutina hecha en el laboratorio.
 
@@ -167,6 +167,13 @@ end
 
 
 ```
+
+#### Video de simulación en CoppeliaSim
+
+
+<p align="center">
+<img src="https://github.com/JulianI3/Robotica-Movil-Grupo-3/blob/c86af46e6ba849646f5b356e3e775dc81ba99532/Laboratorio%201/Imagenes/Simulaci%C3%B3n%20EV3.mp4" style="width:350px;">
+</p>
 
 
 ### 3.7 Programa simple de movimiento
