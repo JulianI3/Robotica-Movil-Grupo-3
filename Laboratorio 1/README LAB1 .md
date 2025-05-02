@@ -90,6 +90,18 @@ En el software el simbolo que representa la conexión tendrá unicamente 2 estad
 <img src="https://github.com/JulianI3/Robotica-Movil-Grupo-3/blob/e1bdcf3494ddd3fd4ee545e0e1b94d14a7a58de4/Laboratorio%201/Imagenes/Sensor%20Tactil%20en%20el%20software.png" style="width:350px;">
 </p>
 
-### 3.6 Modelado de los robots
+### 3.6 Simulación de robot EV3 en CoppeliaSim
+
+## 3.6.1 Modelo del robot EV3
+
+Haciendo disposición del modelo [EV-R3P](https://github.com/albmardom/EV-R3P), el cual posee gran calidad en el modelado y simulación, se logró hacer una rutina simple como primer acercamiento a la programación del robot.
+
+
+<p align="center">
+<img src="https://github.com/JulianI3/Robotica-Movil-Grupo-3/blob/da5048aaf74b5c031c2fa1c4e51024c8bc22229e/Laboratorio%201/Imagenes/Modelado%20EV3.png" style="width:350px;">
+</p>
+
+
+
 ### 3.7 Programa simple de movimiento
 ### 3.8 Reflexión y discusión
