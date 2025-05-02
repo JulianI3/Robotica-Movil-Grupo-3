@@ -63,6 +63,34 @@ Dentro del software propio de la compañía el simbolo representativo para este 
 </p>
 
 
+**Giroscopio:** El giroscopio es un sensor con la capacidad de medir rotaciones en un único eje notado por las flechas indicadas en el sensor, este permite medir ángulos de giro en el robot, permitiendole realizar acciones en función de su rotación.
+
+
+<p align="center">
+<img src="https://github.com/JulianI3/Robotica-Movil-Grupo-3/blob/ad8b466f0ed0807acbeb8d409e149f061cf45d0a/Laboratorio%201/Imagenes/Giroscopio.png" style="width:350px;">
+</p>
+
+El giroscopio mide el ángulo rotacional del robot en el eje según la instalación del sensor, este ángulo es medido en grados y se indica en el software mediante el siguiente simbolo.
+
+<p align="center">
+<img src="https://github.com/JulianI3/Robotica-Movil-Grupo-3/blob/ad8b466f0ed0807acbeb8d409e149f061cf45d0a/Laboratorio%201/Imagenes/Giroscopio%20en%20el%20software.png" style="width:350px;">
+</p>
+
+
+**Sensor táctil:** Este sensor es un dispositivo analógico que permite determinar 2 estados; funcionando como pulsador es capaz de mostrar un estado "presionado" y un estado "no presionado", permitiendo ejecutar acciones en función de su pulsación o no pulsación.
+
+
+<p align="center">
+<img src="https://github.com/JulianI3/Robotica-Movil-Grupo-3/blob/e1bdcf3494ddd3fd4ee545e0e1b94d14a7a58de4/Laboratorio%201/Imagenes/Sensor%20Tactil.png
+" style="width:350px;">
+</p>
+
+En el software el simbolo que representa la conexión tendrá unicamente 2 estados, 1 denotará que se encuentra pulsado el sensor mientras que el valor de 0 indicará lo contrario; en la sigueinte imagen se observa el sensor conectado en el canal 1 el robot.
+
+<p align="center">
+<img src="https://github.com/JulianI3/Robotica-Movil-Grupo-3/blob/e1bdcf3494ddd3fd4ee545e0e1b94d14a7a58de4/Laboratorio%201/Imagenes/Sensor%20Tactil%20en%20el%20software.png" style="width:350px;">
+</p>
+
 ### 3.6 Modelado de los robots
 ### 3.7 Programa simple de movimiento
 ### 3.8 Reflexión y discusión
