@@ -6,4 +6,4 @@
 * Juan Diego Sánchez Forero
 
   
-Con dos ingenieros mecánicos y dos ingenieros mecatrónicos.
+
