@@ -38,6 +38,29 @@ En la siguiente imagen se aprecia como se registra la medición del sensor dentr
 **Sensor infrarojo:** Este sensor al igual que el anterior es utilizado para medir distancias entre el robot y un objeto ubicado en frente del plano de emisión de onda electromagneticas infrarojas del sensor; sin embargo, en este caso el valor medido se presenta en forma de porcentaje, siendo 100% un objeto muy lejano y 0% un objeto muy cercano, el sensor infrarojo es capaz de medir distancias hasta 70 centíemtros.
 
 
+<p align="center">
+<img src="https://github.com/JulianI3/Robotica-Movil-Grupo-3/blob/941b8a7d66f46e9d716183e99d32cd04b769d204/Laboratorio%201/Imagenes/Sensor%20infrarojo.png" style="width:350px;">
+</p>
+
+Dentro del software la conexión y medida porcentual de este sensor se denota con el simbolo que se observa conectado en la siguiente imagen en el canal 4.
+
+<p align="center">
+<img src="https://github.com/JulianI3/Robotica-Movil-Grupo-3/blob/941b8a7d66f46e9d716183e99d32cd04b769d204/Laboratorio%201/Imagenes/Sensor%20infrarojo%20en%20el%20software.png" style="width:350px;">
+</p>
+
+**Sensor de color:** El sensor de color tiene la capacidad de determinar el color al cuál está apuntando o determinar la intensidad de luz que se percibe en el ambiente, la medida arrojada por el mismo cuando mida la intensidad va desde el 0% (muy oscuro) y el 100% (muy luminoso).
+
+
+<p align="center">
+<img src="https://github.com/JulianI3/Robotica-Movil-Grupo-3/blob/20e63cb746e2b7fb85892cd002e67d4f8efaf7d1/Laboratorio%201/Imagenes/Sensor%20de%20color1.png" style="width:350px;">
+</p>
+
+Dentro del software propio de la compañía el simbolo representativo para este sensor corresponde al mostrado a continuación en el canal 1.
+
+
+<p align="center">
+<img src="https://github.com/JulianI3/Robotica-Movil-Grupo-3/blob/20e63cb746e2b7fb85892cd002e67d4f8efaf7d1/Laboratorio%201/Imagenes/Sensor%20de%20color%20en%20el%20software.png" style="width:350px;">
+</p>
 
 
 ### 3.6 Modelado de los robots
