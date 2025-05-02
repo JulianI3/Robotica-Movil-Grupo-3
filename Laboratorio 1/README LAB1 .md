@@ -194,10 +194,12 @@ La rutina de movimiento del robot EV3 corresponde a la siguiente.
 
 https://github.com/user-attachments/assets/45263156-bc22-4b56-a7cd-2d424d29bfe7
 
+### 3.8 Simulacion de robot kuboki
+
+#### 3.8.1 Modelo del robot EV3
 
 
 
 
 
-
-### 3.8 Reflexión y discusión
+### 3.9 Reflexión y discusión
