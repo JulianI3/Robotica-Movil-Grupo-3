@@ -1,5 +1,7 @@
-# Robotica-Movil-Grupo-3
-hola xd
-Grupo 3 conformado por:
-* as
-hola bb ya que contigo no sirve la labia, y te crees muy sabia, pero vas a caer te lo digo mujer eaaaaaaaaaaaaaaaaaa.
+## Robotica-Movil-Grupo-3
+#Grupo 3 conformado por:
+* Julián David Benítez Martínez
+* Jhon Alexander Calderón Suárez
+* Juan Pablo García Galvis
+* Juan Diego Sánchez Forero
+Con dos ingenieros mecánicos y dos ingenieros mecatrónicos.
