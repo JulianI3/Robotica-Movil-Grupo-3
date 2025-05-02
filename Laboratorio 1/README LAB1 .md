@@ -81,8 +81,7 @@ El giroscopio mide el ángulo rotacional del robot en el eje según la instalaci
 
 
 <p align="center">
-<img src="https://github.com/JulianI3/Robotica-Movil-Grupo-3/blob/e1bdcf3494ddd3fd4ee545e0e1b94d14a7a58de4/Laboratorio%201/Imagenes/Sensor%20Tactil.png
-" style="width:350px;">
+<img src="https://github.com/JulianI3/Robotica-Movil-Grupo-3/blob/10595dd38c77c1d85a18bf84a714e925da0686e3/Laboratorio%201/Imagenes/Sensor%20Tactil.png" style="width:350px;">
 </p>
 
 En el software el simbolo que representa la conexión tendrá unicamente 2 estados, 1 denotará que se encuentra pulsado el sensor mientras que el valor de 0 indicará lo contrario; en la sigueinte imagen se observa el sensor conectado en el canal 1 el robot.
