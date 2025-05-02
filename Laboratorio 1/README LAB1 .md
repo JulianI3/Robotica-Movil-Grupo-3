@@ -45,7 +45,7 @@ En la siguiente imagen se aprecia como se registra la medición del sensor dentr
 Dentro del software la conexión y medida porcentual de este sensor se denota con el simbolo que se observa conectado en la siguiente imagen en el canal 4.
 
 <p align="center">
-<img src="https://github.com/JulianI3/Robotica-Movil-Grupo-3/blob/941b8a7d66f46e9d716183e99d32cd04b769d204/Laboratorio%201/Imagenes/Sensor%20infrarojo%20en%20el%20software.png" style="width:350px;">
+<img src="https://github.com/JulianI3/Robotica-Movil-Grupo-3/blob/941b8a7d66f46e9d716183e99d32cd04b769d204/Laboratorio%201/Imagenes/Sensor%20infrarojo%20en%20el%20software.png" style="width:450px;">
 </p>
 
 **Sensor de color:** El sensor de color tiene la capacidad de determinar el color al cuál está apuntando o determinar la intensidad de luz que se percibe en el ambiente, la medida arrojada por el mismo cuando mida la intensidad va desde el 0% (muy oscuro) y el 100% (muy luminoso).
@@ -59,7 +59,7 @@ Dentro del software propio de la compañía el simbolo representativo para este 
 
 
 <p align="center">
-<img src="https://github.com/JulianI3/Robotica-Movil-Grupo-3/blob/20e63cb746e2b7fb85892cd002e67d4f8efaf7d1/Laboratorio%201/Imagenes/Sensor%20de%20color%20en%20el%20software.png" style="width:350px;">
+<img src="https://github.com/JulianI3/Robotica-Movil-Grupo-3/blob/20e63cb746e2b7fb85892cd002e67d4f8efaf7d1/Laboratorio%201/Imagenes/Sensor%20de%20color%20en%20el%20software.png" style="width:450px;">
 </p>
 
 
@@ -73,7 +73,7 @@ Dentro del software propio de la compañía el simbolo representativo para este 
 El giroscopio mide el ángulo rotacional del robot en el eje según la instalación del sensor, este ángulo es medido en grados y se indica en el software mediante el siguiente simbolo.
 
 <p align="center">
-<img src="https://github.com/JulianI3/Robotica-Movil-Grupo-3/blob/ad8b466f0ed0807acbeb8d409e149f061cf45d0a/Laboratorio%201/Imagenes/Giroscopio%20en%20el%20software.png" style="width:350px;">
+<img src="https://github.com/JulianI3/Robotica-Movil-Grupo-3/blob/ad8b466f0ed0807acbeb8d409e149f061cf45d0a/Laboratorio%201/Imagenes/Giroscopio%20en%20el%20software.png" style="width:450px;">
 </p>
 
 
@@ -87,7 +87,7 @@ El giroscopio mide el ángulo rotacional del robot en el eje según la instalaci
 En el software el simbolo que representa la conexión tendrá unicamente 2 estados, 1 denotará que se encuentra pulsado el sensor mientras que el valor de 0 indicará lo contrario; en la sigueinte imagen se observa el sensor conectado en el canal 1 el robot.
 
 <p align="center">
-<img src="https://github.com/JulianI3/Robotica-Movil-Grupo-3/blob/e1bdcf3494ddd3fd4ee545e0e1b94d14a7a58de4/Laboratorio%201/Imagenes/Sensor%20Tactil%20en%20el%20software.png" style="width:350px;">
+<img src="https://github.com/JulianI3/Robotica-Movil-Grupo-3/blob/e1bdcf3494ddd3fd4ee545e0e1b94d14a7a58de4/Laboratorio%201/Imagenes/Sensor%20Tactil%20en%20el%20software.png" style="width:450px;">
 </p>
 
 ### 3.6 Simulación de robot EV3 en CoppeliaSim
@@ -98,7 +98,7 @@ Haciendo disposición del modelo [EV-R3P](https://github.com/albmardom/EV-R3P), 
 
 
 <p align="center">
-<img src="https://github.com/JulianI3/Robotica-Movil-Grupo-3/blob/da5048aaf74b5c031c2fa1c4e51024c8bc22229e/Laboratorio%201/Imagenes/Modelado%20EV3.png" style="width:350px;">
+<img src="https://github.com/JulianI3/Robotica-Movil-Grupo-3/blob/da5048aaf74b5c031c2fa1c4e51024c8bc22229e/Laboratorio%201/Imagenes/Modelado%20EV3.png" style="width:500px;">
 </p>
 
 
@@ -185,7 +185,7 @@ El programa utilizado para la ejecución del movimiento descrito anteriormente c
 
 
 <p align="center">
-<img src="https://github.com/JulianI3/Robotica-Movil-Grupo-3/blob/2d5d2b11c032eeda34bfaedd5671d5484ea2e218/Laboratorio%201/Imagenes/Rutina%20EV3.png" style="width:350px;">
+<img src="https://github.com/JulianI3/Robotica-Movil-Grupo-3/blob/2d5d2b11c032eeda34bfaedd5671d5484ea2e218/Laboratorio%201/Imagenes/Rutina%20EV3.png" style="width:450px;">
 </p>
 
 
