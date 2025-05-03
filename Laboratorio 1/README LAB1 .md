@@ -212,7 +212,7 @@ https://github.com/user-attachments/assets/45263156-bc22-4b56-a7cd-2d424d29bfe7
 Se realizo un modelamiento simplificado del robot Kuboki, tomando en cuenta sus medidas generales. La disposicion de los elementos esta dada para matener los elementos moviles(ruedas) con el mismo tamaño y disposicion.
 
 <p align="center">
-<img src="https://github.com/JulianI3/Robotica-Movil-Grupo-3/blob/main/Laboratorio%201/Imagenes/Kuboki%20coppelia" style="width:500px;">
+<img src="https://github.com/JulianI3/Robotica-Movil-Grupo-3/blob/main/Laboratorio%201/Imagenes/Kuboki%20coppelia.png" style="width:500px;">
 </p>
 
 #### Video de simulación en CoppeliaSim
