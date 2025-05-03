@@ -240,3 +240,5 @@ https://github.com/user-attachments/assets/c86dfbb3-b9a4-47ab-a173-2f4d79f08f1c
 
 
 ### 3.10 Reflexión y discusión
+* La versatilidad que ofrece el robot Lego EV3 es muy alta, permitiendo hacer robots complejos que podrían ser diseñados para usarse por niños, y que permite explorar la creatividad de los mismos con sus propias creaciones.
+* El robot EV3 demostró ser suficientemente ágil y veloz en su operación, como para poder usarse con fines recreativos en el diseño de carreras, laberintos o juegos para niños.
