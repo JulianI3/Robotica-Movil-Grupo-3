@@ -208,15 +208,20 @@ https://github.com/user-attachments/assets/45263156-bc22-4b56-a7cd-2d424d29bfe7
 ### 3.8 Simulacion de robot kuboki
 
 #### 3.8.1 Modelo del robot EV3
+
 Se realizo un modelamiento simplificado del robot Kuboki, tomando en cuenta sus medidas generales. La disposicion de los elementos esta dada para matener los elementos moviles(ruedas) con el mismo tamaño y disposicion.
+
 <p align="center">
 <img src="[https://github.com/JulianI3/Robotica-Movil-Grupo-3/blob/da5048aaf74b5c031c2fa1c4e51024c8bc22229e/Laboratorio%201/Imagenes/Modelado%20EV3.png" style="width:500px;](https://github.com/JulianI3/Robotica-Movil-Grupo-3/blob/main/Laboratorio%201/Imagenes/Kuboki%20coppelia);">
 </p>
+
 #### Video de simulación en CoppeliaSim
+
 Siguiendo el mismo programa de movimiento para realizar una comparacaion más comoda se obtuvo el siguiente resultado:
+
 <video width="320" height="240" controls>
-  <source src="ttps://github.com/JulianI3/Robotica-Movil-Grupo-3/blob/main/Laboratorio%201/Imagenes/Simulacion%20kuboki.webm" type="video/webm">
-</video>h
+  <source src="https://github.com/JulianI3/Robotica-Movil-Grupo-3/blob/main/Laboratorio%201/Imagenes/Simulacion%20kuboki.webm" type="video/webm">
+</video>
 
 
 ### 3.9 Reflexión y discusión
