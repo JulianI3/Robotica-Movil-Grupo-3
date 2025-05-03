@@ -205,14 +205,14 @@ La rutina de movimiento del robot EV3 corresponde a la siguiente.
 
 https://github.com/user-attachments/assets/45263156-bc22-4b56-a7cd-2d424d29bfe7
 
-### 3.8 Simulacion de robot kuboki
+### 3.8 Simulacion de robot Kuboki
 
-#### 3.8.1 Modelo del robot EV3
+#### 3.8.1 Modelo del robot Kuboki
 
 Se realizo un modelamiento simplificado del robot Kuboki, tomando en cuenta sus medidas generales. La disposicion de los elementos esta dada para matener los elementos moviles(ruedas) con el mismo tamaño y disposicion.
 
 <p align="center">
-<img src="[https://github.com/JulianI3/Robotica-Movil-Grupo-3/blob/da5048aaf74b5c031c2fa1c4e51024c8bc22229e/Laboratorio%201/Imagenes/Modelado%20EV3.png" style="width:500px;](https://github.com/JulianI3/Robotica-Movil-Grupo-3/blob/main/Laboratorio%201/Imagenes/Kuboki%20coppelia);">
+<img src="https://github.com/JulianI3/Robotica-Movil-Grupo-3/blob/main/Laboratorio%201/Imagenes/Kuboki%20coppelia" style="width:500px;">
 </p>
 
 #### Video de simulación en CoppeliaSim
