@@ -18,20 +18,25 @@ En este laboratorio hemos trabajado con robots móviles, que son fundamentales e
 Durante las prácticas utilizamos dos plataformas: LEGO EV3 y Kuboki. El EV3 es ideal para introducirse en la programación y la robótica, ya que su diseño modular y facilidad de uso permiten experimentar con lógica, sensores y movimientos de forma sencilla. Por otro lado, Kuboki ofrece características más avanzadas como navegación autónoma y esquiva de obstáculos, lo que lo convierte en una excelente opción para aplicar conceptos de control, planificación de trayectorias y toma de decisiones.
 
 Ambos robots nos permitieron aprender de forma práctica y desarrollar habilidades clave como la resolución de problemas, la lógica algorítmica y el pensamiento crítico, todo en un entorno interactivo y dinámico.
-## 3. Desarrollo
-### 3.1 Que es un robot móvil
-Un robot móvil es un sistema capaz de desplazarse por su entorno de manera autónoma o semi-autónoma, tomando decisiones basadas en la información que obtiene de sus sensores. A diferencia de los robots estacionarios, los móviles pueden adaptarse a entornos cambiantes y realizar tareas como navegación, esquiva de obstáculos o seguimiento de trayectorias, lo cual los hace útiles en una gran variedad de aplicaciones reales.
+### 3.1 ¿Qué es un robot móvil?
+Un robot móvil es un sistema capaz de desplazarse por su entorno de manera autónoma o semi-autónoma, tomando decisiones basadas en la información que obtiene de sus sensores. A diferencia de los robots estacionarios, los móviles pueden adaptarse a entornos cambiantes y realizar tareas como navegación, esquiva de obstáculos o seguimiento de trayectorias, lo cual los hace útiles en una gran variedad de aplicaciones reales.        
 ### 3.2 Descripción de los robots
 #### 3.2.1 Robot EV3
 El robot LEGO EV3 es una plataforma educativa muy conocida por su flexibilidad y facilidad de uso. Está compuesto por un bloque inteligente (el "brick") que funciona como procesador, varios sensores (como ultrasonido, color y giroscopio) y motores que permiten el movimiento. Es ideal para estudiantes, ya que su programación se puede realizar tanto de forma gráfica como con lenguajes más avanzados, facilitando la comprensión de conceptos básicos de robótica.
 #### 3.2.2 Robot Kuboki
 El robot Kuboki es una plataforma más avanzada, basada en la estructura del robot TurtleBot. Está diseñado para trabajar con ROS (Robot Operating System), lo que permite desarrollar aplicaciones de navegación autónoma, mapeo y control. Incluye sensores como odometría, giroscopios y soporte para cámaras o LIDAR. Es una herramienta útil para experimentar con algoritmos más complejos de planificación y percepción.
-### 3.3 APIs y lenguajes de programación
+### 3.3 Estado actual del robot y sistema de control.
+Actualmente, el robot se encuentra en un estado funcional y operativo para las tareas básicas de movimiento y respuesta a sensores. En el caso del EV3, logramos implementar rutinas de control simples como avanzar, girar, detenerse ante obstáculos y seguir líneas, todo mediante programación en Python. El sistema de control responde adecuadamente a las entradas de sensores como el ultrasónico y el de color.
+
+Para el robot Kuboki, el sistema de control basado en ROS fue configurado con éxito para tareas de navegación autónoma. Se probaron nodos de control de movimiento y lectura de sensores, logrando que el robot siga rutas definidas y esquive obstáculos en su entorno. Aún se pueden hacer mejoras en la precisión de la localización y en la integración de sensores más avanzados.
+
+En general, el sistema de control en ambos robots funciona correctamente para los objetivos planteados en el laboratorio, aunque existen oportunidades de optimización y ampliación de funcionalidades.
+### 3.4 APIs y lenguajes de programación
 Durante el laboratorio utilizamos distintas APIs según el robot. Para el EV3, trabajamos con entornos como EV3Dev o software de LEGO que permite programación en lenguajes como Python o bloques gráficos. En el caso de Kuboki, utilizamos ROS, una herramienta muy potente para robótica que permite controlar el robot mediante nodos escritos en Python o C++. Estas APIs facilitan el acceso a sensores, actuadores y algoritmos de control.
-### 3.4 Herramientas de desarrollo propias
+### 3.5 Herramientas de desarrollo propias
 Para el desarrollo de nuestras prácticas, implementamos código personalizado en Python (en el caso del EV3) y también creamos nodos en ROS para controlar funciones específicas del Kuboki. Además, diseñamos scripts para pruebas de navegación, captura de datos de sensores y control de movimientos. Estas herramientas fueron esenciales para adaptar el comportamiento de los robots a las actividades del laboratorio y para entender mejor cómo se integran los distintos componentes de un sistema robótico.
-### 3.5 Sensores del robot
-#### 3.5.1 Sensores del robot EV3
+### 3.6 Sensores del robot
+#### 3.6.1 Sensores del robot EV3
 El robot EV3 de la marca lego cuenta con diversa cantidad de sensores que le permiten interactuar con el entorno junto a la herramienta propia de la empresa; en el laboratorio se logró trabajar con 5 sensores los cuales se muestran a continuación:
 
 **Sensor de ultrasonido:** Este sensor permite determinar distancias por medio de la medición del tiempo que tarda en viajar una onda ultrasónica emitida por el mismo, la resolución del dispositivo visualizada en el software es de 0.1cm de diferencia entre mediciones y su rango va desde los 0 cm hasta los 255 cm. Este sensor permite que el robot mida a que distancia se encuentran objetos de el respecto a la orientación del sensor, permitiendo la toma de acciones en función del valor medido.
@@ -101,9 +106,9 @@ En el software el simbolo que representa la conexión tendrá unicamente 2 estad
 <img src="https://github.com/JulianI3/Robotica-Movil-Grupo-3/blob/e1bdcf3494ddd3fd4ee545e0e1b94d14a7a58de4/Laboratorio%201/Imagenes/Sensor%20Tactil%20en%20el%20software.png" style="width:450px;">
 </p>
 
-### 3.6 Simulación de robot EV3 en CoppeliaSim
+### 3.7 Simulación de robot EV3 en CoppeliaSim
 
-#### 3.6.1 Modelo del robot EV3
+#### 3.7.1 Modelo del robot EV3
 
 Haciendo disposición del modelo [EV-R3P](https://github.com/albmardom/EV-R3P), el cual posee gran calidad en el modelado y simulación, se logró hacer una rutina simple como primer acercamiento a la programación del robot.
 
@@ -186,7 +191,7 @@ https://github.com/user-attachments/assets/31f8fee7-eaf8-4b98-b97a-1c2e73c6789d
 
 
 
-### 3.7 Programa simple de movimiento
+### 3.8 Programa simple de movimiento
 
 #### Programa de movimiento para el EV3
 
@@ -205,9 +210,9 @@ La rutina de movimiento del robot EV3 corresponde a la siguiente.
 
 https://github.com/user-attachments/assets/45263156-bc22-4b56-a7cd-2d424d29bfe7
 
-### 3.8 Simulacion de robot Kuboki
+### 3.9 Simulacion de robot Kuboki
 
-#### 3.8.1 Modelo del robot Kuboki
+#### 3.9.1 Modelo del robot Kuboki
 
 Se realizo un modelamiento simplificado del robot Kuboki, tomando en cuenta sus medidas generales. La disposicion de los elementos esta dada para matener los elementos moviles(ruedas) con el mismo tamaño y disposicion.
 
@@ -225,4 +230,4 @@ Siguiendo el mismo programa de movimiento para realizar una comparacaion más co
 [Ver video](https://github.com/JulianI3/Robotica-Movil-Grupo-3/blob/main/Laboratorio%201/Imagenes/Simulacion%20kuboki.mp4)
 
 
-### 3.9 Reflexión y discusión
+### 3.10 Reflexión y discusión
