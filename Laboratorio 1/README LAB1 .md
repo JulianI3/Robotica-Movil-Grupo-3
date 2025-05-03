@@ -23,8 +23,16 @@ Un robot móvil es un sistema capaz de desplazarse por su entorno de manera aut�
 ### 3.2 Descripción de los robots
 #### 3.2.1 Robot EV3
 El robot LEGO EV3 es una plataforma educativa muy conocida por su flexibilidad y facilidad de uso. Está compuesto por un bloque inteligente (el "brick") que funciona como procesador, varios sensores (como ultrasonido, contacto y giroscopio) y motores que permiten el movimiento. Es ideal para estudiantes, ya que su programación se puede realizar tanto de forma gráfica como con lenguajes más avanzados, facilitando la comprensión de conceptos básicos de robótica.
+<p align="center">
+<img src="https://github.com/JulianI3/Robotica-Movil-Grupo-3/blob/b6cdbf55e3151190e02eb9437f1195d4a5057957/Laboratorio%201/Imagenes/EV3.jpg" alt="Brick de EV3" style="width:350px;">
+</p>
+
 #### 3.2.2 Robot Kuboki
 El robot Kuboki es una plataforma más avanzada, basada en la estructura del robot TurtleBot. Está diseñado para trabajar con ROS (Robot Operating System), lo que permite desarrollar aplicaciones de navegación autónoma, mapeo y control. Incluye sensores como odometría, giroscopios y soporte para cámaras o LIDAR. Es una herramienta útil para experimentar con algoritmos más complejos de planificación y percepción.
+<p align="center">
+<img src="https://github.com/JulianI3/Robotica-Movil-Grupo-3/blob/b6cdbf55e3151190e02eb9437f1195d4a5057957/Laboratorio%201/Imagenes/Kobuki.jpg" alt="Cuerpo del Kobuki" style="width:350px;">
+</p>
+
 ### 3.3 Estado actual del robot y sistema de control.
 En el caso del EV3, logramos implementar rutinas de control simples como avanzar, girar y detenerse ante obstáculos con ayuda del sensor de ultrasonido, todo mediante programación en el software propio de EV3. El sistema de control responde adecuadamente a las entradas de sensores como el ultrasónico y responde rápidamente ante las órdenes dadas.
 
