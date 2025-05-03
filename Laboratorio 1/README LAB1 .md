@@ -224,10 +224,11 @@ Se realizo un modelamiento simplificado del robot Kuboki, tomando en cuenta sus 
 
 Siguiendo el mismo programa de movimiento para realizar una comparacaion más comoda se obtuvo el siguiente resultado:
 
-<video width="600" controls>
-  <source src="https://github.com/JulianI3/Robotica-Movil-Grupo-3/blob/main/Laboratorio%201/Imagenes/Simulacion%20kuboki.mp4" type="video/mp4">
-</video>
-[Ver video](https://github.com/JulianI3/Robotica-Movil-Grupo-3/blob/main/Laboratorio%201/Imagenes/Simulacion%20kuboki.mp4)
+
+
+https://github.com/user-attachments/assets/c86dfbb3-b9a4-47ab-a173-2f4d79f08f1c
+
+
 
 
 ### 3.10 Reflexión y discusión
