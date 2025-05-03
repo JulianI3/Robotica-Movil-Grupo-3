@@ -214,7 +214,9 @@ Se realizo un modelamiento simplificado del robot Kuboki, tomando en cuenta sus 
 </p>
 #### Video de simulación en CoppeliaSim
 Siguiendo el mismo programa de movimiento para realizar una comparacaion más comoda se obtuvo el siguiente resultado:
-https://github.com/JulianI3/Robotica-Movil-Grupo-3/blob/main/Laboratorio%201/Imagenes/Simulacion%20kuboki.webm
+<video width="320" height="240" controls>
+  <source src="ttps://github.com/JulianI3/Robotica-Movil-Grupo-3/blob/main/Laboratorio%201/Imagenes/Simulacion%20kuboki.webm" type="video/webm">
+</video>h
 
 
 ### 3.9 Reflexión y discusión
