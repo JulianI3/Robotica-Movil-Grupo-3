@@ -1,4 +1,4 @@
-🚗 Cinemática Directa: Robot de Tracción Diferencial
+# 🚗 Cinemática Directa: Robot de Tracción Diferencial
 
 Este documento calcula la velocidad lineal y angular de un robot móvil con ruedas diferenciales, utilizando el modelo cinemático directo.
 
@@ -7,10 +7,10 @@ Este documento calcula la velocidad lineal y angular de un robot móvil con rued
 ## 📏 **Parámetros del Robot**
 | **Variable**          | **Valor**               |
 |-----------------------|-------------------------|
-| Radio de las ruedas (\( r \)) | 28 mm = 0.028 m         |
-| Trocha (\( 2l \))     | 124 mm → \( l = 0.062 \, \text{m} \) |
-| Velocidad rueda izquierda (\( \dot{\phi}_1 \)) | -4.78 rad/s |
-| Velocidad rueda derecha (\( \dot{\phi}_2 \))   | -4.77 rad/s |
+| Radio de las ruedas \( r \) | 28 mm = 0.028 m         |
+| Trocha \( 2L \)     | 124 mm → \( l = 0.062 m \) |
+| Velocidad rueda izquierda \( \dot{\phi}_1 \) | -4.78 rad/s |
+| Velocidad rueda derecha \( \dot{\phi}_2 \)  | -4.77 rad/s |
 
 ---
 
