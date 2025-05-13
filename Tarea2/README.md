@@ -48,6 +48,9 @@ El robot gira levemente hacia la **derecha** $$\( \omega \approx -0.0023 \, \tex
 - **Dirección predominante**: Movimiento rectilíneo hacia atrás.  
 - **Giro mínimo**: La diferencia de velocidad entre las ruedas es casi nula $$\( \Delta \dot{\phi} = 0.01 \, \text{rad/s} \)$$, lo que genera un radio de giro muy grande.  
 - **Implicación práctica**: El robot sigue una trayectoria casi recta con una desviación insignificante.
+---
+## **Datos experomentales**
+Los datos para posición y velocidad que se obtubieron gracias al programa Tracker serian:
 
 ---
 
