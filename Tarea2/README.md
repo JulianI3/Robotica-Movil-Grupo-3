@@ -49,13 +49,24 @@ El robot gira levemente hacia la **derecha** $$\( \omega \approx -0.0023 \, \tex
 - **Giro mínimo**: La diferencia de velocidad entre las ruedas es casi nula $$\( \Delta \dot{\phi} = 0.01 \, \text{rad/s} \)$$, lo que genera un radio de giro muy grande.  
 - **Implicación práctica**: El robot sigue una trayectoria casi recta con una desviación insignificante.
 ---
-## **Datos experomentales**
+## **Datos experimentales**
 Los datos para posición y velocidad que se obtubieron gracias al programa Tracker serian:
+![a0aa36a9-1584-4c5a-b081-1713caa7dc02](https://github.com/user-attachments/assets/b9f6e088-f38d-40a8-8a2e-71833beba86f)
+![ae0a3877-de4e-4a46-ad52-13dce332ea6c](https://github.com/user-attachments/assets/8fd7bb47-8e0b-491b-a006-9c1e03d80335)
 
 ---
+## **Analisis y conclusiones**
+
+Se puede evidenciar que para ambos casos se presenta un comportamiento de movimiento principalmente lineal, donde se presentaban pequeñas variaciones de velocidad dando una ligera velocidad angular del cuerpo del robot. 
+
+Cabe resaltar que para el caso experimental se intenta ver el comportamiento promedio de los datos, donde se puede notar que el robot presenta marcadamente un desplazamiento lineal en la coordenada y, no obstante, por las ligeras variaciones en la velocidad angular del cuerpo se presenta un desplazamiento en la coordenada x.
+
+Algo resaltable es para el cazo de la velocidad en el eje y se presenta el promedio de este alrededor de 15 cm/s lo cual es una velocidad promedio mayor a la calculada de forma experimental. Con lo cual se comprueba que los datos de programación del robot fuera de no dar un comportamiento constante, llega a tener resultados diferentes entre lo planteado teóricamente con el código del robot y los resultados físicos.
 
 ## 📚 **Referencias**
-- Modelo cinemático directo (p. 13 de la presentación adjunta).  
+- Modelo cinemático directo (p. 13 de la presentación adjunta).
+
+
 - Configuración geométrica (p. 12).  
 
 ---
