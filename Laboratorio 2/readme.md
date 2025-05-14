@@ -20,7 +20,7 @@ A medida que se busca un mejor desempeño de los robots, estos errores se vuelve
 En este contexto, el uso de ROS (Robot Operating System) se ha convertido en un estándar fundamental para el desarrollo de robots móviles. ROS proporciona una infraestructura flexible que facilita la integración de diversos componentes de hardware, como sensores, actuadores y unidades de procesamiento, mediante una arquitectura modular basada en nodos y mensajes. Gracias a ROS, es posible gestionar de manera eficiente la adquisición, procesamiento y distribución de datos de sensores, permitiendo el desarrollo de sistemas más robustos, escalables y reutilizables.
 
 ### 3.1 ¿Qué es el Vocabulario Internacional de Metrología (VIM)?
-El Vocabulario Internacional de Metrología (VIM) es un documento que establece definiciones y términos utilizados en metrología. Incluye conceptos fundamentales sobre mediciones, trazabilidad metrológica, incertidumbre de medición y propiedades cualitativas. El archivo del VIM tercera edición (2012), se puede consultar en el siguiente [enlace]((https://www.cem.es/sites/default/files/vim-cem-2012web.pdf)) del Centro Español de Metrología.
+El Vocabulario Internacional de Metrología (VIM) es un documento que establece definiciones y términos utilizados en metrología. Incluye conceptos fundamentales sobre mediciones, trazabilidad metrológica, incertidumbre de medición y propiedades cualitativas. El archivo del VIM tercera edición (2012), se puede consultar en el siguiente [enlace](https://www.cem.es/sites/default/files/vim-cem-2012web.pdf) del Centro Español de Metrología.
 ### 3.2 Según el VIM, defina los siguientes conceptos:
 #### 3.2.1 Exactitud de medida
 En la sección 2.13, página 31, se dice que la "Exactitud de medida" es la "proximidad entre un valor medido y un valor verdadero de un mensurando". Y se tiene una nota que menciona que: "El concepto “exactitud de medida” no es una magnitud y no se expresa numéricamente. Se dice que una medición es más exacta cuanto más pequeño es el error de medida. "
@@ -28,7 +28,11 @@ En la sección 2.13, página 31, se dice que la "Exactitud de medida" es la "pro
 En la sección 2.15, página 31, se dice que la "Precisión de medida" es la "proximidad entre las indicaciones o los valores medidos obtenidos en mediciones repetidas de un mismo objeto, o de objetos similares, bajo condiciones especificadas". Aquí se tiene una nota que dice que "La precisión se utiliza para definir la repetibilidad de medida, la precisión intermedia y la reproducibilidad."
 
 Una forma gráfica de entender los conceptos anteriores se puede dar con la siguiente imagen, tomada de "[https://www.orbitalesmoleculares.com/precision-y-exactitud/](https://www.orbitalesmoleculares.com/precision-y-exactitud/)":
+<div align="center">
+    
 ![Precisión y Exactitud](https://github.com/user-attachments/assets/d66d8e89-9db5-4246-a63b-b024c6bb75ea)
+
+</div>
 
 #### 3.2.3 Error de medida
 En la sección 2.16, página 32, se dice que el "Error de medida" es la "diferencia entre un valor medido de una magnitud y un valor de referencia". Se tiene una nota que menciona que "El error de medida puede emplearse cuando exista un único valor de referencia, ... , o cuando se toma un valor convencional, en cuyo caso el error es conocido."
@@ -36,6 +40,19 @@ En la sección 2.16, página 32, se dice que el "Error de medida" es la "diferen
 En la sección 2.26, página 34, se dice que la "Incertidumbre de medida" es el "parámetro no negativo que caracteriza la dispersión de los valores atribuidos a un mensurando, a partir de la información que se utiliza"
 
 ### 3.3 Explique la diferencia entre un error sistemático y un error aleatorio.
+Basado en las definiciones del VIM:
+- 2.17 "Error Sistemático de medida: componente del error de medida que, en mediciones repetidas, permanece constante o varía de manera predecible."
+NOTA 1 El valor de referencia para un error sistemático es un valor verdadero, un valor medido de  un patrón cuya incertidumbre de medida es despreciable, o un valor convencional de una magnitud.
+NOTA 2 El error sistemático y sus causas pueden ser conocidas o no. Para compensar un error  sistemático conocido puede aplicarse una corrección. 
+NOTA 3 El error sistemático es igual a la diferencia entre el error de medida y el error aleatorio.
+
+- 2.19 "Error Aleatorio de medida: componente del error de medida que, en mediciones repetidas, varía de manera impredecible."
+NOTA 1 El valor de referencia para un error aleatorio es la media que se obtendría de un número  infinito de mediciones repetidas del mismo mensurando. 
+NOTA 2 Los errores aleatorios de un conjunto de mediciones repetidas forman una distribución que  puede representarse por su esperanza matemática, generalmente nula, y por su varianza.
+NOTA 3 El error aleatorio es igual a la diferencia entre el error de medida y el error sistemático
+
+Aquí toca poner algo, que luego lo hago
+
 ### 3.4 De acuerdo con la teoría estadística: ¿qué es el valor medio? ¿Qué magnitudes se utilizan para medir la dispersión de los datos?
 ### 3.5 Busque una definición de que es ROS y sus principales ventajas
 ### 3.6 Investigue sobre qué comandos se pueden usar con rosnode, rostopic, rosparam, rosservice, rosmsg y rospack.
