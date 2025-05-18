@@ -64,6 +64,9 @@ Aquí toca poner algo, que luego lo hago
 
 ## 4. Sensores
 Para realizar la medición con el sensor Hokuyo y el RPLidar se utilizó la misma estructura optando por tomas en diferentes puntos para cada sensor, el cuarto hecho para la pueba se muestra a continuación con las dimensiones dadas en cm y tomando su eje cordenado en una esquina a partir de la cual se midieron todas las poses para ambos sensores.
+<p align="center">
+  <img src="![image](https://github.com/user-attachments/assets/284f7e30-6251-46da-8287-b03a58aed504)" alt="Descripción" width="300">
+</p>
 ![image](https://github.com/user-attachments/assets/80c6a4fe-cef8-4c03-8bd0-23b49d98bd13)
 
 ### 4.1 Sensor Hokuyo
