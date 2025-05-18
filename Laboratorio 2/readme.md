@@ -61,3 +61,10 @@ Aquí toca poner algo, que luego lo hago
 ### 3.9 ¿Como leer un evento de dicho sensor?
 ### 3.10 ¿Qué protocolo de comunicación usa el Lego Ev3 con sus sensores y actuadores?
 ### 3.11 ¿Qué opciones de conexión permiten integrar sensores no nativos al sistema LEGO EV3?
+
+## 4. Sensores
+Para realizar la medición con el sensor Hokuyo y el RPLidar se utilizó la misma estructura optando por tomas en diferentes puntos para cada sensor, el cuarto hecho para la pueba se muestra a continuación con las dimensiones dadas en cm y tomando su eje cordenado en una esquina a partir de la cual se midieron todas las poses para ambos sensores.
+![image](https://github.com/user-attachments/assets/80c6a4fe-cef8-4c03-8bd0-23b49d98bd13)
+
+### 4.1 Sensor Hokuyo
+
