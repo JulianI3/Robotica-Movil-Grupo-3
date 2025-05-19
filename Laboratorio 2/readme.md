@@ -67,12 +67,13 @@ Para realizar la medición con el sensor Hokuyo y el RPLidar se utilizó la mism
 
 
 
-![image](https://github.com/user-attachments/assets/ca95fd3f-4b42-43b2-b0b6-622a5448b9ac)
+![Precisión y Exactitud](https://github.com/user-attachments/assets/ca95fd3f-4b42-43b2-b0b6-622a5448b9ac)
 
+<div align="center">
+    
+![Precisión y Exactitud](https://github.com/user-attachments/assets/09758b11-50d5-437f-98e0-3413be3969fd)
 
-![image](https://github.com/user-attachments/assets/09758b11-50d5-437f-98e0-3413be3969fd)
-
-
+</div>
 Hay que tener en cuenta que en el diagrama no se expresa el espesor de las paredes, ya que no es importatnte para medir el espacio interno, sin embargo, en el pasillo abierto hay que saber este valor, pues la pared sobresale hacia la parte interiror y el sensor la mide, por lo tanto teniendo en cuenta qu eel espesor de esta pared es de 2 cm notamos que al hacer la sumatoria de todos los valores en Y nos resulta exactamente igual al valor de la pared opuesta que es recta de 53 cm.
 
 ### 4.1 Sensor Hokuyo
@@ -148,17 +149,20 @@ ylabel('Y (m)');
 Utilizando este código y cambiando la base de datos correspondiente a cada prueba y la pose podemos obtener los siguientes gráficos que representan los resultados de cada prueba:
 
 ##### 4.1.1.1 Mapa de detección del sensor Hokuyo para la pose 1
-
+<div align="center">
+    
 ![image](https://github.com/user-attachments/assets/c7de72e1-8646-4b3a-8d74-2586090bda78)
-
+</div>
 ##### 4.1.1.2 Mapa de detección del sensor Hokuyo para la pose 2
-
+<div align="center">
+    
 ![image](https://github.com/user-attachments/assets/2fe0b660-f058-4c9c-9ac7-66b62b455adb)
-
+</div>
 ##### 4.1.1.3 Mapa de detección del sensor Hokuyo para la pose 3
-
+<div align="center">
+    
 ![image](https://github.com/user-attachments/assets/01090f24-ec1c-4aa7-9cca-ee474d0aad50)
-
+</div>
 #### 4.1.2 Mapas de ocupación del sensor
 
 Utilizando los mismos datos obtenidos por el sensor y utilizando matlab para generar un nuevo código obtenemos el siguiente código cambiando la base de datos para cada prueba:
@@ -231,30 +235,36 @@ box on
 Utilizando este código y cambiando la base de datos correspondiente a cada prueba y la pose podemos obtener los siguientes gráficos que representan los resultados de cada prueba:
 
 ##### 4.1.2.1 Mapa de ocupación del sensor Hokuyo para la pose 1
-
+<div align="center">
+    
 ![image](https://github.com/user-attachments/assets/122029f1-3a85-4eb6-b36f-c1794ee29881)
-
+</div>
 También podemos observar lo que registra el sensor en el software:
-
+<div align="center">
+    
 ![image](https://github.com/user-attachments/assets/3c8a95f9-088b-46b7-a662-2b4a8464086f)
 
-
+</div>
 ##### 4.1.2.2 Mapa de ocupación del sensor Hokuyo para la pose 2
-
+<div align="center">
+    
 ![image](https://github.com/user-attachments/assets/bbc8fda1-5094-4ab5-acd6-047933c9b16d)
-
+</div>
 También podemos observar lo que registra el sensor en el software:
-
+<div align="center">
+    
 ![image](https://github.com/user-attachments/assets/78112350-a9d2-4aa0-9281-202debfcf3c7)
-
+</div>
 ##### 4.1.2.3 Mapa de ocupación del sensor Hokuyo para la pose 3
-
+<div align="center">
+    
 ![image](https://github.com/user-attachments/assets/ee4f60ab-c4e4-43c0-b069-b9050427045a)
-
+</div>
 También podemos observar lo que registra el sensor en el software:
-
+<div align="center">
+    
 ![image](https://github.com/user-attachments/assets/75546c50-9f6b-412c-b98a-5a600fec8707)
-
+</div>
 #### 4.1.3 Mapa de ocupación total del sensor
 
 Mediante un código en Matlab que combine todos los datos y tome las 3 poses al mismo tiempo podemos obtener el siguiente mapa de ocupación para las 3 pruiebas:
@@ -326,10 +336,11 @@ title('Mapa de ocupación combinado — 3 poses del sensor Hokuyo')
 grid on
 box on
 ```
-
+<div align="center">
+    
 ![image](https://github.com/user-attachments/assets/9bbe0fde-01cf-46ca-a6e7-3f4e22e82a9a)
 
-
+</div>
 De la misma forma podemos utilizar el siguiente código para evidenciar las poses de cada prueba:
 
 ```matlab
@@ -424,14 +435,17 @@ for i = 1:3
 end
 hold off
 ```
+<div align="center">
+    
 ![image](https://github.com/user-attachments/assets/674574fa-5fa5-436a-9fb5-410e642675a8)
-
+</div>
 #### 4.1.4 Error en la medición del sensor
 
 Para tomar el error total en la medición del sensor notamos el sector donde mayor diferencia se encuentre frente a las mediciones realizadas en el laboratorio, de esta manera encontramos que la parte donde la diferencia es mayor es en esta:
-
+<div align="center">
+    
 ![image](https://github.com/user-attachments/assets/ff48aa7d-0984-4e10-bbc8-66209b05dc16)
-
+</div>
 tomando los datos los puntos más alejados de esta zona los cuales corresponden a x = 0.36 donde y1 = 0.335649, y2 = 0.549108, así podemos conocer esta distancia haciendo la diferencia:
 
 d =  0.549108 - 0.335649 = 0.2134459 m = 21.34459 cm
@@ -452,20 +466,23 @@ Podemos evidenciar que al considerar esta pared el error disminuye bastante, y p
 Para el sensor RPlidar se usaron 3 poses diferentes las cuales son medidas desde el origen y el angulo expresado en ° es medido desde el eje x positivo.
 
 Pose 1: x = 15.9, y = 23.6, θ =  45°
-
+<div align="center">
+    
 ![image](https://github.com/user-attachments/assets/1fb30a37-fd6e-4d72-bb98-83ef239ca0c6)
 
-
+</div>
 Pose 2: x = 13.8, y = 31.9, θ = 223° 
-
+<div align="center">
+    
 ![image](https://github.com/user-attachments/assets/18d2c598-5423-4a17-8c23-a7ec6d4d8f44)
 
-
+</div>
 Pose 3: x = 23.4, y = 36.6, θ =  104°
-
+<div align="center">
+    
 ![image](https://github.com/user-attachments/assets/95328eb5-3613-499d-bf4c-de3bef43aac7)
 
-
+</div>
 #### 4.2.1 Mapas de detección del sensor
 
 Utilizando el código de matlab proporcionado en el repositorio para la toma de datos resultaron tres tablas de 2 columnas, en donde las filas corresponden a cada toma de datos de las cuales se hicieron aproximadamente 3 con un tiempo de 3 segundos para cada pose y las columnas indican el ámgulo en radianes y la distancia medida en m, estas muestras son tomadas a lo largo de 360° grados que logra capturar el sensor.
@@ -533,17 +550,20 @@ ylabel('Y (m)');
 Utilizando este código y cambiando la base de datos correspondiente a cada prueba y la pose podemos obtener los siguientes gráficos que representan los resultados de cada prueba:
 
 ##### 4.2.1.1 Mapa de detección del sensor RPLidar para la pose 1
-
+<div align="center">
+    
 ![image](https://github.com/user-attachments/assets/57ebf3b7-ab3c-4f95-8439-1ad95d44381c)
-
+</div>
 ##### 4.2.1.2 Mapa de detección del sensor RPLidar para la pose 2
-
+<div align="center">
+    
 ![image](https://github.com/user-attachments/assets/170718fc-2143-428d-89f7-a13354894e17)
-
+</div>
 ##### 4.2.1.3 Mapa de detección del sensor RPLidar para la pose 3
-
+<div align="center">
+    
 ![image](https://github.com/user-attachments/assets/94f10ef3-de11-491a-a0fd-d589cde4eb12)
-
+</div>
 #### 4.2.2 Mapas de ocupación del sensor
 
 Utilizando los mismos datos obtenidos por el sensor y utilizando matlab para generar un nuevo código obtenemos el siguiente código cambiando la base de datos para cada prueba:
@@ -618,29 +638,35 @@ box on
 Utilizando este código y cambiando la base de datos correspondiente a cada prueba y la pose podemos obtener los siguientes gráficos que representan los resultados de cada prueba:
 
 ##### 4.2.2.1 Mapa de ocupación del sensor RPLidar para la pose 1
-
+<div align="center">
+    
 ![image](https://github.com/user-attachments/assets/a8ad6c5c-b287-477d-a2a4-071b16a5c8f5)
-
+</div>
 También podemos observar lo que registra el sensor en el software:
-
+<div align="center">
+    
 ![Gráfica 1](https://github.com/user-attachments/assets/90488501-645c-411e-ad43-33401c4c37d8)
-
+</div>
 ##### 4.2.2.2 Mapa de ocupación del sensor RPLidar para la pose 2
-
+<div align="center">
+    
 ![image](https://github.com/user-attachments/assets/af2eb519-cc03-44be-8e19-204ab199f30b)
-
+</div>
 También podemos observar lo que registra el sensor en el software:
-
+<div align="center">
+    
 ![Gráfica 2](https://github.com/user-attachments/assets/8170ef50-d405-46fd-abb0-adec45129c76)
-
+</div>
 ##### 4.2.2.3 Mapa de ocupación del sensor RPLidar para la pose 3
-
+<div align="center">
+    
 ![image](https://github.com/user-attachments/assets/d373e719-4dfd-4b4c-93b0-d499cc9e065c)
-
+</div>
 También podemos observar lo que registra el sensor en el software:
-
+<div align="center">
+    
 ![Gráfica 3](https://github.com/user-attachments/assets/8f9431fd-144b-436f-8330-6c6ddf0e2e1b)
-
+</div>
 #### 4.2.3 Mapa de ocupación total del sensor
 
 Mediante un código en Matlab que combine todos los datos y tome las 3 poses al mismo tiempo podemos obtener el siguiente mapa de ocupación para las 3 pruiebas:
@@ -718,10 +744,11 @@ title('Mapa de ocupación combinado - 3 escaneos RPLidar');
 grid on; box on;
 
 ```
-
+<div align="center">
+    
 ![image](https://github.com/user-attachments/assets/fa9bd2c6-e161-4bbc-a12d-ea13fe1e7ec4)
 
-
+</div>
 De la misma forma podemos utilizar el siguiente código para evidenciar las poses de cada prueba:
 
 ```matlab
@@ -821,14 +848,17 @@ title(titleStr);
 grid on;
 box on;
 ```
+<div align="center">
+    
 ![image](https://github.com/user-attachments/assets/e2130a3d-5a39-43d3-ab1a-4d83503314ce)
-
+</div>
 #### 4.2.4 Error en la medición del sensor
 
 Para tomar el error total en la medición del sensor notamos el sector donde mayor diferencia se encuentre frente a las mediciones realizadas en el laboratorio, sin embargo se nota una medición muy uniforme y exacta respecto a las medidas realizadas en el laboratorio, pero se evidencia una falta de toma de datos que en el laboratorio no se percibió pero al analizar los datos se evidencia y es una falta de datos al otro lado de la pared, si bien el sensor logró capturar el espesor no logro capturar la longitud de la pared de ese costado, y aunque esta no es una medida crítica la tomaremos para calcular el error en ese punto, pues es donde mayor error se ve, claro tomando tambien el espesor para no inducir un error extra como sucedio con el sensor Hokuyo. 
-
+<div align="center">
+    
 ![image](https://github.com/user-attachments/assets/c44cb56d-0818-4d2d-bcda-0c64350af271)
-
+</div>
 tomando los datos los puntos más alejados de esta zona los cuales corresponden a x = 0.36 donde y1 = 0.362995, y2 = 0.528526, así podemos conocer esta distancia haciendo la diferencia:
 
 d =  0.528526 - 0.362995 = 0.165531 m = 16.5531 cm
