@@ -422,374 +422,383 @@ d =  0.549108 - 0.335649 = 0.2134459 m = 21.34459 cm
 
 Conociendo que la distancia en esa zona es de 16.5 cm podemos encontrar el error de la siguiente manera:
 
-$Err = \frac{21.3459 - 16.5}{16.5}*100 \approx 29.4%$
+$Err = \frac{21.3459 - 16.5}{16.5}*100 \approx 29.4 \%$
 
 Podemos evidenciar que se trata de un error grande, sin embargo estamos suponiendo que la pared no tiene espesor, es decir los datos tomados por el sensor de un lado de la pared se tomaron como los puntos máximos sin considerar su espesor, de esta manera es correcto afirmar que este error no es cierto y debemos considerar este espesor, de esta manera obtenemos unos nuevos puntos considertando los puntos del otro lado de la pared, x = 0.49 donde y1 = 0.361585, y2 = 0.536402, así podemos conocer esta distancia haciendo la diferencia:
 
 d =  0.536402 - 0.361585 = 0.174817 m = 17.4817 cm
-$Err = \frac{17.4817 - 16.5}{16.5}*100 \approx 5.95%$
+$Err = \frac{17.4817 - 16.5}{16.5}*100 \approx 5.95 \%$
 
 Podemos evidenciar que al considerar esta pared el error disminuye bastante, y por lo tanto este error ya es mas aceptable aunque se tengan algunas diferencias, seguramente estas se deban a limitaciones internas como la resolución angular y la precisión del láser, así como a condiciones del entorno, como superficies colocadas de manera incorrecta o la presencia de irregularidades en las paredes. También influyen factores mecánicos como vibraciones o una mala instalación, y errores en el procesamiento, como una transformación incorrecta de coordenadas o una pose mal estimada.
 
 ### 4.2 Sensor RPLidar
-Para el sensor Hokuyo se usaron 3 poses diferentes las cuales son medidas desde el origen y el angulo expresado en ° es medido desde el eje x positivo.
 
-Pose 1: x = 14.8, y = 9.4, θ =  108°
+Para el sensor RPlidar se usaron 3 poses diferentes las cuales son medidas desde el origen y el angulo expresado en ° es medido desde el eje x positivo.
 
-Pose 2: x = 13.3, y = 28.8, θ = 292° 
+Pose 1: x = 15.9, y = 23.6, θ =  45°
 
-Pose 3: x = 13.8, y = 22.8, θ =  15°
-#### 4.1.1 Mapas de detección del sensor
+Pose 2: x = 13.8, y = 31.9, θ = 223° 
 
-Utilizando el código de matlab proporcionado en el repositorio para la toma de datos resultaron tres tablas de 3 filas y 682 columnas, en donde las filas corresponden a cada toma de datos de las cuales se hicieron 3 con un tiempo de 3 segundos para cada pose y las columnas indican el número de muestra, es decir existen 682 muestras tomadas a lo largo de 240° grados que logra capturar el sensor.
+Pose 3: x = 23.4, y = 36.6, θ =  104°
+
+#### 4.2.1 Mapas de detección del sensor
+
+Utilizando el código de matlab proporcionado en el repositorio para la toma de datos resultaron tres tablas de 2 columnas, en donde las filas corresponden a cada toma de datos de las cuales se hicieron aproximadamente 3 con un tiempo de 3 segundos para cada pose y las columnas indican el ámgulo en radianes y la distancia medida en m, estas muestras son tomadas a lo largo de 360° grados que logra capturar el sensor.
 A partir de estos datos se realiza un código en matlab el cual se encarga de procesar los datos y plotearlos en un gráfico donde sea evidente la pose del sensor y los puntos que detectó para construir las paredes de la siguiente forma:
 ```matlab
-% === Cargar datos ===
-load('lidar1.mat');  % Carga LidarSet1, LidarSet2 ó LidarSet3 
+% Script completo para cargar datos RPLidar desde CSV y graficar correctamente 
 
-% === Pose del sensor ===
-x_cm      = (posición x en cm);
-y_cm      = (posición y en cm)=;
-theta_deg = (ángulo de la pose en grados);
+% 1. Cargar datos desde CSV 
+% Si el CSV tiene una línea de encabezado, descomenta la opción 'NumHeaderLines'
+% data = readmatrix('RPLidar1.csv', 'NumHeaderLines', 1); %Cargar datos RPLidar1, RPLidar2, RPLidar3
+data = readmatrix('RPLidar1.csv');    % Cada fila: [ángulo (rad), distancia (mm)]
+
+% 2. Parámetros del sensor 
+x_cm      = colocar valor;     % posición X del sensor en cm
+y_cm      = colocar valor;      % posición Y del sensor en cm
+theta_deg = colocar valor;      % orientación del sensor en grados
 theta_rad = deg2rad(theta_deg);
 
-nBeams   = 682;
-angles   = linspace(-120, 120, nBeams);  % en grados
-angles   = deg2rad(angles);              % → radianes
+sensorPose = [x_cm/100, y_cm/100, theta_rad];  % [X, Y, θ] en metros y radianes
 
-% Pose del sensor en el mundo (en metros)
-sensorPose = [x_cm / 100, y_cm / 100, theta_rad];
+% 3. Extraer ángulos y distancias 
+angles   = data(:,1);                % ya en radianes, medidos en sentido horario
+ranges_m = double(data(:,2)) / 1000; % convertir mm → m
 
-% === Inicializar nube de puntos combinada ===
-puntos_globales = [];
+% 4. Coordenadas locales corrigiendo sentido de barrido ya que el sensor toma datos en sentido antihorario
+% Invertimos el signo si el LIDAR mide en sentido horario
+x_local = ranges_m .* cos(-angles);
+y_local = ranges_m .* sin(-angles);
 
-% === Procesar los 3 primeros escaneos ===
-for i = 1:3
-    scan_mm = double(LidarSet3(i, :));
-    scan_m = scan_mm / 1000;
+% 5. Transformación del sistema local al global 
+R = [ cos(theta_rad), -sin(theta_rad);
+      sin(theta_rad),  cos(theta_rad) ];   % matriz de rotación 2×2
 
-    scan = lidarScan(scan_m, angles);
-    scanWorld = transformScan(scan, sensorPose);
+pts_local  = [x_local'; y_local'];         % 2×N
+pts_global = R * pts_local;                % 2×N
+puntos_globales = pts_global' + sensorPose(1:2);  % N×2, sumo traslación
 
-    % Acumular los puntos transformados
-    puntos_globales = [puntos_globales; scanWorld.Cartesian];
-end
-
-% === Graficar solo paredes + ubicación del sensor ===
+% 6. Graficar puntos + sensor + dirección
 figure;
-plot(puntos_globales(:,1), puntos_globales(:,2), 'b.', 'MarkerSize', 6);  % paredes en azul
+plot(puntos_globales(:,1), puntos_globales(:,2), 'b.', 'MarkerSize', 6);
 hold on;
-plot(sensorPose(1), sensorPose(2), 'ro', 'MarkerSize', 10, 'LineWidth', 2); % sensor en rojo
 
-% === Dibujar la dirección del sensor como flecha ===
-longitud_flecha = 0.05;  % longitud más corta de la flecha en metros
-dx = longitud_flecha * cos(sensorPose(3));
-dy = longitud_flecha * sin(sensorPose(3));
-quiver(sensorPose(1), sensorPose(2), dx, dy, 0, 'r', 'LineWidth', 2, 'MaxHeadSize', 2);
+% Sensor en rojo
+plot(sensorPose(1), sensorPose(2), 'ro', 'MarkerSize', 10, 'LineWidth', 2);
+
+% Flecha de dirección
+flecha_len = 0.05;  % longitud de la flecha en metros
+dx = flecha_len * cos(theta_rad);
+dy = flecha_len * sin(theta_rad);
+quiver(sensorPose(1), sensorPose(2), dx, dy, 0, 'r', ...
+       'LineWidth', 2, 'MaxHeadSize', 2);
 
 % Mejoras visuales
-title('Mapa de paredes detectadas por el Hokuyo pose (1, 2 o 3)');
-legend('Paredes detectadas', 'Ubicación del sensor', 'Dirección del sensor');
-
+title('Mapa de paredes detectadas por el RPLidar pose 1');
+legend('Puntos detectados', 'Sensor', 'Dirección del sensor', ...
+       'Location', 'best');
 axis equal;
 grid on;
-xlim([0 0.6]);
-ylim([0 0.6]);
 
-xticks(0:0.05:0.6);
-yticks(0:0.05:0.6);
+% Dejar límites y ejes automáticos
 xlabel('X (m)');
 ylabel('Y (m)');
+
 ```
 Utilizando este código y cambiando la base de datos correspondiente a cada prueba y la pose podemos obtener los siguientes gráficos que representan los resultados de cada prueba:
 
-##### 4.1.1.1 Mapa de detección del sensor Hokuyo para la pose 1
+##### 4.2.1.1 Mapa de detección del sensor RPLidar para la pose 1
 
-![image](https://github.com/user-attachments/assets/c7de72e1-8646-4b3a-8d74-2586090bda78)
+![image](https://github.com/user-attachments/assets/57ebf3b7-ab3c-4f95-8439-1ad95d44381c)
 
-##### 4.1.1.2 Mapa de detección del sensor Hokuyo para la pose 2
+##### 4.2.1.2 Mapa de detección del sensor RPLidar para la pose 2
 
-![image](https://github.com/user-attachments/assets/2fe0b660-f058-4c9c-9ac7-66b62b455adb)
+![image](https://github.com/user-attachments/assets/170718fc-2143-428d-89f7-a13354894e17)
 
-##### 4.1.1.3 Mapa de detección del sensor Hokuyo para la pose 3
+##### 4.2.1.3 Mapa de detección del sensor RPLidar para la pose 3
 
-![image](https://github.com/user-attachments/assets/01090f24-ec1c-4aa7-9cca-ee474d0aad50)
+![image](https://github.com/user-attachments/assets/94f10ef3-de11-491a-a0fd-d589cde4eb12)
 
-#### 4.1.2 Mapas de ocupación del sensor
+#### 4.2.2 Mapas de ocupación del sensor
 
 Utilizando los mismos datos obtenidos por el sensor y utilizando matlab para generar un nuevo código obtenemos el siguiente código cambiando la base de datos para cada prueba:
 
 ```matlab
-%% Script completo: Mapa de ocupación — lidar1 con ejes más finos
+%% Script: Mapa de ocupación con RPLidar
 
 % Parámetros del entorno y mapa
-mapWidth   = 0.8;     % 80 cm → 0.8 m
-mapHeight  = 0.7;     % 70 cm → 0.7 m
-resolution = 500;    % celdas/m → 1 mm por celda
+mapWidth   = 0.65;     % 80 cm → 0.8 m
+mapHeight  = 0.65;     % 70 cm → 0.7 m
+resolution = 350;     % 1 mm por celda
 
 % Crear occupancyMap vacío
 map1 = occupancyMap(mapWidth, mapHeight, resolution);
 
-% Posición y orientación del sensor (prueba 1)
-x_cm      = (posición x en cm);
-y_cm      = (posición y en cm)=;
-theta_deg = (ángulo de la pose en grados);
+% Posición y orientación del sensor
+x_cm      = colocar valor;     % posición X del sensor en cm
+y_cm      = colocar valor;     % posición Y del sensor en cm
+theta_deg = colocar valor;       % orientación del sensor en grados
 
-% Convertir a metros y radianes (no modificamos la pose para desplazar)
-sensorPose = [x_cm+10, y_cm+10] / 100;      % → [0.144, 0.094] m
-sensorPose(3) = deg2rad(theta_deg);   % 108° → radianes
+% Convertir a metros y radianes
+sensorPose = [x_cm + 10, y_cm + 10] / 100;  % desplazamiento artificial
+sensorPose(3) = deg2rad(theta_deg);
 
-% Parámetros del Hokuyo
-nBeams   = 682;                                % número de muestras
-angles   = linspace(-120, 120, nBeams);        % en grados
-angles   = deg2rad(angles);                    % a radianes
-maxRange = 30;                                  % rango amplio (m)
+% Cargar datos del RPLidar (formato: [ángulo_rad, distancia_mm])
+T = readtable('RPLidar1.csv');  % Cargar datos RPLidar1, RPLidar2, RPLidar3
+angles_rad = str2double(string(T{:,1}));
+distances_mm = str2double(string(T{:,2}));
 
-% Carga datos y conversión de unidades (mm → m)
-S      = load('lidar1.mat');                   % Carga Lidar1, Lidar2 ó Lidar3 
-fn     = fieldnames(S);
-raw    = S.(fn{1});                            % 3×682 en mm
-ranges = double(raw) / 1000;                   % → metros
+% Filtrar datos válidos
+valid = distances_mm > 0 & ~isnan(distances_mm) & ~isnan(angles_rad);
+angles_rad = angles_rad(valid);
+distances_m = distances_mm(valid) / 1000;  % mm → m
 
-% Insertar todos los escaneos en el mapa
-for scanIdx = 1:size(ranges,1)
-    scan = lidarScan(ranges(scanIdx,:), angles);
-    insertRay(map1, sensorPose, scan, maxRange);
-end
+% Invertir ángulos: de antihorario a horario
+angles_rad = -angles_rad;
 
-% Mostrar resultado
+% Crear el objeto lidarScan
+scan = lidarScan(distances_m, angles_rad);
+
+% Rango máximo estimado
+maxRange = 6.0;  % metros
+
+% Insertar escaneo en el mapa
+insertRay(map1, sensorPose, scan, maxRange);
+
+% Mostrar el mapa
 figure('Color','w');
 show(map1);
 axis equal
 
-% Definir límites desplazados +0.0 m (ponemos xlim/ylim a [0,map] y luego compensamos en labels)
+% Ajustar límites
 xlim([0, mapWidth]);
 ylim([0, mapHeight]);
 
-% Crear ticks cada 0.05 m en esos límites
-xL = xlim;
-yL = ylim;
-xTicks = xL(1):0.05:xL(2);
-yTicks = yL(1):0.05:yL(2);
+% Ticks cada 0.05 m
+xTicks = 0:0.05:mapWidth;
+yTicks = 0:0.05:mapHeight;
 set(gca, 'XTick', xTicks, 'YTick', yTicks);
 
-% Ajustar etiquetas restando 0.1 a la posición de cada tick
-xLabels = arrayfun(@(v) sprintf('%.2f', v-0.10), xTicks, 'UniformOutput', false);
-yLabels = arrayfun(@(v) sprintf('%.2f', v-0.10), yTicks, 'UniformOutput', false);
+% Etiquetas corregidas
+xLabels = arrayfun(@(v) sprintf('%.2f', v - 0.10), xTicks, 'UniformOutput', false);
+yLabels = arrayfun(@(v) sprintf('%.2f', v - 0.10), yTicks, 'UniformOutput', false);
 set(gca, 'XTickLabel', xLabels, 'YTickLabel', yLabels);
 
 xlabel('X [m]')
 ylabel('Y [m]')
-title('Mapa de ocupación Hokuyo pose 1, 2 0 3')
+title('Mapa de ocupación - RPLidar (360° corregido)')
 grid on
 box on
 ```
 Utilizando este código y cambiando la base de datos correspondiente a cada prueba y la pose podemos obtener los siguientes gráficos que representan los resultados de cada prueba:
 
-##### 4.1.2.1 Mapa de ocupación del sensor Hokuyo para la pose 1
+##### 4.2.2.1 Mapa de ocupación del sensor RPLidar para la pose 1
 
-![image](https://github.com/user-attachments/assets/122029f1-3a85-4eb6-b36f-c1794ee29881)
+![image](https://github.com/user-attachments/assets/a8ad6c5c-b287-477d-a2a4-071b16a5c8f5)
 
+##### 4.2.2.2 Mapa de ocupación del sensor RPLidar para la pose 2
 
-##### 4.1.2.2 Mapa de ocupación del sensor Hokuyo para la pose 2
+![image](https://github.com/user-attachments/assets/af2eb519-cc03-44be-8e19-204ab199f30b)
 
-![image](https://github.com/user-attachments/assets/bbc8fda1-5094-4ab5-acd6-047933c9b16d)
+##### 4.2.2.3 Mapa de ocupación del sensor RPLidar para la pose 3
 
+![image](https://github.com/user-attachments/assets/d373e719-4dfd-4b4c-93b0-d499cc9e065c)
 
-##### 4.1.2.3 Mapa de ocupación del sensor Hokuyo para la pose 3
-
-![image](https://github.com/user-attachments/assets/ee4f60ab-c4e4-43c0-b069-b9050427045a)
-
-
-#### 4.1.3 Mapa de ocupación total del sensor
+#### 4.2.3 Mapa de ocupación total del sensor
 
 Mediante un código en Matlab que combine todos los datos y tome las 3 poses al mismo tiempo podemos obtener el siguiente mapa de ocupación para las 3 pruiebas:
 
 ```matlab
-%% Script: Mapa de ocupación con múltiples escaneos y poses
+%% Script Mapa de ocupación combinado RPLidar
 
-% Parámetros del mapa
-mapWidth   = 0.8;     % 0.8 m (80 cm)
-mapHeight  = 0.7;     % 0.7 m (70 cm)
-resolution = 500;    % 1000 celdas/m = 1 mm por celda
-map = occupancyMap(mapWidth, mapHeight, resolution);
+% Parámetros del entorno y mapa
+mapWidth   = 0.7;      % metros
+mapHeight  = 0.7;      % metros
+resolution = 350;      % celdas por metro (≈1 mm por celda)
 
-% Parámetros del sensor Hokuyo
-nBeams   = 682;
-angles   = linspace(-120, 120, nBeams);  % grados
-angles   = deg2rad(angles);              % radianes
-maxRange = 30;                           % rango amplio
+% Crear un occupancyMap vacío
+map1 = occupancyMap(mapWidth, mapHeight, resolution);
 
-% Datos de las poses (en cm y grados)
-poses_cm = [...
-    14.4, 9.4, 108;  % lidar1
-    13.3, 28.8, 292;  % lidar2
-    13.8, 22.8, 15   % lidar3
-];
+% Definición de los escaneos y poses del sensor
+scans = {
+    struct('file','RPLidar1.csv', 'x_cm',15.9, 'y_cm',23.6, 'theta_deg',45,  'offset90', false),...
+    struct('file','RPLidar2.csv', 'x_cm',13.8, 'y_cm',31.9, 'theta_deg',210,'offset90', true),...
+    struct('file','RPLidar3.csv', 'x_cm',23.4, 'y_cm',36.6, 'theta_deg',204,'offset90', true)  ...
+};
 
-% Archivos de datos
-archivos = {'lidar1.mat', 'lidar2.mat', 'lidar3.mat'};
+maxRange = 6.0;  % rango máximo para insertRay (m)
 
-% Bucle para cargar, convertir e insertar los escaneos
-for i = 1:3
-    % Cargar archivo
-    S = load(archivos{i});
-    fn = fieldnames(S);
-    raw = S.(fn{1});        % 3x682, en mm
-    ranges = double(raw) / 1000;  % Convertir a metros
-    
-    % Pose actual del sensor
-    x_m = (poses_cm(i,1) + 10) / 100;  % sumar 0.1 m
-    y_m = (poses_cm(i,2) + 10) / 100;
-    theta_rad = deg2rad(poses_cm(i,3));
-    sensorPose = [x_m, y_m, theta_rad];
-    
-    % Insertar cada escaneo
-    for scanIdx = 1:size(ranges,1)
-        scan = lidarScan(ranges(scanIdx,:), angles);
-        insertRay(map, sensorPose, scan, maxRange);
+% Procesar cada escaneo e insertar en el mapa
+for i = 1:numel(scans)
+    s = scans{i};
+    % Construir la pose del sensor [X(m), Y(m), θ(rad)]
+    sensor_x = (s.x_cm + 10) / 100;  % desplazamiento artificial de +10 cm
+    sensor_y = (s.y_cm + 10) / 100;
+    if s.offset90
+        theta_rad = deg2rad(s.theta_deg - 90);
+    else
+        theta_rad = deg2rad(s.theta_deg);
     end
+    sensorPose = [sensor_x, sensor_y, theta_rad];
+
+    % Leer datos del CSV (ángulo en rad, distancia en mm)
+    T = readtable(s.file, 'ReadVariableNames', false);
+    angles_rad    = T.Var1;
+    distances_mm  = T.Var2;
+
+    % Filtrar datos válidos
+    valid = distances_mm > 0 & ~isnan(distances_mm) & ~isnan(angles_rad);
+    angles_rad   = angles_rad(valid);
+    distances_m  = distances_mm(valid) / 1000;
+
+    % Invertir ángulos para sentido horario
+    angles_rad = -angles_rad;
+
+    % Crear el objeto lidarScan e insertar en el mapa
+    scanObj = lidarScan(distances_m, angles_rad);
+    insertRay(map1, sensorPose, scanObj, maxRange);
 end
 
-%% Mostrar resultado
+% Mostrar mapa combinado
 figure('Color','w');
-show(map);
-axis equal
-xlim([0, mapWidth])
-ylim([0, mapHeight])
+show(map1);
+axis equal;
 
-% Ticks cada 0.05 m y etiquetas desplazadas -0.1
-xTicks = 0:0.05:mapWidth;
-yTicks = 0:0.05:mapHeight;
-set(gca, 'XTick', xTicks, 'YTick', yTicks)
-xLabels = arrayfun(@(v) sprintf('%.2f', v - 0.1), xTicks, 'UniformOutput', false);
-yLabels = arrayfun(@(v) sprintf('%.2f', v - 0.1), yTicks, 'UniformOutput', false);
-set(gca, 'XTickLabel', xLabels, 'YTickLabel', yLabels)
+% Ajuste de ejes y ticks
+xlim([0, mapWidth]);
+ylim([0, mapHeight]);
+xt = 0:0.05:mapWidth;
+yt = 0:0.05:mapHeight;
+set(gca, 'XTick', xt, 'YTick', yt);
+% Etiquetas compensadas por el offset de 0.10 m
+xlab = arrayfun(@(v) sprintf('%.2f', v - 0.10), xt, 'UniformOutput', false);
+ylab = arrayfun(@(v) sprintf('%.2f', v - 0.10), yt, 'UniformOutput', false);
+set(gca, 'XTickLabel', xlab, 'YTickLabel', ylab);
 
-xlabel('X [m]')
-ylabel('Y [m]')
-title('Mapa de ocupación combinado — 3 poses del sensor Hokuyo')
-grid on
-box on
+xlabel('X [m]');
+ylabel('Y [m]');
+title('Mapa de ocupación combinado - 3 escaneos RPLidar');
+grid on; box on;
+
 ```
 
-![image](https://github.com/user-attachments/assets/9bbe0fde-01cf-46ca-a6e7-3f4e22e82a9a)
+![image](https://github.com/user-attachments/assets/fa9bd2c6-e161-4bbc-a12d-ea13fe1e7ec4)
 
 
 De la misma forma podemos utilizar el siguiente código para evidenciar las poses de cada prueba:
 
 ```matlab
-%% Script: Mapa de ocupación con múltiples escaneos y poses
+%% Script unificado: Mapa de ocupación combinado con 3 escaneos RPLidar y poses del sensor numeradas
 
-% Parámetros del mapa
-mapWidth   = 0.8;     % 0.8 m (80 cm)
-mapHeight  = 0.7;     % 0.7 m (70 cm)
-resolution = 500;     % 500 celdas/m = 2 mm por celda
-map = occupancyMap(mapWidth, mapHeight, resolution);
+% Parámetros del entorno y mapa
+mapWidth   = 0.7;      % metros
+mapHeight  = 0.7;      % metros
+resolution = 350;      % celdas por metro (≈1 mm por celda)
 
-% Parámetros del sensor Hokuyo
-nBeams   = 682;
-angles   = linspace(-120, 120, nBeams);  % grados
-angles   = deg2rad(angles);              % radianes
-maxRange = 30;                           % rango amplio
+% Crear un occupancyMap vacío
+map1 = occupancyMap(mapWidth, mapHeight, resolution);
 
-% Datos de las poses (en cm y grados)
-poses_cm = [
-    14.4, 9.4, 108;   % lidar1
-    13.3, 28.8, 292;  % lidar2
-    13.8, 22.8, 15    % lidar3
-];
+% Definición de los escaneos y poses del sensor
+scans = {
+    struct('file','RPLidar1.csv', 'x_cm',15.9, 'y_cm',23.6, 'theta_deg',45,  'offset90', false),...
+    struct('file','RPLidar2.csv', 'x_cm',13.8, 'y_cm',31.9, 'theta_deg',210,'offset90', true),...
+    struct('file','RPLidar3.csv', 'x_cm',23.4, 'y_cm',36.6, 'theta_deg',204,'offset90', true)  ...
+};
 
-% Archivos de datos
-archivos = {'lidar1.mat', 'lidar2.mat', 'lidar3.mat'};
+maxRange = 6.0;  % rango máximo para insertRay (m)
 
-% Convertir poses a metros y radianes (+0.1 m en x/y como desplazamiento de ejes)
-poses_m = [(poses_cm(:,1:2) + 10) / 100, deg2rad(poses_cm(:,3))];
-
-% Insertar escaneos
-for i = 1:3
-    % Cargar archivo
-    S = load(archivos{i});
-    fn = fieldnames(S);
-    raw = S.(fn{1});                 % 3x682 en mm
-    ranges = double(raw) / 1000;     % Convertir a metros
-
-    % Pose del sensor
-    sensorPose = poses_m(i,:);
-
-    % Insertar escaneos
-    for scanIdx = 1:size(ranges,1)
-        scan = lidarScan(ranges(scanIdx,:), angles);
-        insertRay(map, sensorPose, scan, maxRange);
+% Procesar cada escaneo e insertar en el mapa
+for i = 1:numel(scans)
+    s = scans{i};
+    % Construir la pose del sensor [X(m), Y(m), θ(rad)]
+    sensor_x = (s.x_cm + 10) / 100;  % desplazamiento artificial de +10 cm
+    sensor_y = (s.y_cm + 10) / 100;
+    if s.offset90
+        theta_rad = deg2rad(s.theta_deg - 90);
+    else
+        theta_rad = deg2rad(s.theta_deg);
     end
+    sensorPose = [sensor_x, sensor_y, theta_rad];
+
+    % Leer datos del CSV (ángulo en rad, distancia en mm)
+    T = readtable(s.file, 'ReadVariableNames', false);
+    angles_rad    = T.Var1;
+    distances_mm  = T.Var2;
+
+    % Filtrar datos válidos
+    valid = distances_mm > 0 & ~isnan(distances_mm) & ~isnan(angles_rad);
+    angles_rad   = angles_rad(valid);
+    distances_m  = distances_mm(valid) / 1000;
+
+    % Invertir ángulos para sentido horario
+    angles_rad = -angles_rad;
+
+    % Crear el objeto lidarScan e insertar en el mapa
+    scanObj = lidarScan(distances_m, angles_rad);
+    insertRay(map1, sensorPose, scanObj, maxRange);
 end
 
-%% Mostrar resultado
+% Mostrar mapa combinado
+titleStr = 'Mapa de ocupación combinado RPLidar con poses';
 figure('Color','w');
-show(map);
-axis equal
-xlim([0, mapWidth])
-ylim([0, mapHeight])
+show(map1);
+axis equal;
+hold on;
 
-% Ticks cada 0.05 m y etiquetas desplazadas -0.1
-xTicks = 0:0.05:mapWidth;
-yTicks = 0:0.05:mapHeight;
-set(gca, 'XTick', xTicks, 'YTick', yTicks)
-xLabels = arrayfun(@(v) sprintf('%.2f', v - 0.1), xTicks, 'UniformOutput', false);
-yLabels = arrayfun(@(v) sprintf('%.2f', v - 0.1), yTicks, 'UniformOutput', false);
-set(gca, 'XTickLabel', xLabels, 'YTickLabel', yLabels)
-
-xlabel('X [m]')
-ylabel('Y [m]')
-title('Mapa de ocupación combinado — 3 poses del sensor Hokuyo')
-grid on
-box on
-
-% Dibujar poses del sensor en el mapa
-hold on
-scatter(poses_m(:,1), poses_m(:,2), 100, 'ro', 'filled') % puntos rojos
-quiver(poses_m(:,1), poses_m(:,2), ...
-       0.05*cos(poses_m(:,3)), 0.05*sin(poses_m(:,3)), ...
-       0, 'r', 'LineWidth', 1.5)  % flechas de orientación
-
-% Etiquetas con desplazamientos personalizados
-poseLabels = {'Pose 1', 'Pose 2', 'Pose 3'};
-textOffsets = [0.015, 0.015;
-               0.015, 0.02;
-              -0.07, -0.035];
-
-for i = 1:3
-    text(poses_m(i,1) + textOffsets(i,1), ...
-         poses_m(i,2) + textOffsets(i,2), ...
-         poseLabels{i}, ...
-         'Color', 'r', ...
-         'FontSize', 9, ...
-         'FontWeight', 'bold', ...
-         'BackgroundColor', 'w', ...
-         'Margin', 1);
+% Mostrar las poses del sensor (punto rojo, flecha y título)
+flecha_len = 0.05;  % longitud de la flecha en metros
+for i = 1:numel(scans)
+    s = scans{i};
+    sensor_x = (s.x_cm + 10) / 100;
+    sensor_y = (s.y_cm + 10) / 100;
+    if s.offset90
+        theta_rad = deg2rad(s.theta_deg - 90);
+    else
+        theta_rad = deg2rad(s.theta_deg);
+    end
+    % Punto del sensor
+    plot(sensor_x, sensor_y, 'ro', 'MarkerSize',8, 'LineWidth',2);
+    % Flecha de orientación
+    dx = flecha_len * cos(theta_rad);
+    dy = flecha_len * sin(theta_rad);
+    quiver(sensor_x, sensor_y, dx, dy, 0, 'r', 'LineWidth',2, 'MaxHeadSize',2);
+    % Añadir texto con el número de pose
+    text(sensor_x + 0.02, sensor_y - 0.02, sprintf('Pose %d', i), ...
+         'Color', 'k', 'FontSize', 10, 'FontWeight', 'bold');
 end
-hold off
+
+% Ajuste de ejes y ticks
+xlim([0, mapWidth]);
+ylim([0, mapHeight]);
+xt = 0:0.05:mapWidth;
+yt = 0:0.05:mapHeight;
+set(gca, 'XTick', xt, 'YTick', yt);
+% Etiquetas compensadas por el offset de 0.10 m
+xlab = arrayfun(@(v) sprintf('%.2f', v - 0.10), xt, 'UniformOutput', false);
+ylab = arrayfun(@(v) sprintf('%.2f', v - 0.10), yt, 'UniformOutput', false);
+set(gca, 'XTickLabel', xlab, 'YTickLabel', ylab);
+
+xlabel('X [m]');
+ylabel('Y [m]');
+title(titleStr);
+grid on;
+box on;
 ```
-![image](https://github.com/user-attachments/assets/674574fa-5fa5-436a-9fb5-410e642675a8)
+![image](https://github.com/user-attachments/assets/e2130a3d-5a39-43d3-ab1a-4d83503314ce)
 
-#### 4.1.4 Error en la medición del sensor
+#### 4.2.4 Error en la medición del sensor
 
-Para tomar el error total en la medición del sensor notamos el sector donde mayor diferencia se encuentre frente a las mediciones realizadas en el laboratorio, de esta manera encontramos que la parte donde la diferencia es mayor es en esta:
+Para tomar el error total en la medición del sensor notamos el sector donde mayor diferencia se encuentre frente a las mediciones realizadas en el laboratorio, sin embargo se nota una medición muy uniforme y exacta respecto a las medidas realizadas en el laboratorio, pero se evidencia una falta de toma de datos que en el laboratorio no se percibió pero al analizar los datos se evidencia y es una falta de datos al otro lado de la pared, si bien el sensor logró capturar el espesor no logro capturar la longitud de la pared de ese costado, y aunque esta no es una medida crítica la tomaremos para calcular el error en ese punto, pues es donde mayor error se ve, claro tomando tambien el espesor para no inducir un error extra como sucedio con el sensor Hokuyo. 
 
-![image](https://github.com/user-attachments/assets/ff48aa7d-0984-4e10-bbc8-66209b05dc16)
+![image](https://github.com/user-attachments/assets/c44cb56d-0818-4d2d-bcda-0c64350af271)
 
-tomando los datos los puntos más alejados de esta zona los cuales corresponden a x = 0.36 donde y1 = 0.335649, y2 = 0.549108, así podemos conocer esta distancia haciendo la diferencia:
+tomando los datos los puntos más alejados de esta zona los cuales corresponden a x = 0.36 donde y1 = 0.362995, y2 = 0.528526, así podemos conocer esta distancia haciendo la diferencia:
 
-d =  0.549108 - 0.335649 = 0.2134459 m = 21.34459 cm
+d =  0.528526 - 0.362995 = 0.165531 m = 16.5531 cm
 
 Conociendo que la distancia en esa zona es de 16.5 cm podemos encontrar el error de la siguiente manera:
 
-$Err = \frac{21.3459 - 16.5}{16.5}*100 \approx 29.4%$
+$Err = \frac{16.5531 - 16.5}{16.5}*100 \approx 0.31 \%$
 
-Podemos evidenciar que se trata de un error grande, sin embargo estamos suponiendo que la pared no tiene espesor, es decir los datos tomados por el sensor de un lado de la pared se tomaron como los puntos máximos sin considerar su espesor, de esta manera es correcto afirmar que este error no es cierto y debemos considerar este espesor, de esta manera obtenemos unos nuevos puntos considertando los puntos del otro lado de la pared, x = 0.49 donde y1 = 0.361585, y2 = 0.536402, así podemos conocer esta distancia haciendo la diferencia:
-
-d =  0.536402 - 0.361585 = 0.174817 m = 17.4817 cm
-$Err = \frac{17.4817 - 16.5}{16.5}*100 \approx 5.95%$
-
-Podemos evidenciar que al considerar esta pared el error disminuye bastante, y por lo tanto este error ya es mas aceptable aunque se tengan algunas diferencias, seguramente estas se deban a limitaciones internas como la resolución angular y la precisión del láser, así como a condiciones del entorno, como superficies colocadas de manera incorrecta o la presencia de irregularidades en las paredes. También influyen factores mecánicos como vibraciones o una mala instalación, y errores en el procesamiento, como una transformación incorrecta de coordenadas o una pose mal estimada.
+Este error es muy bajo, dando en evidencia la calidad que tienen los datos y al buen funcionamiento del sensor en este caso para medir las paredes de esta distribuvión de paredes, comparandolo con el Hokuyo se nota que sus mediciones son mas correctas y reflejan de mejor forma la realidad.
 
