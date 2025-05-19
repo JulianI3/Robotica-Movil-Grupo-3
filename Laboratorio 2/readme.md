@@ -65,7 +65,9 @@ Aquí toca poner algo, que luego lo hago
 ## 4. Sensores
 Para realizar la medición con el sensor Hokuyo y el RPLidar se utilizó la misma estructura optando por tomas en diferentes puntos para cada sensor, el cuarto hecho para la pueba se muestra a continuación con las dimensiones dadas en cm y tomando su eje cordenado en una esquina a partir de la cual se midieron todas las poses para ambos sensores.
 
-![image](https://github.com/user-attachments/assets/689ea871-2846-4261-b796-056be9ed40bc)
+![image](https://github.com/user-attachments/assets/ca95fd3f-4b42-43b2-b0b6-622a5448b9ac)
+
+Hay que tener en cuenta que en el diagrama no se expresa el espesor de las paredes, ya que no es importatnte para medir el espacio interno, sin embargo, en el pasillo abierto hay que saber este valor, pues la pared sobresale hacia la parte interiror y el sensor la mide, por lo tanto teniendo en cuenta qu eel espesor de esta pared es de 2 cm notamos que al hacer la sumatoria de todos los valores en Y nos resulta exactamente igual al valor de la pared opuesta que es recta de 53 cm.
 
 ### 4.1 Sensor Hokuyo
 Para el sensor Hokuyo se usaron 3 poses diferentes las cuales son medidas desde el origen y el angulo expresado en ° es medido desde el eje x positivo.
@@ -407,3 +409,22 @@ end
 hold off
 ```
 ![image](https://github.com/user-attachments/assets/674574fa-5fa5-436a-9fb5-410e642675a8)
+
+#### 4.1.4 Error en la medición del sensor
+
+Para tomar el error total en la medición del sensor notamos el sector donde mayor diferencia se encuentre frente a las mediciones realizadas en el laboratorio, de esta manera encontramos que la parte donde la diferencia es mayor es en esta:
+
+![image](https://github.com/user-attachments/assets/ff48aa7d-0984-4e10-bbc8-66209b05dc16)
+
+tomando los datos los puntos más alejados de esta zona los cuales corresponden a x = 0.36 donde y1 = 0.335649, y2 = 0.549108, así podemos conocer esta distancia haciendo la diferencia:
+
+d =  0.549108 - 0.335649 = 0.2134459 m = 21.34459 cm
+
+Conociendo que la distancia en esa zona es de 16.5 cm podemos encontrar el error de la siguiente manera:
+
+$Err = \frac{21.3459 - 16.5}{16.5}*100 \approx 29.4%$
+
+Podemos evidenciar que se trata de un error grande, sin embargo estamos suponiendo que la pared no tiene espesor, es decir los datos tomados por el sensor de un lado de la pared se tomaron como los puntos máximos sin considerar su espesor, de esta manera es correcto afirmar que este error no es cierto y debemos considerar este espesor, de esta manera obtenemos unos nuevos puntos considertando los puntos del otro lado de la pared, x = 0.49 donde y1 = 0.361585, y2 = 0.536402, así podemos conocer esta distancia haciendo la diferencia:
+
+d =  0.536402 - 0.361585 = 0.174817 m = 17.4817 cm
+$Err = \frac{17.4817 - 16.5}{16.5}*100 \approx 29.3%$
