@@ -422,12 +422,12 @@ d =  0.549108 - 0.335649 = 0.2134459 m = 21.34459 cm
 
 Conociendo que la distancia en esa zona es de 16.5 cm podemos encontrar el error de la siguiente manera:
 
-$Err = \frac{21.3459 - 16.5}{16.5}*100 \approx 29.4 \%$
+$Err = \frac{21.3459 - 16.5}{16.5}*100 \approx 29.4$%
 
 Podemos evidenciar que se trata de un error grande, sin embargo estamos suponiendo que la pared no tiene espesor, es decir los datos tomados por el sensor de un lado de la pared se tomaron como los puntos máximos sin considerar su espesor, de esta manera es correcto afirmar que este error no es cierto y debemos considerar este espesor, de esta manera obtenemos unos nuevos puntos considertando los puntos del otro lado de la pared, x = 0.49 donde y1 = 0.361585, y2 = 0.536402, así podemos conocer esta distancia haciendo la diferencia:
 
 d =  0.536402 - 0.361585 = 0.174817 m = 17.4817 cm
-$Err = \frac{17.4817 - 16.5}{16.5}*100 \approx 5.95 \%$
+$Err = \frac{17.4817 - 16.5}{16.5}*100 \approx 5.95$%
 
 Podemos evidenciar que al considerar esta pared el error disminuye bastante, y por lo tanto este error ya es mas aceptable aunque se tengan algunas diferencias, seguramente estas se deban a limitaciones internas como la resolución angular y la precisión del láser, así como a condiciones del entorno, como superficies colocadas de manera incorrecta o la presencia de irregularidades en las paredes. También influyen factores mecánicos como vibraciones o una mala instalación, y errores en el procesamiento, como una transformación incorrecta de coordenadas o una pose mal estimada.
 
@@ -798,7 +798,6 @@ d =  0.528526 - 0.362995 = 0.165531 m = 16.5531 cm
 
 Conociendo que la distancia en esa zona es de 16.5 cm podemos encontrar el error de la siguiente manera:
 
-$Err = \frac{16.5531 - 16.5}{16.5}*100 \approx 0.31 \%$
+$Err = \frac{16.5531 - 16.5}{16.5}*100 \approx 0.31$%
 
 Este error es muy bajo, dando en evidencia la calidad que tienen los datos y al buen funcionamiento del sensor en este caso para medir las paredes de esta distribuvión de paredes, comparandolo con el Hokuyo se nota que sus mediciones son mas correctas y reflejan de mejor forma la realidad.
-
