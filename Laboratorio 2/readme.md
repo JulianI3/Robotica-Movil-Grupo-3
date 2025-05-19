@@ -65,7 +65,13 @@ Aquí toca poner algo, que luego lo hago
 ## 4. Sensores
 Para realizar la medición con el sensor Hokuyo y el RPLidar se utilizó la misma estructura optando por tomas en diferentes puntos para cada sensor, el cuarto hecho para la pueba se muestra a continuación con las dimensiones dadas en cm y tomando su eje cordenado en una esquina a partir de la cual se midieron todas las poses para ambos sensores.
 
+
+
 ![image](https://github.com/user-attachments/assets/ca95fd3f-4b42-43b2-b0b6-622a5448b9ac)
+
+
+![image](https://github.com/user-attachments/assets/09758b11-50d5-437f-98e0-3413be3969fd)
+
 
 Hay que tener en cuenta que en el diagrama no se expresa el espesor de las paredes, ya que no es importatnte para medir el espacio interno, sin embargo, en el pasillo abierto hay que saber este valor, pues la pared sobresale hacia la parte interiror y el sensor la mide, por lo tanto teniendo en cuenta qu eel espesor de esta pared es de 2 cm notamos que al hacer la sumatoria de todos los valores en Y nos resulta exactamente igual al valor de la pared opuesta que es recta de 53 cm.
 
@@ -228,16 +234,26 @@ Utilizando este código y cambiando la base de datos correspondiente a cada prue
 
 ![image](https://github.com/user-attachments/assets/122029f1-3a85-4eb6-b36f-c1794ee29881)
 
+También podemos observar lo que registra el sensor en el software:
+
+![image](https://github.com/user-attachments/assets/3c8a95f9-088b-46b7-a662-2b4a8464086f)
+
 
 ##### 4.1.2.2 Mapa de ocupación del sensor Hokuyo para la pose 2
 
 ![image](https://github.com/user-attachments/assets/bbc8fda1-5094-4ab5-acd6-047933c9b16d)
 
+También podemos observar lo que registra el sensor en el software:
+
+![image](https://github.com/user-attachments/assets/78112350-a9d2-4aa0-9281-202debfcf3c7)
 
 ##### 4.1.2.3 Mapa de ocupación del sensor Hokuyo para la pose 3
 
 ![image](https://github.com/user-attachments/assets/ee4f60ab-c4e4-43c0-b069-b9050427045a)
 
+También podemos observar lo que registra el sensor en el software:
+
+![image](https://github.com/user-attachments/assets/75546c50-9f6b-412c-b98a-5a600fec8707)
 
 #### 4.1.3 Mapa de ocupación total del sensor
 
@@ -437,9 +453,18 @@ Para el sensor RPlidar se usaron 3 poses diferentes las cuales son medidas desde
 
 Pose 1: x = 15.9, y = 23.6, θ =  45°
 
+![image](https://github.com/user-attachments/assets/1fb30a37-fd6e-4d72-bb98-83ef239ca0c6)
+
+
 Pose 2: x = 13.8, y = 31.9, θ = 223° 
 
+![image](https://github.com/user-attachments/assets/18d2c598-5423-4a17-8c23-a7ec6d4d8f44)
+
+
 Pose 3: x = 23.4, y = 36.6, θ =  104°
+
+![image](https://github.com/user-attachments/assets/95328eb5-3613-499d-bf4c-de3bef43aac7)
+
 
 #### 4.2.1 Mapas de detección del sensor
 
@@ -596,13 +621,25 @@ Utilizando este código y cambiando la base de datos correspondiente a cada prue
 
 ![image](https://github.com/user-attachments/assets/a8ad6c5c-b287-477d-a2a4-071b16a5c8f5)
 
+También podemos observar lo que registra el sensor en el software:
+
+![Gráfica 1](https://github.com/user-attachments/assets/90488501-645c-411e-ad43-33401c4c37d8)
+
 ##### 4.2.2.2 Mapa de ocupación del sensor RPLidar para la pose 2
 
 ![image](https://github.com/user-attachments/assets/af2eb519-cc03-44be-8e19-204ab199f30b)
 
+También podemos observar lo que registra el sensor en el software:
+
+![Gráfica 2](https://github.com/user-attachments/assets/8170ef50-d405-46fd-abb0-adec45129c76)
+
 ##### 4.2.2.3 Mapa de ocupación del sensor RPLidar para la pose 3
 
 ![image](https://github.com/user-attachments/assets/d373e719-4dfd-4b4c-93b0-d499cc9e065c)
+
+También podemos observar lo que registra el sensor en el software:
+
+![Gráfica 3](https://github.com/user-attachments/assets/8f9431fd-144b-436f-8330-6c6ddf0e2e1b)
 
 #### 4.2.3 Mapa de ocupación total del sensor
 
