@@ -67,6 +67,91 @@ Para realizar la medición con el sensor Hokuyo y el RPLidar se utilizó la mism
 
 ![image](https://github.com/user-attachments/assets/689ea871-2846-4261-b796-056be9ed40bc)
 
-
 ### 4.1 Sensor Hokuyo
+Para el sensor Hokuyo se usaron 3 poses diferentes las cuales son medidas desde el origen y el angulo expresado en ° es medido desde el eje x positivo.
+
+Pose 1: x = 14.8, y = 9.4, θ =  108°
+
+Pose 2: x = 13.3, y = 28.8, θ = 292° 
+
+Pose 3: x = 13.8, y = 22.8, θ =  15°
+#### 4.1.1 Mapas de detección del sensor
+
+Utilizando el código de matlab proporcionado en el repositorio para la toma de datos resultaron tres tablas de 3 filas y 682 columnas, en donde las filas corresponden a cada toma de datos de las cuales se hicieron 3 con un tiempo de 3 segundos para cada pose y las columnas indican el número de muestra, es decir existen 682 muestras tomadas a lo largo de 240° grados que logra capturar el sensor.
+A partir de estos datos se realiza un código en matlab el cual se encarga de procesar los datos y plotearlos en un gráfico donde sea evidente la pose del sensor y los puntos que detectó para construir las paredes de la siguiente forma:
+```matlab
+% === Cargar datos ===
+load('lidar1.mat');  % Carga LidarSet1, LidarSet2 ó LidarSet3 
+
+% === Pose del sensor ===
+x_cm      = (posición x en cm);
+y_cm      = (posición y en cm)=;
+theta_deg = (ángulo de la pose en grados);
+theta_rad = deg2rad(theta_deg);
+
+nBeams   = 682;
+angles   = linspace(-120, 120, nBeams);  % en grados
+angles   = deg2rad(angles);              % → radianes
+
+% Pose del sensor en el mundo (en metros)
+sensorPose = [x_cm / 100, y_cm / 100, theta_rad];
+
+% === Inicializar nube de puntos combinada ===
+puntos_globales = [];
+
+% === Procesar los 3 primeros escaneos ===
+for i = 1:3
+    scan_mm = double(LidarSet3(i, :));
+    scan_m = scan_mm / 1000;
+
+    scan = lidarScan(scan_m, angles);
+    scanWorld = transformScan(scan, sensorPose);
+
+    % Acumular los puntos transformados
+    puntos_globales = [puntos_globales; scanWorld.Cartesian];
+end
+
+% === Graficar solo paredes + ubicación del sensor ===
+figure;
+plot(puntos_globales(:,1), puntos_globales(:,2), 'b.', 'MarkerSize', 6);  % paredes en azul
+hold on;
+plot(sensorPose(1), sensorPose(2), 'ro', 'MarkerSize', 10, 'LineWidth', 2); % sensor en rojo
+
+% === Dibujar la dirección del sensor como flecha ===
+longitud_flecha = 0.05;  % longitud más corta de la flecha en metros
+dx = longitud_flecha * cos(sensorPose(3));
+dy = longitud_flecha * sin(sensorPose(3));
+quiver(sensorPose(1), sensorPose(2), dx, dy, 0, 'r', 'LineWidth', 2, 'MaxHeadSize', 2);
+
+% Mejoras visuales
+title('Mapa de paredes detectadas por el Hokuyo pose (1, 2 o 3)');
+legend('Paredes detectadas', 'Ubicación del sensor', 'Dirección del sensor');
+
+axis equal;
+grid on;
+xlim([0 0.6]);
+ylim([0 0.6]);
+
+xticks(0:0.05:0.6);
+yticks(0:0.05:0.6);
+xlabel('X (m)');
+ylabel('Y (m)');
+```
+Utilizando este código y cambiando la base de datos correspondiente a cada prueba y la pose podemos obtener los siguientes gráficos que representan los resultados de cada prueba:
+
+##### 4.1.1.1 Mapa de detección del sensor Hokuyo para la pose 1
+
+![image](https://github.com/user-attachments/assets/c7de72e1-8646-4b3a-8d74-2586090bda78)
+
+##### 4.1.1.2 Mapa de detección del sensor Hokuyo para la pose 2
+
+![image](https://github.com/user-attachments/assets/2fe0b660-f058-4c9c-9ac7-66b62b455adb)
+
+##### 4.1.1.3 Mapa de detección del sensor Hokuyo para la pose 3
+
+![image](https://github.com/user-attachments/assets/01090f24-ec1c-4aa7-9cca-ee474d0aad50)
+
+#### 4.1.2 Mapas de ocupación del sensor
+
+Utilizando los mismos datos obtenidos por el sensor y utilizando |    
 
