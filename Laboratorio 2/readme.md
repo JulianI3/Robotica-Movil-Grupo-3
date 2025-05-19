@@ -427,4 +427,7 @@ $Err = \frac{21.3459 - 16.5}{16.5}*100 \approx 29.4%$
 Podemos evidenciar que se trata de un error grande, sin embargo estamos suponiendo que la pared no tiene espesor, es decir los datos tomados por el sensor de un lado de la pared se tomaron como los puntos máximos sin considerar su espesor, de esta manera es correcto afirmar que este error no es cierto y debemos considerar este espesor, de esta manera obtenemos unos nuevos puntos considertando los puntos del otro lado de la pared, x = 0.49 donde y1 = 0.361585, y2 = 0.536402, así podemos conocer esta distancia haciendo la diferencia:
 
 d =  0.536402 - 0.361585 = 0.174817 m = 17.4817 cm
-$Err = \frac{17.4817 - 16.5}{16.5}*100 \approx 29.3%$
+$Err = \frac{17.4817 - 16.5}{16.5}*100 \approx 5.95%$
+
+Podemos evidenciar que al considerar esta pared el error disminuye bastante, y por lo tanto este error ya es mas aceptable aunque se tengan algunas diferencias, seguramente estas se deban a limitaciones internas como la resolución angular y la precisión del láser, así como a condiciones del entorno, como superficies colocadas de manera incorrecta o la presencia de irregularidades en las paredes. También influyen factores mecánicos como vibraciones o una mala instalación, y errores en el procesamiento, como una transformación incorrecta de coordenadas o una pose mal estimada.
+
