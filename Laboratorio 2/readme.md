@@ -43,24 +43,87 @@ En la sección 2.26, página 34, se dice que la "Incertidumbre de medida" es el 
 Basado en las definiciones del VIM:
 - 2.17 "Error Sistemático de medida: componente del error de medida que, en mediciones repetidas, permanece constante o varía de manera predecible."
 NOTA 1 El valor de referencia para un error sistemático es un valor verdadero, un valor medido de  un patrón cuya incertidumbre de medida es despreciable, o un valor convencional de una magnitud.
-NOTA 2 El error sistemático y sus causas pueden ser conocidas o no. Para compensar un error  sistemático conocido puede aplicarse una corrección. 
-NOTA 3 El error sistemático es igual a la diferencia entre el error de medida y el error aleatorio.
 
 - 2.19 "Error Aleatorio de medida: componente del error de medida que, en mediciones repetidas, varía de manera impredecible."
 NOTA 1 El valor de referencia para un error aleatorio es la media que se obtendría de un número  infinito de mediciones repetidas del mismo mensurando. 
-NOTA 2 Los errores aleatorios de un conjunto de mediciones repetidas forman una distribución que  puede representarse por su esperanza matemática, generalmente nula, y por su varianza.
-NOTA 3 El error aleatorio es igual a la diferencia entre el error de medida y el error sistemático
-
-Aquí toca poner algo, que luego lo hago
+- Así la diferencia entre estas dos es por su naturaleza, pues el error sistemático es predecible o constante, y el error aleatorio es inesperado o impredecible.
 
 ### 3.4 De acuerdo con la teoría estadística: ¿qué es el valor medio? ¿Qué magnitudes se utilizan para medir la dispersión de los datos?
-### 3.5 Busque una definición de que es ROS y sus principales ventajas
-### 3.6 Investigue sobre qué comandos se pueden usar con rosnode, rostopic, rosparam, rosservice, rosmsg y rospack.
+El valor medio puede entenderse por la mediana o por el promedio. Estas dos magnitudes son:
+- Mediana: Es el valor del medio de todos los datos ordenados de menor a mayor. La mediana divide todo el conjunto de datos ordenados en dos partes iguales.
+- Promedio / Media: Es una medida de tendencia central que se calcula sumando todos los valores de un conjunto de datos y dividiendo esa suma por el número total de valores.
+Las magnitudes de dispersión de datos son:
+- Varianza: Es la media de los cuadrados de las diferencias entre cada valor y la media del conjunto de datos.
+- Desviación estándar: Indica cuánto se alejan los valores de los datos de la media. Se calcula como la raíz cuadrada de la varianza.
+- Rango: Es la diferencia entre el valor máximo y el valor mínimo de los datos.
+- Coeficiente de variación: Es la relación entre la desviación estándar y la media, expresada como un porcentaje.
+### 3.5 Busque una definición de que es ROS y sus principales ventajas.
+ROS (Robot Operating System)
+La definición dada en la página [lovtechnology]( https://lovtechnology.com/que-es-el-ros-robot-operating-system-como-funciona-y-para-que-sirve/) : es que ROS es un framework de código abierto que proporciona librerías de software y herramientas para ayudar a los desarrolladores a crear aplicaciones robóticas complejas. Fue desarrollado en 2007 por Willow Garage.
+
+La arquitectura de ROS se basa en una colección de nodos que se comunican entre sí mediante mensajes. Un nodo es un proceso que realiza una tarea específica, como leer los datos de un sensor o controlar un motor. Los nodos pueden estar escritos en C++, Python u otros lenguajes de programación.
+### 3.6 Investigue sobre qué comandos se pueden usar con `rosnode`, `rostopic`, `rosparam`, `rosservice`, `rosmsg` y `rospack`.
+#### rosnode: Se usa para interactuar con los nodos activos del sistema ROS. Comandos útiles:
+- `rosnode list`: muestra todos los nodos actualmente ejecutándose.
+- `rosnode info /nombre_del_nodo`: da información sobre las publicaciones, suscripciones y servicios de un nodo.
+- `rosnode ping /nombre_del_nodo`: verifica si un nodo está activo.
+- `rosnode kill /nombre_del_nodo`: finaliza un nodo específico.
+#### rostopic: Permite inspeccionar y manipular tópicos, que son canales de comunicación entre nodos.
+- `rostopic list`: muestra todos los tópicos activos.
+- `rostopic echo /nombre_topico`: imprime en consola los datos que se publican en ese tópico.
+- `rostopic info /nombre_topico`: da detalles sobre publicadores y suscriptores de ese tópico.
+- `rostopic pub /nombre_topico tipo_mensaje 'datos'`: publica un mensaje manualmente (útil para pruebas).
+#### rosparam: Gestiona parámetros en el Parameter Server de ROS.
+- `rosparam list`: muestra todos los parámetros disponibles.
+- `rosparam get /nombre_parametro`: consulta el valor de un parámetro.
+- `rosparam set /nombre_parametro valor`: cambia o crea un nuevo parámetro.
+- `rosparam delete /nombre_parametro`: elimina un parámetro.
+#### rosservice: Permite descubrir e interactuar con servicios ROS (funciones que se ejecutan a demanda).
+- `rosservice list`: muestra todos los servicios activos.
+- `rosservice call /nombre_servicio [args]`: ejecuta un servicio con argumentos.
+- `rosservice type /nombre_servicio`: muestra el tipo de mensaje que usa el servicio.
+- `rosservice info /nombre_servicio`: detalla el nodo que lo proporciona y los tipos de mensaje.
+#### rosmsg: Permite explorar los tipos de mensajes usados por ROS.
+- `rosmsg list`: muestra todos los tipos de mensajes disponibles.
+- `rosmsg show nombre_mensaje`: muestra la estructura del mensaje (por ejemplo, std_msgs/String).
+#### rospack: Sirve para gestionar y buscar paquetes ROS instalados.
+- `rospack list`: lista todos los paquetes disponibles.
+- `rospack find nombre_paquete`: da la ruta del paquete en el sistema de archivos.
+- `rospack depends nombre_paquete`: muestra las dependencias de un paquete.
 ### 3.7 Investigue acerca del robot TurtleBot2 y su relación con la base Kobuki.
-### 3.8 ¿Para que sirve los sensores cliff en el Kobuki?
+El robot Turtlebot 2 es un kit de desarrollo robótico de bajo costo y código abierto diseñado para aplicaciones móviles, y cuenta con una base Kobuki para su movilidad, un dual-core netbook compatible con ROS, sensor Orbbec Astra Pro y un giroscopio. El TurtleBot no está disponible para ventas, el actual es el TurtleBot 4 lanzado en 2022.
+### 3.8 ¿Para qué sirve los sensores cliff en el Kobuki?
+Los sensores de acantilado (cliff sensors) en la base Kobuki son cruciales para la seguridad del robot. Estos sensores detectan cambios bruscos en la altura del suelo, como bordes de mesas o escaleras, y ayudan a prevenir caídas accidentales. Los sensores de acantilado emiten señales infrarrojas hacia el suelo. Cuando detectan una ausencia de reflejo, interpretan que hay un borde o un cambio en la altura.
 ### 3.9 ¿Como leer un evento de dicho sensor?
+#### Debe utilizarse ROS, para tener comunicación con el robot.
+#### En ROS debe configurarse el nodo de Kobuki, usando el siguiente comando:
+```matlab
+roslaunch kobuki_node minimal.launch
+```
+#### Con el nodo activado se debe suscribir al tema del sensor, que en este caso es `CliffEvent`, donde se debe recibir la información y preservar el nodo activo. Una forma de hacerlo en Python es con:
+```python
+import rospy
+from kobuki_msgs.msg import CliffEvent
+
+def cliff_callback(data):
+    if data.state == CliffEvent.CLIFF:
+        rospy.loginfo("Acantilado detectado en el sensor %d", data.sensor)
+    else:
+        rospy.loginfo("Sensor %d está en terreno seguro", data.sensor)
+
+rospy.init_node('cliff_listener', anonymous=True)
+rospy.Subscriber('/kobuki/cliff', CliffEvent, cliff_callback)
+rospy.spin()
+```
+
 ### 3.10 ¿Qué protocolo de comunicación usa el Lego Ev3 con sus sensores y actuadores?
+1. El protocolo de comunicación usado es el UART (Universal Asynchronous Receiver/Transmitter), el cuál define un conjunto de normas para el intercambio de datos en serie, lo que lo hace esencial en diversas aplicaciones tecnológicas, no solo el LEGO EV3. 
+2. Con sensores EV3 modernos se utiliza el protocolo I2C (Inter-Integrated Circuit).
+3. Comunicación con dispositivos por Bluetooth
+4. Comunicación con dispositivos por USB
 ### 3.11 ¿Qué opciones de conexión permiten integrar sensores no nativos al sistema LEGO EV3?
+Es posible utilizar sensores no nativos conectándolos a los puertos de sensores del EV3. Sin embargo, para configurar adecuadamente los protocolos de comunicación y hacerlos funcionales, es recomendable utilizar el sistema operativo EV3Dev, que permite un mayor control sobre el hardware. Además, en algunos casos puede ser necesario el uso de adaptadores o interfaces especiales para conectar sensores de terceros, como los provenientes de plataformas como Arduino o Raspberry Pi.
+
 
 ## 4. Sensores
 Para realizar la medición con el sensor Hokuyo y el RPLidar se utilizó la misma estructura optando por tomas en diferentes puntos para cada sensor, el cuarto hecho para la pueba se muestra a continuación con las dimensiones dadas en cm y tomando su eje cordenado en una esquina a partir de la cual se midieron todas las poses para ambos sensores.
