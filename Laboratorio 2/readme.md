@@ -1001,4 +1001,8 @@ Se observa que el error relativo de las pruebas realizadas no supera el 2.2%, pe
 
 #### 4.4.1 Caso a 30%
 
-Se platea un código que permita realizar el desplazamiento solicitado de 100 cm a una velocidad del 30%, eso se puede realizar al platear cuanto desplazamiento angular debe tener para llegar a esa distancia, puesto que conocemos el diámetro de las ruedas de 0.056 m podemos calcular que las ruedas deben girar 5.68 veces para recorrer la distancia de un metro. 
+Se platea un código que permita realizar el desplazamiento solicitado de 100 cm a una velocidad del 30%, eso se puede realizar al platear cuanto desplazamiento angular debe tener para llegar a esa distancia, puesto que conocemos el diámetro de las ruedas de 0.056 m podemos calcular que las ruedas deben girar 5.68 veces para recorrer la distancia de un metro.
+
+![0f3dc085-25a0-4f9f-9bd4-4290bbf546f5](https://github.com/user-attachments/assets/522f86dd-4734-45a7-951b-864e6bddfc3e)
+
+En este codigo solo seria necesario cambiar la velocidad necesaria para cada caso.
