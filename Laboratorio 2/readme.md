@@ -996,6 +996,8 @@ Imagen xd
 
 #### 4.3.5 Análisis de los resultados
 Se observa que el error relativo de las pruebas realizadas no supera el 2.2%, pero puede deberse a que no se utilizó una distancia mayor para realizar las medidas. En la guía se explica que debía hacerse hasta 2.5 metros, por lo que se espera el error en esa condición máxima aumentara ligeramente. En promedio se tuvo un error absoluto de 1.86% y un error de exactitud de 1.20%
+
 ###4.4 Sensor EV3
+
 #### 4.4.1 Caso a 30%
 
