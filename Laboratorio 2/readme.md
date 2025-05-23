@@ -931,3 +931,68 @@ Conociendo que la distancia en esa zona es de 16.5 cm podemos encontrar el error
 $Err = \frac{16.5531 - 16.5}{16.5}*100 \approx 0.31$%
 
 Este error es muy bajo, dando en evidencia la calidad que tienen los datos y al buen funcionamiento del sensor en este caso para medir las paredes de esta distribuvión de paredes, comparandolo con el Hokuyo se nota que sus mediciones son mas correctas y reflejan de mejor forma la realidad.
+### 4.3 Sensor Ultrasónico
+Se realizaron pruebas utilizando un Arduino UNO y un sensor HC-SR04. Utilizando las medidas de 100 cm, 110 cm, 120 cm y 140 cm, que fue la distancia máxima que permitía la mesa donde se estaba realizando la prueba.
+
+Los resultados de las mediciones, como Distancia vs Muestra son:
+* Prueba a 100 cm:
+* Prueba a 110 cm:
+* Prueba a 120 cm:
+* Prueba a 140 cm:
+
+Estas gráficas se obtuvieron a partir de la toma de medidas con el software MatLab. Posteriormente con los datos obtenidos se calcularon las variables estadísticas de distancia media (promedio), desviación estándar, error absoluto y error relativo con respecto a la media y se presenta también el histograma de la distribución de los datos.
+
+#### 4.3.1 Prueba a 100 cm: Realizado con la cinta métrica, se tomó un valor de 100 centímetros, un metro, y se registraron los resultados. Con estos se tiene que:
+
+* Distancia media: 97.98 cm
+* Desviación estándar: 0.576 cm
+* Error absoluto: -2.02 cm
+* Error relativo: -2.02%
+
+El histograma de resultados es:
+
+<div align="center">
+Imagen xd
+</div>
+
+#### 4.3.2 Prueba a 110 cm: Realizado con la cinta métrica, se tomó un valor de 110 centímetros, un metro con diez centímetros, y se registraron los resultados. Con estos se tiene que:
+
+* Distancia media: 110.52 cm
+* Desviación estándar: 0.899 cm
+* Error absoluto: 0.52 cm
+* Error relativo: 0.47%
+
+El histograma de resultados es:
+
+<div align="center">
+Imagen xd
+</div>
+
+#### 4.3.3 Prueba a 120 cm: Realizado con la cinta métrica, se tomó un valor de 120 centímetros, un metro con 20 centímetros, y se registraron los resultados. Con estos se tiene que:
+
+* Distancia media: 118.17 cm
+* Desviación estándar: 0.851 cm
+* Error absoluto: -1.84 cm
+* Error relativo: -1.53%
+
+El histograma de resultados es:
+
+<div align="center">
+Imagen xd
+</div>
+
+#### 4.3.4 Prueba a 140 cm: Realizado con la cinta métrica, se tomó un valor de 140 centímetros, un metro con cuarenta centímetros, y se registraron los resultados. Con estos se tiene que:
+
+* Distancia media: 136.94 cm
+* Desviación Estándar: 0.778 cm
+* Error absoluto: -3.06 cm
+* Error relativo: -2.19%
+
+El histograma de resultados es:
+
+<div align="center">
+Imagen xd
+</div>
+
+#### 4.3.5 Análisis de los resultados
+Se observa que el error relativo de las pruebas realizadas no supera el 2.2%, pero puede deberse a que no se utilizó una distancia mayor para realizar las medidas. En la guía se explica que debía hacerse hasta 2.5 metros, por lo que se espera el error en esa condición máxima aumentara ligeramente. En promedio se tuvo un error absoluto de 1.86% y un error de exactitud de 1.20%
