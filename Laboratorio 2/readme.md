@@ -1050,11 +1050,15 @@ Se realizo el mismo procedimeinto con el 100% de la velocidad de los motores del
 Con un comportamiento similar en los encoder.
 
 #### 4.4.3 Medicion de rotacion de las ruedas
-De la medición
+De la medición de los desplazamientos angulares de 30 grados y 45 grados, se realizaron las tomas de media por medio de una serie de fotos en donde por medio de ayuda digital se tomaron los datos de la posición angular para cada desplazamiento dando como resultados para 30 grados
 | Promedio | Desviación  |
 |----------|-------------|
 | 28,6     | 1,140175425 |
 
+Y 45 grados
+
 | Promedio | Desviación  |
 |----------|-------------|
 | 43,6     | 1,140175425 |
+
+En 
