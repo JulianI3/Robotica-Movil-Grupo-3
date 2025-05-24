@@ -1026,3 +1026,11 @@ Se realizo el mismo procedimeinto con el 100% de la velocidad de los motores del
 Con un comportamiento similar en los encoder.
 
 #### 4.4.3 Medicion de rotacion de las ruedas
+
+| Promedio | Desviación  |
+|----------|-------------|
+| 28,6     | 1,140175425 |
+
+| Promedio | Desviación  |
+|----------|-------------|
+| 43,6     | 1,140175425 |
