@@ -1061,4 +1061,4 @@ Y 45 grados
 |----------|-------------|
 | 43,6     | 1,140175425 |
 
-En 
+En donde se vio que la medida de los encoder marcaba los 30 o 45 grados respectivamente 1 de cada 10 mediciones con solo una variación de un grado más.
