@@ -1005,4 +1005,12 @@ Se platea un código que permita realizar el desplazamiento solicitado de 100 cm
 
 ![0f3dc085-25a0-4f9f-9bd4-4290bbf546f5](https://github.com/user-attachments/assets/522f86dd-4734-45a7-951b-864e6bddfc3e)
 
-En este codigo solo seria necesario cambiar la velocidad necesaria para cada caso.
+En este codigo solo seria necesario cambiar la velocidad necesaria para cada caso. Las mediciones del desplazamiento real se realizaron partiendo de un punto de referencia midiendo el desplazamiento del robot.
+
+![a7848762-62a3-4744-97c7-48b82d5681d7](https://github.com/user-attachments/assets/e9bc7b7e-d14c-40bd-9c28-cf94e4314e7c)
+
+Con lo cual luego de 5 mediciones los datos dieron 
+
+| Promedio | Desviación  |
+|----------|-------------|
+| 97,5     | 0,158113883 |
