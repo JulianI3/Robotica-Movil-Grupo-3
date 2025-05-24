@@ -1014,3 +1014,15 @@ Con lo cual luego de 5 mediciones los datos dieron
 | Promedio | Desviación  |
 |----------|-------------|
 | 97,5     | 0,158113883 |
+
+Y con respecto a los encoder de las ruedas se evidencio que no había se evidencio un grandes variaciones ni desviaciones del desplazamiento solicitado.
+
+#### 4.4.2 Caso a 100%
+
+Se realizo el mismo procedimeinto con el 100% de la velocidad de los motores del robot dando como resultados
+| Promedio | Desviación  |
+|----------|-------------|
+| 97,38    | 0,130384048 |
+Con un comportamiento similar en los encoder.
+
+#### 4.4.3 Medicion de rotacion de las ruedas
