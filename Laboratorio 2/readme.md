@@ -936,9 +936,19 @@ Se realizaron pruebas utilizando un Arduino UNO y un sensor HC-SR04. Utilizando 
 
 Los resultados de las mediciones, como Distancia vs Muestra son:
 * Prueba a 100 cm:
+![100 1](https://github.com/user-attachments/assets/4a12a0e1-3033-4b55-8e3d-72b4e167945d)
+
+
 * Prueba a 110 cm:
+  ![1102 1](https://github.com/user-attachments/assets/6a34b0c3-9b2c-47b8-8ce8-668e500ce5ce)
+
 * Prueba a 120 cm:
+![120 1](https://github.com/user-attachments/assets/5bdf3f68-2ac9-42d7-9f8c-fc22f1d001f1)
+
+
 * Prueba a 140 cm:
+
+![140 1](https://github.com/user-attachments/assets/1b2e0177-86d8-4504-84e9-13d82209368f)
 
 Estas gráficas se obtuvieron a partir de la toma de medidas con el software MatLab. Posteriormente con los datos obtenidos se calcularon las variables estadísticas de distancia media (promedio), desviación estándar, error absoluto y error relativo con respecto a la media y se presenta también el histograma de la distribución de los datos.
 
@@ -952,7 +962,8 @@ Estas gráficas se obtuvieron a partir de la toma de medidas con el software Mat
 El histograma de resultados es:
 
 <div align="center">
-Imagen xd
+![Histograma a 100 cm 1](https://github.com/user-attachments/assets/a73a45a7-b9e5-44ab-87bf-87a96175d9e2)
+
 </div>
 
 #### 4.3.2 Prueba a 110 cm: Realizado con la cinta métrica, se tomó un valor de 110 centímetros, un metro con diez centímetros, y se registraron los resultados. Con estos se tiene que:
@@ -965,7 +976,8 @@ Imagen xd
 El histograma de resultados es:
 
 <div align="center">
-Imagen xd
+![Histograma a 110 cm 1](https://github.com/user-attachments/assets/68cf7e33-1282-41c2-9e2d-815d95db97ce)
+
 </div>
 
 #### 4.3.3 Prueba a 120 cm: Realizado con la cinta métrica, se tomó un valor de 120 centímetros, un metro con 20 centímetros, y se registraron los resultados. Con estos se tiene que:
@@ -978,7 +990,8 @@ Imagen xd
 El histograma de resultados es:
 
 <div align="center">
-Imagen xd
+![Histograma a 120 cm 1](https://github.com/user-attachments/assets/5d6d2cba-c84a-4179-8a16-1430a9ec6b8d)
+
 </div>
 
 #### 4.3.4 Prueba a 140 cm: Realizado con la cinta métrica, se tomó un valor de 140 centímetros, un metro con cuarenta centímetros, y se registraron los resultados. Con estos se tiene que:
@@ -991,11 +1004,14 @@ Imagen xd
 El histograma de resultados es:
 
 <div align="center">
-Imagen xd
+![Histograma a 140 cm 1](https://github.com/user-attachments/assets/c0f9bcec-8f85-44d0-9675-dcf31d4b9d74)
+
 </div>
 
 #### 4.3.5 Análisis de los resultados
 Se observa que el error relativo de las pruebas realizadas no supera el 2.2%, pero puede deberse a que no se utilizó una distancia mayor para realizar las medidas. En la guía se explica que debía hacerse hasta 2.5 metros, por lo que se espera el error en esa condición máxima aumentara ligeramente. En promedio se tuvo un error absoluto de 1.86% y un error de exactitud de 1.20%
+
+Es notable que la mayor parte del error en los sensores resulta ser aleatorio, pues no hay un patrón observable que sugiera una inclinación del sensor por entregar resultados menores o mayores al resultado real, siendo impredecible y sin ningún factor, apreciable, que sea repetitivo.
 
 ### 4.4 Sensor EV3
 
