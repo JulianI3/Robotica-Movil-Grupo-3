@@ -1062,3 +1062,7 @@ Y 45 grados
 | 43,6     | 1,140175425 |
 
 En donde se vio que la medida de los encoder marcaba los 30 o 45 grados respectivamente 1 de cada 10 mediciones con solo una variación de un grado más.
+
+#### 4.4.4 Analisis de resultados
+
+Se pudo evidenciar que para los casos de dezplazamientos de un metro no ubo una gran variación de los resultados de la distancia recorrida, ni en la desviación de los datos donde el error en la precisión era de más o menos 3 cm siendo el efecto de la potencia de los motores muy bajo. Para los casos del desplazamiento angular se presenta un comportamiento similar en el error absoluto puesto que las diferencias con la medida solicitada al sistema es similar, no obstante, con un error relativo del 3% para el caso de 45 grados y 5% para el caso de30 grados con lo que podemos evidenciar que el error relativo aumenta con desplazamientos más pequeños.
