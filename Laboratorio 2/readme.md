@@ -1094,3 +1094,14 @@ Se pudo evidenciar que para los casos de dezplazamientos de un metro no ubo una 
 
 ![ae04c587-23b1-4717-8be5-ed849fd24342](https://github.com/user-attachments/assets/064f044e-fe0f-48bb-af14-cdb6c5823edd)
 
+#### 5.7 Funciones usadas
+
+| Función de ROS                        | Descripción                                                                 |
+|--------------------------------------|-----------------------------------------------------------------------------|
+| `rospy.init_node(name)`              | Inicializa un nodo de ROS con el nombre dado.                              |
+| `rospy.Publisher(topic, msg_type, queue_size)` | Crea un publicador para enviar mensajes a un tópico.              |
+| `rospy.Subscriber(topic, msg_type, callback)` | Se suscribe a un tópico y ejecuta una función callback al recibir datos. |
+| `rospy.Rate(hz)`                     | Controla la frecuencia de ejecución del ciclo (por ejemplo, 10 Hz).        |
+| `rospy.ServiceProxy(service_name, service_type)` | Llama a un servicio como si fuera una función en Python.            |
+| `rospy.wait_for_service(name)`       | Pausa el código hasta que un servicio esté disponible.                     |
+| `rospy.spin()`                       | Mantiene el nodo ejecutándose, útil cuando se usan subscripciones.         |
