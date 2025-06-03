@@ -1105,3 +1105,31 @@ Se pudo evidenciar que para los casos de dezplazamientos de un metro no ubo una 
 | `rospy.ServiceProxy(service_name, service_type)` | Llama a un servicio como si fuera una función en Python.            |
 | `rospy.wait_for_service(name)`       | Pausa el código hasta que un servicio esté disponible.                     |
 | `rospy.spin()`                       | Mantiene el nodo ejecutándose, útil cuando se usan subscripciones.         |
+
+
+#### 5.8 Dimensiones
+
+![334ebbd2-0594-4ffa-9dca-74ea9a7544bd](https://github.com/user-attachments/assets/7f37ed83-4c86-4864-874d-6940cbbc7e7b)
+
+![d0a742ff-e5ce-450f-b86e-508ba8d6df27](https://github.com/user-attachments/assets/2a0b1f73-4ab6-47df-93a6-5f46861763ff)
+
+![400130fe-e4e1-4697-81f2-91a371e4395b](https://github.com/user-attachments/assets/7f068c27-f24a-44fa-9840-259ef9ccf9b3)
+
+![adf14ac7-05ae-4164-9606-f81c9cc677a4](https://github.com/user-attachments/assets/a83d0728-f997-43b1-8147-3bd447b7514b)
+
+Con un tamaño de 11.08x11.08 unidades
+
+#### 5.9 Servicios en Python
+
+En ROS, los **servicios** permiten realizar llamadas síncronas a funciones definidas por otros nodos. Un servicio tiene un **nombre**, un **tipo**, y una estructura definida de **solicitud (request)** y **respuesta (response)**.
+
+
+##### ✅ Pasos para usar un servicio en Python
+
+1. **Importar las librerías necesarias**:
+   ```python
+   import rospy
+   from turtlesim.srv import Spawn
+
+
+
