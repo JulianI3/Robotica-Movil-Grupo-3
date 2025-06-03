@@ -1131,5 +1131,100 @@ En ROS, los **servicios** permiten realizar llamadas síncronas a funciones defi
    import rospy
    from turtlesim.srv import Spawn
 
+2.Esperar a que el servicio esté disponible:
 
+    rospy.wait_for_service('/spawn')
+
+3.Crear un proxy del servicio:
+
+    spawn_turtle = rospy.ServiceProxy('/spawn', Spawn)
+
+4.Llamar al servicio como si fuera una función:
+
+    response = spawn_turtle(5.0, 5.0, 0.0, 'turtle2')
+#### 5.10 Cuadrado
+
+El script `pycuadrado.py` utiliza servicios de ROS para controlar el entorno de `turtlesim` antes de que la tortuga comience a dibujar un cuadrado.
+
+---
+
+##### ⚙️ Servicios utilizados
+
+| Servicio           | Tipo                   | Función en el script                             |
+|--------------------|------------------------|--------------------------------------------------|
+| `/clear`           | `std_srvs/Empty`       | Limpia la pantalla de `turtlesim`.               |
+| `/teleport_absolute` | `turtlesim/TeleportAbsolute` | Teletransporta la tortuga a una posición exacta. |
+
+---
+
+##### 🧪 Cómo se usan los servicios en el código
+
+1. **Importación de servicios**:
+   ```python
+   from std_srvs.srv import Empty
+   from turtlesim.srv import TeleportAbsolute
+2.Esperar a que los servicios estén disponibles:
+
+    rospy.wait_for_service('/clear')
+    rospy.wait_for_service('/turtle1/teleport_absolute')
+3.Creación de proxies para los servicios:
+
+    limpiar = rospy.ServiceProxy('/clear', Empty)
+    teletransportar = rospy.ServiceProxy('/turtle1/teleport_absolute', TeleportAbsolute)
+4.Llamadas a los servicios:
+
+    limpiar()
+    teletransportar(5.0, 5.0, 0.0)
+
+Con los resultados 
+
+![dfb5feb1-148c-423e-9441-9211b11860ee](https://github.com/user-attachments/assets/d183c3e9-2ff4-4761-952f-df49bea40c37)
+
+
+#### Cuadrado y triangulo
+
+    El codigo desarrollado seria:
+    #!/usr/bin/env python3
+    import rospy
+    from geometry_msgs.msg import Twist
+    from turtlesim.srv import Spawn
+    import time
+
+    def mover(pub, lin_vel, ang_vel, dur):
+        vel = Twist()
+        vel.linear.x = lin_vel
+        vel.angular.z = ang_vel
+        rate = rospy.Rate(10)
+        for _ in range(int(dur * 10)):
+            pub.publish(vel)
+            rate.sleep()
+        pub.publish(Twist())
+
+    def dibujar_cuadrado(pub):
+        for _ in range(4):
+            mover(pub, 2.0, 0.0, 2)
+            mover(pub, 0.0, 1.57, 1)
+
+    def dibujar_triangulo(pub):
+        for _ in range(3):
+            mover(pub, 2.0, 0.0, 2)
+            mover(pub, 0.0, 2.09, 1)
+
+    if __name__ == '__main__':
+        rospy.init_node('formas_dos_tortugas')
+
+        rospy.wait_for_service('/spawn')
+        spawn = rospy.ServiceProxy('/spawn', Spawn)
+        spawn(5.0, 5.0, 0.0, 'turtle2')
+
+        pub1 = rospy.Publisher('/turtle1/cmd_vel', Twist, queue_size=10)
+        pub2 = rospy.Publisher('/turtle2/cmd_vel', Twist, queue_size=10)
+
+        rospy.sleep(2)
+
+        dibujar_cuadrado(pub1)
+        dibujar_triangulo(pub2)
+Con resultados:
+
+![c3df0fb3-315d-4520-a935-7dfbe0109fa1](https://github.com/user-attachments/assets/3beca236-6c35-4492-9568-cbb860399030)
 
