@@ -1066,3 +1066,31 @@ En donde se vio que la medida de los encoder marcaba los 30 o 45 grados respecti
 #### 4.4.4 Analisis de resultados
 
 Se pudo evidenciar que para los casos de dezplazamientos de un metro no ubo una gran variación de los resultados de la distancia recorrida, ni en la desviación de los datos donde el error en la precisión era de más o menos 3 cm siendo el efecto de la potencia de los motores muy bajo. Para los casos del desplazamiento angular se presenta un comportamiento similar en el error absoluto puesto que las diferencias con la medida solicitada al sistema es similar, no obstante, con un error relativo del 3% para el caso de 45 grados y 5% para el caso de30 grados con lo que podemos evidenciar que el error relativo aumenta con desplazamientos más pequeños.
+
+### 5 Resultados de turtle
+
+
+#### 5.1 Hello
+
+![ee83f304-7664-45b6-85f1-ce7ce6b1e74c](https://github.com/user-attachments/assets/223627aa-004c-44c8-bf2b-c131f72c4047)
+
+#### 5.2 Subpose
+
+![cad590ef-80c8-4313-98bb-001528b5ad0b](https://github.com/user-attachments/assets/d151a870-5b04-43d2-b6ff-0d3507fa75a0)
+
+#### 5.3 Pubvel
+
+![f57aa7bc-d976-4536-945d-fbbc66bc9031](https://github.com/user-attachments/assets/13ac5dbf-8690-4c5b-88ee-6e9e8b08b2c3)
+
+#### 5.4 pysubpose.py
+
+![d4d3d49f-8bf0-47ab-9151-0cf90074a350](https://github.com/user-attachments/assets/1e8f3edf-74a6-45a5-a829-279cb7c75628)
+
+#### 5.5 pypubvel.py
+
+![1041ef0f-d626-45fc-8760-a351d96228df](https://github.com/user-attachments/assets/6592ab4e-68dd-471c-b44f-2d175cf9cc8f)
+
+#### 5.6 p.launch
+
+![ae04c587-23b1-4717-8be5-ed849fd24342](https://github.com/user-attachments/assets/064f044e-fe0f-48bb-af14-cdb6c5823edd)
+
