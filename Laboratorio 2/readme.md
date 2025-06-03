@@ -1183,7 +1183,8 @@ Con los resultados
 
 #### Cuadrado y triangulo
 
-    El codigo desarrollado seria:
+El codigo desarrollado seria:
+
     #!/usr/bin/env python3
     import rospy
     from geometry_msgs.msg import Twist
