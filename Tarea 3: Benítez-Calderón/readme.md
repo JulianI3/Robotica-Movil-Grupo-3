@@ -29,7 +29,7 @@ Suposiciones:
 * Las ruedas tienen un radio r constante.
   
 Las ecuaciones cinemáticas del robot diferencial:
-    dx/dt = v * cos(theta)
-    dy/dt = v * sin(theta)
-    dtheta/dt = omega
+dx/dt = v * cos(theta)
+dy/dt = v * sin(theta)
+dtheta/dt = omega
 
