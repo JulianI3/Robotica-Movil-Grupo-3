@@ -17,3 +17,26 @@
 * Resolución: 10 celdas/m
 * Entrada: Inf-Der
 * Salida: Inf-Izq
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+## Simulación de Matlab y coppelia:
+
+Para esta se escogio la ruta generado por el metodo de PRM presentado anteriormente
+
+
+
+
+
+
