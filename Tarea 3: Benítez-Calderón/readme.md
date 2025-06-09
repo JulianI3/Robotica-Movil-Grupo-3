@@ -282,8 +282,12 @@ https://github.com/user-attachments/assets/58a84e5e-5e2f-4c54-9c6a-efa55c642eb4
 ## Conclusiones y dificultades
 
 -El uso de la Remote API permite controlar robots virtuales desde MATLAB, lo que facilita la implementación, prueba y depuración de algoritmos de navegación sin necesidad de hardware físico.
+
 -Fue necesario alinear correctamente laS rutas PRM y RRT con el sistema de coordenadas de CoppeliaSim, ya que el mapa en MATLAB y el entorno de simulación no siempre comparten el mismo origen o escala.
+
 -PRM y RRT son métodos efectivos para planificar trayectorias en mapas binarios, cada uno con ventajas distintas. PRM genera rutas más suaves en espacios abiertos, mientras que RRT es más eficiente en entornos complejos con muchos obstáculos.
+
 -La lectura de rutas desde archivos externos (como .xls o .xlm) puede causar errores de formato o incompatibilidad con readmatrix/xlsread, complicando el flujo de trabajo si no se estandarizan correctamente.
+
 -Se probaron diferentes rutas ya que algunas daban muy justas y el robot lograba chocar con las paredes, por lo tanto es importante verificar la ruta antes de implementar.
 
