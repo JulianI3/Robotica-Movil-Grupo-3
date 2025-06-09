@@ -80,27 +80,52 @@ Todo esto con el algoritmo buscando aleatoriamente puntos y luego eligiendo entr
 ## Planeación de la ruta por RRT
 De igual forma, el código del ejemplo fue modificado utilizando la ayuda de la IA generativa, y utilizando los parámetros de Número de iteraciones = 1000 y Distancia de Conexión máxima = 2.
 El resultado de aplicar el algoritmo es la siguiente ruta:
-
-Path = 
+| Punto |     X      |     Y      |
+|-------|------------|------------|
+| 1     | 4.8000     | 0.0000     |
+| 2     | 4.9083	 | 0.4972     |
+| 3     | 4.6298	 | 1.3425     |
+| 4     | 3.5859     | 1.5502     |
+| 5     | 3.3275     | 0.8195     |
+| 6     | 1.3385	 | 1.0102     |
+| 7     | 1.8360	 | 1.1319     |
+| 8     | 1.8078	 | 2.3140     |
+| 9     | 1.6154     | 1.6861     |
+| 10    | 1.4377	 | 1.6184     |
+| 11    | 0.7537	 | 1.5847     |
+| 12    | 0.5203	 | 1.1641     |
+| 13    | 0.3484	 | 0.4266     |
+| 14    | 0.3690	 | 0.1167     |
+| 15    | 0.4000     | 0.0000     |
 
 Que organizado en el mapa se ve de la siguiente forma:
 
 <div align="center">
 
-Imagen
+<img src="https://github.com/user-attachments/assets/95a4512b-b37f-4edd-aba4-ec78b4966aa6" alt="Figura 4: Ruta planteada en RRT" width="600"/>
 
+Figura 4: Ruta planteada en RRT
 </div>
 
 ## Simulación de Matlab y coppelia:
 
 Para esta se escogio la ruta generado por el metodo de PRM presentado anteriormente, con el mapa de simulacion como:
 
-
+<div align="center">
+    
 ![Captura de pantalla de 2025-06-09 12-55-13](https://github.com/user-attachments/assets/4cbbcdff-3b5f-40bc-a2fa-886ab7afae93)
+
+</div>
 
 Los codigos utilizados y simulaciones realizadas se encuentran en la carpeta de anexos y codigos.Como resultados de la union de los dos sistemas se dio el movimiento de:
 
+<div align="center">
+    
+![REAL](https://github.com/user-attachments/assets/a4c6ba71-50fb-4dbc-8a30-32dc6fe4ffaf)
+    
+</div>
 
+Adicionalmente puede ser encontrado el video en el repositorio, en la sección de anexos.
 
 ## Conclusiones:
 
