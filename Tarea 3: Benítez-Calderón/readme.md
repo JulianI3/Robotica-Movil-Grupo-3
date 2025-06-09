@@ -28,5 +28,8 @@ Suposiciones:
 * El robot tiene ruedas idénticas, separadas por una distancia fija  L (ancho del eje o trackWidth).
 * Las ruedas tienen un radio r constante.
   
-Las ecuaciones cinemáticas son $ \dot{x} = v \cos(\theta) $, $ \dot{y} = v \sin(\theta) $ y $ \dot{\theta} = \omega $.
+Las ecuaciones cinemáticas del robot diferencial:
+    dx/dt = v * cos(theta)
+    dy/dt = v * sin(theta)
+    dtheta/dt = omega
 
