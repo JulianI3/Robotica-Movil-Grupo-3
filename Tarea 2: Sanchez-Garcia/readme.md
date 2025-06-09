@@ -22,16 +22,24 @@
 
 ## Modelo del robot BubbleRob
 El robot BubbleRob no es un robot encontrado en los modelos de CoppeliaSim sino que viene de una escena ejemplo del programa. El robot en cuestión puede ser encerrado en un cubo de 0.2 x 0.2 x 0.2 metros, y su forma física es la siguiente:
-<div align="center">
-![image](https://github.com/user-attachments/assets/0c8f80d4-4c3f-4aac-a30b-b42f176691b0)
-<\div>
-Las indicaciones para la tarea eran que el robot ingresa desde la esquina inferior derecha y sale en la esquina inferior izquierda. Teniendo esto y una resolución de 10 celdas/metro, el modelo cinemático planteado y el mapa resultante son:
+
 <div align="center">
     
+![image](https://github.com/user-attachments/assets/0c8f80d4-4c3f-4aac-a30b-b42f176691b0)
+
+</div>
+
+Las indicaciones para la tarea eran que el robot ingresa desde la esquina inferior derecha y sale en la esquina inferior izquierda. Teniendo esto y una resolución de 10 celdas/metro, el modelo cinemático planteado y el mapa resultante son:
+
+<div align="center">
+
 Figura 1: Modelo cinemático usando la ruta: []
+
 ![image](https://github.com/user-attachments/assets/93ac804e-6ce8-4a9a-9d57-f8251e75ff6b)
+
 Figura 2: Mapa a 10 celdas/m
-<\div>
+
+</div>
 
 Conociendo que el BubbleRob se encierra en un cubo de 0.2 metros, el inflado de los muros debe ser de 0.1 metros para evitar choques durante la simulación.
 ## Planeación de la ruta por PRM
@@ -39,12 +47,31 @@ Con un código basado en el ejemplo de MatLab llamado “PathFollwingControllerE
 
 El resultado de aplicar el algoritmo es la siguiente ruta:
 
-Path = 
+| Punto |     X      |     Y      |
+|-------|------------|------------|
+| 1     | 4.8000     | 0.0000     |
+| 2     | 4.8105     | 0.1521     |
+| 3     | 4.6108     | 0.5419     |
+| 4     | 4.6995     | 1.2437     |
+| 5     | 4.0769     | 1.6689     |
+| 6     | 3.5164     | 1.6215     |
+| 7     | 3.5000     | 1.0000     |
+| 8     | 2.5905     | 0.9313     |
+| 9     | 1.3467     | 0.7694     |
+| 10    | 1.8697     | 1.3421     |
+| 11    | 0.8679     | 1.5036     |
+| 12    | 0.4024     | 0.0663     |
+| 13    | 0.4000     | 0.0000     |
+
 
 Que organizado en el mapa se ve de la siguiente forma:
+
 <div align="center">
-Imagen
-<\div>
+
+![rutaPRM](https://github.com/user-attachments/assets/6195fbc3-7539-440e-859a-1703cfdd452f)
+
+
+</div>
 Todo esto con el algoritmo buscando aleatoriamente puntos y luego eligiendo entre las rutas posibles la que tuviese la menor distancia recorrida.
 
 
@@ -57,8 +84,10 @@ Path =
 Que organizado en el mapa se ve de la siguiente forma:
 
 <div align="center">
+
 Imagen
-<\div>
+
+</div>
 
 
 
