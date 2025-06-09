@@ -49,25 +49,55 @@ Posteriormente se realiza el inflado del mapa, que corresponde a la mitad del va
 
 ![image](https://github.com/user-attachments/assets/c1b6f823-c42a-4439-9ac0-e45fa560081d)
 
-Ahora se realiza la ruta óptima por planeación PRM, para ello se utilizan los siguientes paraámetros:
+Ahora se realiza la ruta óptima por planeación PRM, para ello se utilizan los siguientes parámetros:
 MaxNumNodes: 300
 MaxConnectionDistance: 5.00
-Costo total de la ruta óptima: 11.40 metros
+
 
 ![image](https://github.com/user-attachments/assets/e2fab62e-aa91-4a6b-b3af-116f78fae8fb)
-
 
 Ruta óptima (tabla):<br>
 | Punto |     X      |     Y      |
 |-------|------------|------------|
-|     1 |     6.0000 |     0.2000 |
-|     2 |     6.0247 |     0.0451 |
-|     3 |     5.7224 |     1.7465 |
-|     4 |     6.2151 |     3.8073 |
-|     5 |     5.4194 |     4.5853 |
-|     6 |     4.8126 |     4.5319 |
-|     7 |     4.4605 |     4.8214 |
-|     8 |     4.3088 |     5.6022 |
-|     9 |     1.9312 |     5.6388 |
-|    10 |     0.0412 |     6.0449 |
-|    11 |     0.1500 |     6.0500 |
+| 1     | 6.0000     | 0.2000     |
+| 2     | 6.1093     | 0.2913     |
+| 3     | 5.8411     | 0.9569     |
+| 4     | 5.8718     | 2.1775     |
+| 5     | 6.0323     | 4.3446     |
+| 6     | 4.6045     | 4.5314     |
+| 7     | 4.3644     | 5.5040     |
+| 8     | 2.3795     | 5.6634     |
+| 9     | 0.2203     | 6.0818     |
+| 10    | 0.1500     | 6.0500     |
+
+
+Costo total de la ruta óptima: 11.40 metros
+
+Finalmente se realiza la ruta por planeación RRT, para ello se utilizan los siguientes parámetros:
+MinIterations: 2000
+ConnectionDistance: 2.50
+
+![image](https://github.com/user-attachments/assets/50f82954-ce8b-4f2f-8014-9ac7551e5b5c)
+
+| Punto |     X      |     Y      |
+|-------|------------|------------|
+| 1     | 6.0000     | 0.2000     |
+| 2     | 5.6198     | 2.6500     |
+| 3     | 5.2534     | 2.7228     |
+| 4     | 5.6960     | 2.5375     |
+| 5     | 6.0755     | 3.2219     |
+| 6     | 5.8168     | 4.5380     |
+| 7     | 5.8165     | 4.5728     |
+| 8     | 4.3493     | 4.2371     |
+| 9     | 4.4771     | 4.3274     |
+| 10    | 4.2312     | 6.0482     |
+| 11    | 4.6360     | 5.8744     |
+| 12    | 4.0438     | 5.7817     |
+| 13    | 3.7956     | 5.9304     |
+| 14    | 3.6233     | 5.6919     |
+| 15    | 3.4241     | 5.4407     |
+| 16    | 1.0018     | 5.8915     |
+| 17    | 0.1500     | 6.0500     |
+
+
+Costo total de la ruta óptima (RRT): 16.15 metros
