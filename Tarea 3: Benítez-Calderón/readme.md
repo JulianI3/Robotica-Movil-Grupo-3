@@ -44,3 +44,30 @@ A continuación se presenta el mapa binario generado en Matlab:
 
 ![image](https://github.com/user-attachments/assets/558a9989-bca9-424b-b365-0fc17da6350e)
 
+
+Posteriormente se realiza el inflado del mapa, que corresponde a la mitad del valor de la trocha del robot la cuál, según el modelo de coppeliaSim es de 0.25 metros
+![image](https://github.com/user-attachments/assets/c1b6f823-c42a-4439-9ac0-e45fa560081d)
+
+Ahora se realiza la ruta óptima por planeación PRM, para ello se utilizan los siguientes paraámetros:
+MaxNumNodes: 300
+MaxConnectionDistance: 5.00
+Costo total de la ruta óptima: 11.40 metros
+
+![image](https://github.com/user-attachments/assets/e2fab62e-aa91-4a6b-b3af-116f78fae8fb)
+
+
+Ruta óptima (tabla):
+       X           Y    
+    ________    ________
+           6         0.2
+      6.0247    0.045081
+      5.7224      1.7465
+      6.2151      3.8073
+      5.4194      4.5853
+      4.8126      4.5319
+      4.4605      4.8214
+      4.3088      5.6022
+      1.9312      5.6388
+    0.041235      6.0449
+        0.15        6.05
+
