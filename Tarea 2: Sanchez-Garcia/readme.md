@@ -33,10 +33,11 @@
 
 ## Simulación de Matlab y coppelia:
 
-Para esta se escogio la ruta generado por el metodo de PRM presentado anteriormente
+Para esta se escogio la ruta generado por el metodo de PRM presentado anteriormente, con el mapa de simulacion como:
 
 
+![Captura de pantalla de 2025-06-09 12-55-13](https://github.com/user-attachments/assets/4cbbcdff-3b5f-40bc-a2fa-886ab7afae93)
 
-
+Los codogos utilizados y simulaciones realizadas
 
 
