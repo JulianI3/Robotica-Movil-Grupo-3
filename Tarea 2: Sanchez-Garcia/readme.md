@@ -24,8 +24,8 @@
 El robot BubbleRob no es un robot encontrado en los modelos de CoppeliaSim sino que viene de una escena ejemplo del programa. El robot en cuestión puede ser encerrado en un cubo de 0.2 x 0.2 x 0.2 metros, y su forma física es la siguiente:
 
 <div align="center">
-    
-![image](https://github.com/user-attachments/assets/0c8f80d4-4c3f-4aac-a30b-b42f176691b0)
+
+<img src="https://github.com/user-attachments/assets/0c8f80d4-4c3f-4aac-a30b-b42f176691b0" alt="Figura 0: Modelo cinemático usando la ruta: []" width="600"/>
 
 </div>
 
@@ -33,12 +33,11 @@ Las indicaciones para la tarea eran que el robot ingresa desde la esquina inferi
 
 <div align="center">
 
-![rutaPRM](https://github.com/user-attachments/assets/0a063268-95d4-467b-8c7b-0b0054f3ca32)
-
+<img src="https://github.com/user-attachments/assets/aaa13fbe-3885-4331-be2d-cb8f7c12eaa1" alt="Figura 1: Modelo cinemático usando la ruta: []" width="500"/>
 
 Figura 1: Modelo cinemático usando la ruta: []
 
-![image](https://github.com/user-attachments/assets/93ac804e-6ce8-4a9a-9d57-f8251e75ff6b)
+<img src="https://github.com/user-attachments/assets/93ac804e-6ce8-4a9a-9d57-f8251e75ff6b" alt="Figura 2: Mapa a 10 celdas/m" width="500"/>
 
 Figura 2: Mapa a 10 celdas/m
 
@@ -58,7 +57,7 @@ El resultado de aplicar el algoritmo es la siguiente ruta:
 | 4     | 4.6995     | 1.2437     |
 | 5     | 4.0769     | 1.6689     |
 | 6     | 3.5164     | 1.6215     |
-| 7     | 3.5000     | 1.0000     |
+| 7     | 3.5031     | 1.0270     |
 | 8     | 2.5905     | 0.9313     |
 | 9     | 1.3467     | 0.7694     |
 | 10    | 1.8697     | 1.3421     |
@@ -70,11 +69,11 @@ El resultado de aplicar el algoritmo es la siguiente ruta:
 Que organizado en el mapa se ve de la siguiente forma:
 
 <div align="center">
-
-![rutaPRM](https://github.com/user-attachments/assets/6195fbc3-7539-440e-859a-1703cfdd452f)
-
+    
+<img src="https://github.com/user-attachments/assets/6195fbc3-7539-440e-859a-1703cfdd452f" alt="Figura 3: Ruta planteada en PRM" width="600"/>
 
 </div>
+
 Todo esto con el algoritmo buscando aleatoriamente puntos y luego eligiendo entre las rutas posibles la que tuviese la menor distancia recorrida.
 
 
@@ -91,10 +90,6 @@ Que organizado en el mapa se ve de la siguiente forma:
 Imagen
 
 </div>
-
-
-
-
 
 ## Simulación de Matlab y coppelia:
 
