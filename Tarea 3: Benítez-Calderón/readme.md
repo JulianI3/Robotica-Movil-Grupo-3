@@ -33,11 +33,11 @@ dx/dt = v * cos(theta) <br>
 dy/dt = v * sin(theta) <br>
 dtheta/dt = omega
 
-Donde:  
-v = r/2 * (v_R + v_L)
-w = r/L * (v_R - v_L)
-v_L = (2v - wL)/2r
-v_R = (2v + wL)/2r
+Donde:  <br>
+v = r/2 * (v_R + v_L)<br>
+w = r/L * (v_R - v_L)<br>
+v_L = v - (wL)/2<br>
+v_R = v + (wL)/2<br>
 
 ## Mapa
 A continuación se presenta el mapa binario generado en Matlab:
