@@ -23,7 +23,7 @@
 
 
 
-
+## Resultados de simulacion en matlab
 
 
 
@@ -42,7 +42,7 @@ Los codigos utilizados y simulaciones realizadas se encuentran en la carpeta de 
 
 
 
-##C onclusiones:
+## Conclusiones:
 
 
 - Se pudo realizar de forma satisfacoria la conexion entre los dos sistemas, en donde la mayor problematica en su momento fue el llamar como objetos a los motores, puesto que estaban como parte del robot. Saliendo de este problema se vuelve facil el control del robot
