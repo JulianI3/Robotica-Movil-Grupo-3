@@ -6,6 +6,8 @@
 </picture>
   
 # Tarea No. 3: Navegacion por planeación
+
+<div align="center">
 ## Integrantes:
 Julián David Benítez Martínez
 Jhon Alexander Calderón 
