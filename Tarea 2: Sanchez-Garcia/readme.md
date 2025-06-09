@@ -22,12 +22,16 @@
 
 ## Modelo del robot BubbleRob
 El robot BubbleRob no es un robot encontrado en los modelos de CoppeliaSim sino que viene de una escena ejemplo del programa. El robot en cuestión puede ser encerrado en un cubo de 0.2 x 0.2 x 0.2 metros, y su forma física es la siguiente:
+<div align="center">
 ![image](https://github.com/user-attachments/assets/0c8f80d4-4c3f-4aac-a30b-b42f176691b0)
-
+<\div>
 Las indicaciones para la tarea eran que el robot ingresa desde la esquina inferior derecha y sale en la esquina inferior izquierda. Teniendo esto y una resolución de 10 celdas/metro, el modelo cinemático planteado y el mapa resultante son:
+<div align="center">
+    
 Figura 1: Modelo cinemático usando la ruta: []
 ![image](https://github.com/user-attachments/assets/93ac804e-6ce8-4a9a-9d57-f8251e75ff6b)
 Figura 2: Mapa a 10 celdas/m
+<\div>
 
 Conociendo que el BubbleRob se encierra en un cubo de 0.2 metros, el inflado de los muros debe ser de 0.1 metros para evitar choques durante la simulación.
 ## Planeación de la ruta por PRM
@@ -38,9 +42,9 @@ El resultado de aplicar el algoritmo es la siguiente ruta:
 Path = 
 
 Que organizado en el mapa se ve de la siguiente forma:
-
+<div align="center">
 Imagen
-
+<\div>
 Todo esto con el algoritmo buscando aleatoriamente puntos y luego eligiendo entre las rutas posibles la que tuviese la menor distancia recorrida.
 
 
@@ -52,8 +56,9 @@ Path =
 
 Que organizado en el mapa se ve de la siguiente forma:
 
+<div align="center">
 Imagen
-
+<\div>
 
 
 
