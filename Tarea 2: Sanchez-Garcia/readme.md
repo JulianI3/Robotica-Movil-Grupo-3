@@ -33,6 +33,9 @@ Las indicaciones para la tarea eran que el robot ingresa desde la esquina inferi
 
 <div align="center">
 
+![rutaPRM](https://github.com/user-attachments/assets/0a063268-95d4-467b-8c7b-0b0054f3ca32)
+
+
 Figura 1: Modelo cinemático usando la ruta: []
 
 ![image](https://github.com/user-attachments/assets/93ac804e-6ce8-4a9a-9d57-f8251e75ff6b)
