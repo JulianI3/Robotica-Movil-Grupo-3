@@ -42,11 +42,12 @@ Los codigos utilizados y simulaciones realizadas se encuentran en la carpeta de 
 
 
 
-##Conclusiones:
+##C onclusiones:
 
--Se pudo realizar de forma satisfacoria la conexion entre los dos sistemas, en donde la mayor problematica en su momento fue el llamar como objetos a los motores, puesto que estaban como parte del robot. Saliendo de este problema se vuelve facil el control del robot
--En el desarrollo de la ruta por PRM se ve el problema que podian dar rutas poco efiecientes al no generar puntos en lugares estrategicos, ademas de ser necesario reinicir el codigo hasta llegar aun resultado aceptable.
--Es importante que la velocidad de las ruedas del robot no sea demaciado alta porque se podia llegar a problemas al cabiar la direccopn del moviento.
+
+- Se pudo realizar de forma satisfacoria la conexion entre los dos sistemas, en donde la mayor problematica en su momento fue el llamar como objetos a los motores, puesto que estaban como parte del robot. Saliendo de este problema se vuelve facil el control del robot
+- En el desarrollo de la ruta por PRM se ve el problema que podian dar rutas poco efiecientes al no generar puntos en lugares estrategicos, ademas de ser necesario reinicir el codigo hasta llegar aun resultado aceptable.
+- Es importante que la velocidad de las ruedas del robot no sea demaciado alta porque se podia llegar a problemas al cabiar la direccopn del moviento.
 
 
 
