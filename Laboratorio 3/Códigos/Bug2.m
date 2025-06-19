@@ -41,6 +41,7 @@ while true
     frontDist = readDistance(frontSensor)*100; % cm
     rightDist = readProximity(rightSensor);
     clo=readColor(colSensor);
+    disp(clo)
     %  rightDist; 
     %Se debe verificar como analizar la lectura de salida del sensor
     %infrarojo y cambiar la forma de considerarlo en seguir el muro
@@ -100,6 +101,7 @@ while true
 %                 vL = v - turn;
 %                 vR = v + turn;
                 theta = double(readRotationAngle(gyro));
+                disp(theta)
                 clo = readColor(colSensor);  % ← función para leer el color actual
                     
                 if theta > 0 && strcmpi(clo, 'red') == 0
@@ -127,20 +129,24 @@ while true
         case 'FOLLOW_WALL'
             onMLine = isOnMLine(pose, start, goal);
             disp('Seguir muro')
+            disp(rightDist)
+            disp(theta)
+            clo=readColor(colSensor);
 %             if onMLine && distToGoal < minDistToGoal && frontDist > 20
             if strcmp(clo, 'red')
-                while theta > -5
-                        setMotorSpeeds(motorLeft, motorRight, -10, 10);
+                while theta > 5
+                        setMotorSpeeds(motorLeft, motorRight, -3, 15);
                         theta = double(readRotationAngle(gyro));
                         disp('Giro ')
                         disp(theta)
                 end
+                theta = 0; 
                 state = 'GO_TO_GOAL';
             else
                 % Lógica simple para seguir pared por la derecha
                 if frontDist < 20
                     % Girar izquierda
-                    while theta > -85
+                    while theta > -80
                         setMotorSpeeds(motorLeft, motorRight, -10, 10);
                         theta = double(readRotationAngle(gyro));
                         disp('Giro izquierda')
@@ -155,19 +161,48 @@ while true
 %                     % Alejarse de la pared
 %                     setMotorSpeeds(motorLeft, motorRight, 5, 10);
 %                     disp('acer 2')
-                elseif rightDist > 20
+                elseif rightDist > 30 && theta > -110 && theta < -20
+                    stop(motorRight);
+                    stop(motorLeft);
+                    disp(theta);
                     theta = double(readRotationAngle(gyro));
-                    while theta > -5
+                    while theta < -5
                         setMotorSpeeds(motorLeft, motorRight, 10, -10);
                         theta = double(readRotationAngle(gyro));
                         disp('Borde')
                         disp(rightDist)
                     end
+                    while rightDist > 30 
+                        setMotorSpeeds(motorLeft, motorRight, 20, 20);
+                        theta = double(readRotationAngle(gyro));
+                        rightDist = readProximity(rightSensor);
+                        disp('Buscando obstáculo')
+                        disp(rightDist)
+                        
+                    end
 
-                else
+
+                elseif rightDist > 30 && theta > -20
+                    pause(1.5)
+                    stop(motorRight);
+                    stop(motorLeft);
+                    disp(theta);
+                    theta = double(readRotationAngle(gyro));
+                    while theta < 75
+                        setMotorSpeeds(motorLeft, motorRight, 10, -10);
+                        theta = double(readRotationAngle(gyro));
+                        disp('Borde')
+                        disp(theta)
+                        disp(rightDist)
+                    end
+                    setMotorSpeeds(motorLeft, motorRight, 9.5, 9);
+
+                elseif rightDist < 30
                     % Seguir paralelo
-                    setMotorSpeeds(motorLeft, motorRight, 10, 10);
+                    setMotorSpeeds(motorLeft, motorRight, 21, 20);
                     disp('Adelante')
+                    theta = double(readRotationAngle(gyro));
+
                 end
             end
     end
