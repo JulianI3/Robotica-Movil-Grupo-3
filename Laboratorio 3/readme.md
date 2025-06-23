@@ -49,7 +49,14 @@ En la práctica, ambos enfoques se pueden integrar en lo que se conoce como un s
 
 ## 4. Misión 1: Superar Obstáculos
 
+Se realiza el montaje del trayecto con dos obstaculos, en este caso son cajas de carton dispuestas horizontalmente sobre el trayecto delimitado con cinta de color rojo como se muestra en la siguiente imágen: 
+
+![image](https://github.com/user-attachments/assets/0952a338-b5b0-4231-b21e-11bba796b6c9)
+
+Con este montaje se espera que el robot siga la siguiente trayectoria haciendo uso de los sensores tales como el seguidor de linea, ultrasonido, infrarrojo y giroscopio, dependeiendo de las lecturas de estos el robot girará las ruedas de determinada forma al comprender algún obstacúlo.
+
 ![image](https://github.com/user-attachments/assets/a7f19a4b-3f77-4ec2-bf03-85287f637a72)
+
 
 
 ## 5. Misión 2: Superar el Laberinto
