@@ -113,7 +113,10 @@ Finalizar programa al alcanzar meta
 Haciendo uso de los sensores tales como el seguidor de linea (color), ultrasonido, infrarrojo y giroscopio, dependeiendo de las lecturas de estos el robot girará las ruedas de determinada forma al comprender algún obstacúlo.
 
 
-![Precisión y Exactitud](https://github.com/user-attachments/assets/ebf393ce-3e18-4c60-85df-955063936c37)
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/ebf393ce-3e18-4c60-85df-955063936c37" alt="Precisión y Exactitud" width="600">
+</p>
+
 
 
 ## Sensores conectados en las siguientes posiciones:
