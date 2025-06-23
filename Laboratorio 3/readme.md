@@ -11,6 +11,9 @@
 </div>
 
 ## 1. Resumen
+En el presente laboratorio se realizó el código de programación en MatLab de un robot Lego Mindstorm EV3, para realizar la evasión de obstáculos siguiendo una ruta establecida (línea de color rojo) con un objetivo físico, haciendo de sensores tales como el seguidor de linea (color), sensor ultrasonido, sensor infrarrojo y giroscopio, esto para hacer que el robot sin la necesidad de un mapa lograra llegar a su objetivo por medio de un algoritmo de planificación de rutas.
+
+La segunda parte del laboratorio fue utilizar este mismo robot con el objetivo de superar un laberinto, que contuviese los requerimientos planteados por los docentes en las guías, que en general le obligaban a girar a la izquierda, derecha y retroceder cuando llegaba a un punto ciego. El código utilizado para este y el anterior punto se encuentran en el repositorio en la carpeta de Códigos.
 
 ## 2. Introducción
 La navegación en robótica móvil se refiere a la capacidad de un robot para desplazarse desde una posición inicial hasta un objetivo, basándose en el conocimiento parcial de su entorno y la información proporcionada por sus sensores. El objetivo es alcanzar el destino de forma eficiente, segura y confiable, adaptándose a las condiciones del entorno.
