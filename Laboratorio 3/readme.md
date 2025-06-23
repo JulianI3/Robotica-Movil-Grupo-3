@@ -142,7 +142,13 @@ Con este montaje se espera que el robot siga la siguiente trayectoria
 
 ![Precisión y Exactitud](https://github.com/user-attachments/assets/a7f19a4b-3f77-4ec2-bf03-85287f637a72)
 
+Se pueden ver los resultados en el siguiente video:
 
+<p align="center">
+  <a href="https://www.youtube.com/watch?v=p34uNsFeaVA">
+    <img src="https://img.youtube.com/vi/p34uNsFeaVA/0.jpg" alt="Ver video en YouTube: Control LEGO EV3" width="600">
+  </a>
+</p>
 
 
 ## 5. Misión 2: Superar el Laberinto
