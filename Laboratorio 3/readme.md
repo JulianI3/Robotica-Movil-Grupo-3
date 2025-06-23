@@ -163,8 +163,7 @@ Se pueden ver los resultados en el siguiente video:
 
 ## 5. Misión 2: Superar el Laberinto
 
-Se realiza el montaje del trayecto con dos obstaculos, en este caso son cajas de carton dispuestas horizontalmente sobre el trayecto delimitado con cinta de color rojo como se muestra en la siguiente imágen: 
-
+Se realiza el montaje del laberinto con todos los casos que indica el laboratorio construyendo la siguiente disposición del laberinto:
 ![image](https://github.com/user-attachments/assets/dfc3757d-88b5-49e7-8b89-1707c782dfd5)
 
 
