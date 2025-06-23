@@ -1,0 +1,146 @@
+clear all
+myev3 = legoev3('usb');
+
+% Motores
+motorLeft = motor(myev3, 'A');
+motorRight = motor(myev3, 'B');
+
+% Sensores
+gyro = gyroSensor(myev3, 2);
+% Se debe poner los sensores en las terminales necesarios
+frontSensor = sonicSensor(myev3, 3);
+% rightSensor = sonicSensor(myev3, 4);
+rightSensor = irSensor(myev3, 4);
+colSensor = colorSensor(myev3,1);
+
+% Resetear sensores
+resetRotation(motorLeft);
+resetRotation(motorRight);
+resetRotationAngle(gyro);
+
+contador = 0; %Para el giro especial
+
+% Parámetros
+pose = [0, 0];     % Asumimos que inicia en [0, 0]
+theta = 0;         % Ángulo inicial
+
+wheelBase = 12.4;    % cm entre ruedas
+wheelRadius = 2.8; % radio de las ruedas en cm
+
+state = 'GO_TO_GOAL';
+dt = 0.1;
+
+start = pose;
+
+while true
+    % --- Leer sensores ---
+    frontDist = readDistance(frontSensor)*100; % cm
+    rightDist = readProximity(rightSensor);
+    clo=readColor(colSensor);
+    theta = double(readRotationAngle(gyro)); % grados
+    
+    % --- Estimar pose (simple odometría por encoder) ---
+    angle1 = double(readRotation(motorLeft));  
+    angle2 = double(readRotation(motorRight)); 
+    dL = deg2rad(angle1) * wheelRadius;
+    dR = deg2rad(angle2) * wheelRadius;
+    dCenter = (dL + dR)/2;
+    pose(1) = pose(1) + dCenter * cosd(theta);
+    pose(2) = pose(2) + dCenter * sind(theta);
+    resetRotation(motorLeft); resetRotation(motorRight);
+
+    if strcmp(clo, 'blue')
+        stop(motorLeft);
+        stop(motorRight);
+
+        disp('Meta alcanzada');
+        break;
+    end
+    if pose(1)>36
+        disp(pose)
+        stop(motorLeft);
+        stop(motorRight);
+        pause(2)
+        disp('Distancia')
+        resetRotation(motorLeft);
+        resetRotation(motorRight);
+        pose(1)=0;
+        pose(2)=0;
+    end
+      
+    
+    switch state
+        case 'GO_TO_GOAL'
+            disp(contador)
+            if frontDist < 20 % obstáculo
+                state = 'ROTAR';
+                pause(1)
+            
+            elseif contador == 3 && rightDist > 30 && frontDist > 20
+                    while theta < 90
+                        setMotorSpeeds(motorLeft, motorRight, 10, -10);
+                        theta = double(readRotationAngle(gyro));
+                        disp('Giro especial')
+                    end
+                    contador = 0;
+                    disp('act')
+                    disp(theta)
+            else 
+                theta = double(readRotationAngle(gyro));           
+                if theta > 0
+                    vL = 20;
+                    vR = 25;
+                    setMotorSpeeds(motorLeft, motorRight, vL, vR);
+                    disp('Corrigiendo hacia la izquierda (theta > 0)');
+                        
+                elseif theta < 0 
+                    vL = 25;
+                    vR = 20;
+                    setMotorSpeeds(motorLeft, motorRight, vL, vR);
+                    disp('Corrigiendo hacia la derecha (theta < 0)');
+                else
+                    vL = 21;
+                    vR = 20;
+                    setMotorSpeeds(motorLeft, motorRight, vL, vR);
+                    disp('Avanzar');
+                end
+                
+                pause(0.1);  % Espera para no sobrecargar el sistema
+            end
+            
+        case 'ROTAR'
+            disp('Rotacion')
+            disp(rightDist)
+            disp(theta)
+            clo=readColor(colSensor);
+
+            if rightDist < 30
+                while theta > -8¿7
+                        setMotorSpeeds(motorLeft, motorRight, -15, 15);
+                        theta = double(readRotationAngle(gyro));
+                        disp('Giro anti')
+                end
+                contador = contador + 1;
+                resetRotationAngle(gyro)
+                state = 'GO_TO_GOAL';
+            else %rightDist > 30
+                while theta < 87
+                        setMotorSpeeds(motorLeft, motorRight, 15, -15);
+                        theta = double(readRotationAngle(gyro));
+                        disp('Giro hora')
+                        disp(theta)
+                end
+                contador = 0;
+                resetRotationAngle(gyro)
+                state = 'GO_TO_GOAL';
+            end
+    end
+    pause(dt);
+end
+
+function setMotorSpeeds(mL, mR, vL, vR)
+    start(mL); start(mR);
+    mL.Speed = max(min(vL, 100), -100);
+    mR.Speed = max(min(vR, 100), -100);
+end
+
