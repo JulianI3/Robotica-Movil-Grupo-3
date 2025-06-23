@@ -49,5 +49,8 @@ En la práctica, ambos enfoques se pueden integrar en lo que se conoce como un s
 
 ## 4. Misión 1: Superar Obstáculos
 
+![image](https://github.com/user-attachments/assets/a7f19a4b-3f77-4ec2-bf03-85287f637a72)
+
+
 ## 5. Misión 2: Superar el Laberinto
 
