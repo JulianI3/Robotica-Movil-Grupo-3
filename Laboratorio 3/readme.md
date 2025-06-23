@@ -164,6 +164,8 @@ Se pueden ver los resultados en el siguiente video:
 ## 5. Misión 2: Superar el Laberinto
 
 Se realiza el montaje del laberinto con todos los casos que indica el laboratorio construyendo la siguiente disposición del laberinto:
+
+
 ![image](https://github.com/user-attachments/assets/dfc3757d-88b5-49e7-8b89-1707c782dfd5)
 
 
@@ -222,6 +224,8 @@ Mientras no se detecte color azul:
         Cambiar a estado GO_TO_GOAL
 
     Esperar un tiempo dt
+
+Finalizar programa al alcanzar meta
 ```
 ## Requisitos
 
