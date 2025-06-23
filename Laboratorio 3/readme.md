@@ -51,11 +51,97 @@ En la práctica, ambos enfoques se pueden integrar en lo que se conoce como un s
 
 Se realiza el montaje del trayecto con dos obstaculos, en este caso son cajas de carton dispuestas horizontalmente sobre el trayecto delimitado con cinta de color rojo como se muestra en la siguiente imágen: 
 
-![image](https://github.com/user-attachments/assets/0952a338-b5b0-4231-b21e-11bba796b6c9)
+![Precisión y Exactitud](https://github.com/user-attachments/assets/c2a33800-0c77-4539-8101-6da1acff9278)
 
-Con este montaje se espera que el robot siga la siguiente trayectoria haciendo uso de los sensores tales como el seguidor de linea, ultrasonido, infrarrojo y giroscopio, dependeiendo de las lecturas de estos el robot girará las ruedas de determinada forma al comprender algún obstacúlo.
+La solución implementada consiste en un robot móvil LEGO EV3 programado en MATLAB, cuyo objetivo es alcanzar una meta definida en coordenadas dentro de un espacio plano, mientras evita colisiones con al menos dos obstáculos. Para lograr esto, el robot está equipado con sensores ultrasónicos, de color, giroscópico e infrarrojo, que permiten detectar distancias, orientación y colores en su entorno inmediato.
 
-![image](https://github.com/user-attachments/assets/a7f19a4b-3f77-4ec2-bf03-85287f637a72)
+El control del robot se basa en un sistema de estados finitos con dos comportamientos principales: ir hacia la meta (GO_TO_GOAL) y seguir paredes (FOLLOW_WALL). El cambio entre estos comportamientos depende de la detección de obstáculos y del color rojo (señal de alineación con el camino). El robot corrige constantemente su trayectoria según el ángulo reportado por el giroscopio, y estima su posición mediante odometría con los encoders de los motores.
+
+## Características
+- Detección de obstáculos mediante sensores ultrasónicos e infrarrojos.
+- Control de trayectoria usando sensor giroscópico.
+- Navegación mediante estados: `GO_TO_GOAL` y `FOLLOW_WALL`.
+- Reconocimiento de línea roja para cambio de comportamiento.
+
+## Archivos
+
+- `Lab3Laberinto.m`: Código principal en MATLAB para EV3.
+  
+El cual se explica en formato pseudocódigo de la siguiente manera:
+
+```
+Inicializar conexión con el EV3 y los sensores
+Configurar motores y sensores (ultrasónico, infrarrojo, color, giroscopio)
+Establecer parámetros iniciales de posición, orientación, meta y tolerancia
+
+Mientras no se alcance la meta:
+    Leer sensores (distancia frontal, lateral, color, ángulo giroscópico)
+    Estimar posición actual con odometría
+
+    Si se detecta color negro:
+        Detener motores y terminar
+
+    Si el estado es GO_TO_GOAL:
+        Si hay obstáculo al frente:
+            Cambiar a estado FOLLOW_WALL
+        Si no:
+            Corregir rumbo según ángulo giroscópico y color:
+                Si theta > 0 y no hay rojo: girar ligeramente izquierda
+                Si theta < 0 y no hay rojo: girar ligeramente derecha
+                Si color rojo detectado: seguir recto
+
+    Si el estado es FOLLOW_WALL:
+        Si se detecta línea (color rojo):
+            Realizar giro de corrección hasta volver al rumbo
+            Cambiar a estado GO_TO_GOAL
+        Si obstáculo al frente:
+            Girar hacia la izquierda
+        Si mucha distancia lateral y cierto ángulo:
+            Realizar giro correctivo para acercarse al muro
+        Si distancia lateral correcta:
+            Avanzar paralelo al muro
+
+    Esperar dt segundos
+
+Finalizar programa al alcanzar meta
+```
+## Requisitos
+
+- MATLAB con soporte para EV3.
+- Kit LEGO Mindstorms EV3 con sensores: giroscopio, ultrasónico, infrarrojo y color.
+
+Haciendo uso de los sensores tales como el seguidor de linea (color), ultrasonido, infrarrojo y giroscopio, dependeiendo de las lecturas de estos el robot girará las ruedas de determinada forma al comprender algún obstacúlo.
+
+
+![Precisión y Exactitud](https://github.com/user-attachments/assets/ebf393ce-3e18-4c60-85df-955063936c37)
+
+
+## Sensores conectados en las siguientes posiciones:
+
+- Motor izquierdo: Puerto A
+
+- Motor derecho: Puerto B
+
+- Sensor giroscópico: Puerto 2
+
+- Sensor ultrasónico (frontal): Puerto 3
+
+- Sensor infrarrojo (lateral): Puerto 4
+
+- Sensor de color (frontal): Puerto 1
+
+## Pasos:
+
+1. Conectar el robot EV3 al computador vía USB.
+
+2. Cargar y ejecutar el archivo `Lab3Laberinto.m` desde MATLAB.
+
+3. El robot comenzará a moverse hacia la meta y cambiará de comportamiento automáticamente si detecta obstáculos o líneas de referencia.
+
+Con este montaje se espera que el robot siga la siguiente trayectoria 
+
+![Precisión y Exactitud](https://github.com/user-attachments/assets/a7f19a4b-3f77-4ec2-bf03-85287f637a72)
+
 
 
 
