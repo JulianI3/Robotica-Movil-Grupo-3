@@ -5,7 +5,7 @@
     <img src="https://imgur.com/Os03JoE.png" alt="Escudo UNAL" width="350px">
 </picture>
   
-# Tarea No. 2: Navegacion por planeación
+# Tarea No. 3: Navegacion por campo potencial
 
 </div>
 
@@ -20,7 +20,72 @@ El robot BubbleRob no es un robot encontrado en los modelos de CoppeliaSim sino 
 
 <div align="center">
 
-<img src="https://github.com/user-attachments/assets/0c8f80d4-4c3f-4aac-a30b-b42f176691b0" alt="Figura 0: Modelo cinemático usando la ruta: []" width="600"/>
+<img src="https://github.com/user-attachments/assets/0c8f80d4-4c3f-4aac-a30b-b42f176691b0" alt="Fig0" width="500"/>
+
+Figura 1: Robot BubbleRob
+</div>
+
+Por ende, si se encierra el robot en el cubo de lado 0.2 m,  el circulo que encierra al robot tendrá un radio de 0.1414 metros, o 14.14 centímetros. Este valor de R es requerido para aplicar un valor k=10*R en el algoritmo de MatLab sugerido para la presente actividad. El valor K por ende es de 1.141 y se obtiene el siguiente mapa de obstáculos:
+
+<div align="center">
+
+<img src="https://github.com/user-attachments/assets/e80292ac-c067-4827-8bab-264f59e0d4fc" alt="fig1" width="500"/>
+
+Figura 2: Mapa de obstáculos creado por el algoritmo de MatLab
 
 </div>
-Por ende, si se encierra el robot en el cubo de lado 0.2 m,  el circulo que encierra al robot tendrá un radio de $\sqrt{2} /10$ metros, o $10\sqrt{2}$
+
+### Función tangente sigmoidal (o función sigmoide)
+Esta función de activación está dada por la siguiente expresión matemática:
+<div align="center">
+<img src="https://github.com/user-attachments/assets/c4368744-6158-4158-a11b-2c88acc72af9" alt="fig2" width="150"/>
+</div>
+
+Cuando x es pequeño, el valor de la función sigmoidea es cercano a 0. Cuando x es grande, el valor de sigmoide es cercano a 1. La función sigmoidea transforma un número real y contínuo a un valor dos límites, donde los límites cuando se tiende a infinito y menos infinito son 1 y 0, respectivamente. La función sigmoide guarda parecido con la función tangente hiperbólica, pero esta última está acotada de entre -1 a 1.
+
+## Navegacion por Campo Potencial
+3.1. Implementar el algoritmo de navegacion por campos potenciales para desplazar un agente desde un punto de inicio hasta un objetivo, considerando tres casos con orientaciones iniciales de 30°, 45° y 60°, utilizando MATLAB, Lua o Python.
+
+3.2. Ajustar los parametros de atracción y repulsión para lograr una navegación exitosa.
+
+3.3. Mostrar la trayectoria seguida por el robot desde el punto inicial hasta el objetivo en la figura 3 (superpuesta al mapa original).
+
+<div align="center">
+
+<img src=" " alt="fig3" width="500"/>
+
+Figura 3: Trayectoria de navegación con orientación a 30°
+
+<img src=" " alt="fig4" width="500"/>
+
+Figura 4: Trayectoria de navegación con orientación a 45°
+
+<img src=" " alt="fig5" width="500"/>
+
+Figura 5: Trayectoria de navegación con orientación a 60°
+</div>
+
+
+3.4. Incluir una tabla con los parametros usados. 
+
+## Gradiente del Campo Potencial
+Presentar en una figura (figura 4) el gradiente del campo potencial usado para navegacion. 
+
+<div align="center">
+
+<img src=" " alt="fig6" width="500"/>
+
+Figura 6: Gradiente del Campo Potencial de navegación con orientación a 30°
+
+<img src=" " alt="fig7" width="500"/>
+
+Figura 7: Gradiente del Campo Potencial de navegación con orientación a 45°
+
+<img src=" " alt="fig8" width="500"/>
+
+Figura 8: Gradiente del Campo Potencial de navegación con orientación a 60°
+</div>
+
+## Conclusiones
+Presentar los resultados obtenidos, comentarios sobre los parametros usados, dificultades tecnicas y posibles mejoras. 
+
