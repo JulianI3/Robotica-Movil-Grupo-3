@@ -35,7 +35,7 @@ Figura 2: Mapa de obstáculos creado por el algoritmo de MatLab
 
 </div>
 
-Con esto, el origen del robot lo encontramos en X= -1.20 m y Y= -1.27m, y la meta se encuentra en X= 1.34 m y Y= 1.27 m.
+Con esto, el origen del robot lo encontramos en X= -1.20 m y Y= -1.27 m, y la meta se encuentra en X= 1.34 m y Y= 1.27 m.
 
 ### Función tangente sigmoidal (o función sigmoide)
 Esta función de activación está dada por la siguiente expresión matemática:
@@ -46,11 +46,38 @@ Esta función de activación está dada por la siguiente expresión matemática:
 Cuando x es pequeño, el valor de la función sigmoidea es cercano a 0. Cuando x es grande, el valor de sigmoide es cercano a 1. La función sigmoidea transforma un número real y contínuo a un valor dos límites, donde los límites cuando se tiende a infinito y menos infinito son 1 y 0, respectivamente. La función sigmoide guarda parecido con la función tangente hiperbólica, pero esta última está acotada de entre -1 a 1.
 
 ## Navegacion por Campo Potencial
-3.1. Implementar el algoritmo de navegacion por campos potenciales para desplazar un agente desde un punto de inicio hasta un objetivo, considerando tres casos con orientaciones iniciales de 30°, 45° y 60°, utilizando MATLAB, Lua o Python.
+Se implementó el algoritmo de planeación por campo potencial artificial (Artificial Potential Fields), utilizando los parámetros presentados en la tabla 1. Este algoritmo utilizó los parámetros de los campos, la pose inicial del robot en X= -1.20 m y Y= -1.27 m, variando el ángulo inicial entre 30, 45 y 60 grados, y la meta en X= 1.34 m y Y= 1.27 m.
+Los obstáculos fueron generados por el código [arena2025](https://github.com/JulianI3/Robotica-Movil-Grupo-3/blob/9e8c0b3d1e0d174f7e00d8f1e3c00d6ecd0a68bd/Tarea%203%3A%20S%C3%A1nchez-Garc%C3%ADa/Anexos%20y%20C%C3%B3digos/arena2025.m), y los 6 obstáculos creados son 6 cilindros (círculos en 2D), con las siguientes propiedade:
 
-3.2. Ajustar los parametros de atracción y repulsión para lograr una navegación exitosa.
+<div align="center">
+    
+| Obstáculo | Centro                    | Radio   |
+|-----------|---------------------------|---------|
+| Obst1     | X=0.4242,  Y=-0.9898      | 0.1414  |
+| Obst2     | X=-0.707,  Y=-0.707       | 0.2121  |
+| Obst3     | X=0,       Y=0            | 0.3535  |
+| Obst4     | X=-1.1312, Y=0.8484       | 0.1414  |
+| Obst5     | X=0.1414,  Y=0.8484       | 0.1697  |
+| Obst6     | X=0.9898,  Y=0.5656       | 0.2828  |
 
-3.3. Mostrar la trayectoria seguida por el robot desde el punto inicial hasta el objetivo en la figura 3 (superpuesta al mapa original).
+Tabla 1: Obstáculos en el campo vectorial.
+</div>
+
+El código [Planeacion_AFP](https://github.com/JulianI3/Robotica-Movil-Grupo-3/blob/9e8c0b3d1e0d174f7e00d8f1e3c00d6ecd0a68bd/Tarea%203%3A%20S%C3%A1nchez-Garc%C3%ADa/Anexos%20y%20C%C3%B3digos/Planeacion_AFP.m) fue basado en el siguiente [ejemplo](https://la.mathworks.com/matlabcentral/fileexchange/126455-artificial-potential-field-path-planning-algorithm) de MatLab. El codigo utilizó estas propiedades y generó el movimiento del robot através del campo potencial, utilizando los siguientes parámetros:
+
+<div align="center">
+
+| Parámetro | Descripción                                 | Valor   |
+|-----------|---------------------------------------------|---------|
+| `zeta`    | Coeficiente del campo atractivo             | 1.1547  |
+| `eta`     | Coeficiente del campo repulsivo             | 0.0732  |
+| `dstar`   | Distancia de transición del campo atractivo | 0.3     |
+| `Qstar`   | Radio de influencia del campo repulsivo     | 0.2     |
+
+Tabla 2: Parámetros del modelo utilizado.
+</div>
+
+El resultado del modelo para cada configuración inicial es el siguiente:
 
 <div align="center">
 
@@ -67,22 +94,10 @@ Figura 4: Trayectoria de navegación con orientación a 45°
 Figura 5: Trayectoria de navegación con orientación a 60°
 </div>
 
-
-3.4. Incluir una tabla con los parametros usados. 
-
-<div align="center">
-
-| Parámetro | Descripción                                 | Valor   |
-|-----------|---------------------------------------------|---------|
-| `zeta`    | Coeficiente del campo atractivo             | 1.1547  |
-| `eta`     | Coeficiente del campo repulsivo             | 0.0732  |
-| `dstar`   | Distancia de transición del campo atractivo | 0.3     |
-| `Qstar`   | Radio de influencia del campo repulsivo     | 0.2     |
-
-</div>
+El cambio solo es observable al inicio de la trayectoria pues el robot sin importar cómo esté orientado, buscará seguir la ruta más corta evitando los obstáculos.
 
 ## Gradiente del Campo Potencial
-Presentar en una figura (figura 4) el gradiente del campo potencial usado para navegacion. 
+El campo vectorial fue ajustado para dar vectores de la misma magnitud pero solo variando su dirección, esto porque las magnitudes máximas, cerca a los obstáculos, opacaban a las fuerzas más pequeñas. Por lo que el siguiente gráfico solo es representativo.
 
 <div align="center">
 
@@ -91,6 +106,7 @@ Presentar en una figura (figura 4) el gradiente del campo potencial usado para n
 Figura 6: Gradiente del Campo Potencial de navegación
 
 </div>
+
 
 ## Coppelia
 
@@ -111,9 +127,10 @@ https://github.com/user-attachments/assets/dc9c5fad-8539-417a-9ef5-6541912d11c0
 El codigo se puede encontrar en anexos.
 
 ## Conclusiones
-- Se preserntaron variaos problemas tecnicos al momento de realizar la simulacion en coppelia puesto que el robot terminava quedando en puntos muertos varias veces, teniento de modificar las constantes de repulsion y atracción hasta llegar a un punto optimo de movimiento.
-- Al momento de realizar la simulaion el efecto de la sigmoide varias veces no se veia, con el movimiento del robot no se veia ese cambio suve ademas de presenta un libre bamboleo de la direccion.
-- Si el diametro minimo para la repulsion era muy grande era más propenso a quedar en puntos muertos el robot.
+- Se observa que la orientación inicial no afecta significativamente a la ruta que debe serguir el robot, debido a que desde el inicio de su recorrido buscará mejorar la trayectoria para hacer la ruta más corta.
+- Se presentaron variaos problemas tecnicos al momento de realizar la simulacion en Coppelia puesto que el robot terminaba quedando en puntos muertos varias veces, teniendo que modificar las constantes de repulsion y atracción hasta llegar a un punto óptimo de movimiento.
+- Al momento de realizar la simulaion el efecto de la sigmoide varias veces no se apreciaba, con el movimiento del robot no se veia ese cambio suave ademas de presentar pitching de la direccion.
+- Si el diámetro mínimo para la repulsion era muy grande era más propenso a quedar en puntos muertos el robot.
 
 
 
