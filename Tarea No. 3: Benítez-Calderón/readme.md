@@ -39,17 +39,6 @@ Suposiciones:
 * El robot tiene ruedas idénticas, separadas por una distancia fija  L (ancho del eje o trackWidth).
 * Las ruedas tienen un radio r constante.
   
-Las ecuaciones cinemáticas del robot diferencial: <br>
-dx/dt = v * cos(theta) <br>
-dy/dt = v * sin(theta) <br>
-dtheta/dt = omega
-
-Donde:  <br>
-v = r/2 * (v_R + v_L)<br>
-w = r/L * (v_R - v_L)<br>
-v_L = v - (wL)/2<br>
-v_R = v + (wL)/2<br>
-
 ---
 
 ### ¿Qué es la función sigmoidal y para qué se usa en navegación robótica?
@@ -82,7 +71,15 @@ El radio del circulo circunscrito al robot presenta un valor de 0,125 metros; po
 
 El mapa denominado "arena2025", con la aplicación de k, corresponderá al siguiente:
 
-![image](https://github.com/user-attachments/assets/0ade7b8a-a56b-4832-b87c-72ff4e7abd03)
+<div align="center">
+
+<img src="https://github.com/user-attachments/assets/0ade7b8a-a56b-4832-b87c-72ff4e7abd03" alt="fig1" width="500"/>
+
+Figura 2: Mapa Arena
+
+</div>
+
+
 
 A continuación se muestran los valores de las posiciones de los puntos de llegada y salida, teniendo como referencia que la posición 0 se encuentra en el centro del obstáculo de mayor tamaño:
 
@@ -93,13 +90,34 @@ A continuación se muestran los valores de las posiciones de los puntos de llega
 
 Luego se realiza la navegación por campos potenciales con 3 diferentes orientaciones iniciales; 45 grados, 30 grados y 60 grados respecto al eje horizontal, para esta simulación se utiliza Matlab.   Los resultados de las simulaciones se observan a continuación:
 ### Orientación inicial 45 grados:
-![image](https://github.com/user-attachments/assets/4ea55855-67f0-49ef-9ecc-331bcb749754)
+
+<div align="center">
+
+<img src="https://github.com/user-attachments/assets/4ea55855-67f0-49ef-9ecc-331bcb749754" alt="fig1" width="500"/>
+
+Figura 3: Orientación inical 45 grados 
+
+</div>
 
 ### Orientación inicial 30 grados:
-![image](https://github.com/user-attachments/assets/2aa0f3a3-ef77-459d-a67b-d890aad75147)
+
+<div align="center">
+    
+<img src="https://github.com/user-attachments/assets/2aa0f3a3-ef77-459d-a67b-d890aad75147" alt="fig1" width="500"/>
+
+Figura 4: Orientación inical 30 grados 
+
+</div>
 
 ### Orientación inicial 60 grados:
-![image](https://github.com/user-attachments/assets/7f111dad-24fa-45cc-bc1c-4cd374070bc7)
+
+<div align="center">
+    
+<img src="https://github.com/user-attachments/assets/7f111dad-24fa-45cc-bc1c-4cd374070bc7" alt="fig1" width="500"/>
+
+Figura 5: Orientación inical 60 grados 
+
+</div>
 
 
 Para producir estas trayectorias fue necesario modificar los parámetros que modifican la relevancia de fuerza potencia que generan los objetos dentro del escenario, para la fuerza potencial de la llegada se modifica el valor de ζ, se dejó un valor estándar de 1, respecto al valor de η se implementó un valor mucho menor al valor de ζ, permitiendo que su fuerza de repulsión se presente de forma leve frente a la atracción general del mapa; finalmente Q\* define la distancia de influencia de los obstáculos, define el radio dentro del cual un obstáculo afecta al robot; permitiendo la detección temprana de un obstáculo por parte del robot.
