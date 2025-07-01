@@ -24,7 +24,13 @@ Salida: Superior-Izquierda
 ## Modelo cinemático del robot
 El robot DR20 es un robot móvil con tracción diferencial, es decir, se desplaza gracias a dos ruedas motrices ubicadas a los costados izquierdo y derecho del chasis. Este tipo de robots se controla mediante las velocidades individuales de sus ruedas, y su movimiento puede modelarse con un conjunto de ecuaciones cinemáticas simples.
 
-![image](https://github.com/user-attachments/assets/527477ea-889e-4d46-9a0d-88fbb4532f8a)
+<div align="center">
+
+<img src="https://github.com/user-attachments/assets/527477ea-889e-4d46-9a0d-88fbb4532f8a" alt="fig1" width="500"/>
+
+Figura 1: Modelo del robot Dr20
+
+</div>
 
 Suposiciones:
 * El robot se mueve en un plano 2D.
@@ -43,6 +49,35 @@ v = r/2 * (v_R + v_L)<br>
 w = r/L * (v_R - v_L)<br>
 v_L = v - (wL)/2<br>
 v_R = v + (wL)/2<br>
+
+---
+
+### ¿Qué es la función sigmoidal y para qué se usa en navegación robótica?
+
+La **función sigmoidal** (por ejemplo, `sigmoid(x) = 1 / (1 + e^{-x})`) es una función matemática continua y suave con forma de "S", que **crece gradualmente desde 0 hasta 1**. También se conoce como función logística.
+
+En navegación robótica, puede usarse para construir el **campo de repulsión de obstáculos** dentro de algoritmos de **campos potenciales artificiales**. Suaviza la interacción con los obstáculos y evita fuerzas infinitas cerca de ellos.
+
+### Campo de repulsión sigmoidal
+
+Una posible forma del campo:
+
+\[
+U_{rep}(d) = \frac{1}{1 + e^{k(d - d_0)}}
+\]
+
+Donde:
+- \( d \): distancia al obstáculo  
+- \( d_0 \): distancia de activación (cuando empieza a actuar la repulsión)  
+- \( k \): pendiente (qué tan brusco es el cambio)
+
+---
+
+### ✅ Ventajas sobre el campo paraboloide:
+- Suave y continua → menos oscilaciones.
+- Repulsión limitada → evita fuerzas excesivas.
+- Ajustable mediante parámetros → más control.
+
 
 ## Mapas
 El radio del circulo circunscrito al robot presenta un valor de 0,125 metros; por lo tanto el valor de corrección k tendrá un valor igual a 1,25.
