@@ -108,11 +108,12 @@ Dando como resultado:
 
 https://github.com/user-attachments/assets/dc9c5fad-8539-417a-9ef5-6541912d11c0
 
-
+El codigo se puede encontrar en anexos.
 
 ## Conclusiones
 - Se preserntaron variaos problemas tecnicos al momento de realizar la simulacion en coppelia puesto que el robot terminava quedando en puntos muertos varias veces, teniento de modificar las constantes de repulsion y atracción hasta llegar a un punto optimo de movimiento.
 - Al momento de realizar la simulaion el efecto de la sigmoide varias veces no se veia, con el movimiento del robot no se veia ese cambio suve ademas de presenta un libre bamboleo de la direccion.
-- Si el diametro minimo para la repulsion era muy grande era más propenso a quedar en puntos muertos el robot  
+- Si el diametro minimo para la repulsion era muy grande era más propenso a quedar en puntos muertos el robot.
+
 
 
