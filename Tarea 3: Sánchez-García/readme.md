@@ -35,6 +35,8 @@ Figura 2: Mapa de obstáculos creado por el algoritmo de MatLab
 
 </div>
 
+Con esto, el origen del robot lo encontramos en X= -1.20 m y Y= -1.27m, y la meta se encuentra en X= 1.34 m y Y= 1.27 m.
+
 ### Función tangente sigmoidal (o función sigmoide)
 Esta función de activación está dada por la siguiente expresión matemática:
 <div align="center">
@@ -52,15 +54,15 @@ Cuando x es pequeño, el valor de la función sigmoidea es cercano a 0. Cuando x
 
 <div align="center">
 
-<img src=" " alt="fig3" width="500"/>
+<img src="https://github.com/user-attachments/assets/0dc7723d-cf28-4dea-a743-ba263c2b295a" alt="fig3" width="500"/>
 
 Figura 3: Trayectoria de navegación con orientación a 30°
 
-<img src=" " alt="fig4" width="500"/>
+<img src="https://github.com/user-attachments/assets/cc2a7fe5-2c0f-4463-8582-71d0988cea35" alt="fig4" width="500"/>
 
 Figura 4: Trayectoria de navegación con orientación a 45°
 
-<img src=" " alt="fig5" width="500"/>
+<img src="https://github.com/user-attachments/assets/2244e5b8-bdc5-4553-bcf8-61627da5c66d" alt="fig5" width="500"/>
 
 Figura 5: Trayectoria de navegación con orientación a 60°
 </div>
@@ -68,22 +70,26 @@ Figura 5: Trayectoria de navegación con orientación a 60°
 
 3.4. Incluir una tabla con los parametros usados. 
 
+<div align="center">
+
+| Parámetro | Descripción                                 | Valor   |
+|-----------|---------------------------------------------|---------|
+| `zeta`    | Coeficiente del campo atractivo             | 1.1547  |
+| `eta`     | Coeficiente del campo repulsivo             | 0.0732  |
+| `dstar`   | Distancia de transición del campo atractivo | 0.3     |
+| `Qstar`   | Radio de influencia del campo repulsivo     | 0.2     |
+
+</div>
+
 ## Gradiente del Campo Potencial
 Presentar en una figura (figura 4) el gradiente del campo potencial usado para navegacion. 
 
 <div align="center">
 
-<img src=" " alt="fig6" width="500"/>
+<img src="https://github.com/user-attachments/assets/5498b56d-00a0-4039-bf60-fd228b74faf6" alt="fig6" width="500"/>
 
-Figura 6: Gradiente del Campo Potencial de navegación con orientación a 30°
+Figura 6: Gradiente del Campo Potencial de navegación
 
-<img src=" " alt="fig7" width="500"/>
-
-Figura 7: Gradiente del Campo Potencial de navegación con orientación a 45°
-
-<img src=" " alt="fig8" width="500"/>
-
-Figura 8: Gradiente del Campo Potencial de navegación con orientación a 60°
 </div>
 
 ## Conclusiones
