@@ -5,7 +5,7 @@
     <img src="https://imgur.com/Os03JoE.png" alt="Escudo UNAL" width="350px">
 </picture>
   
-# Tarea No. 3: Navegacion por planeación
+# Tarea No. 2: Navegacion por planeación
 </div>
 
 ## Integrantes:
