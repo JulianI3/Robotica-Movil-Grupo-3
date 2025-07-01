@@ -1,0 +1,135 @@
+sim = remApi('remoteApi');
+sim.simxFinish(-1);  % cerrar otras conexiones
+clientID = sim.simxStart('127.0.0.1',19999,true,true,5000,5);
+usar_escala_fuerza = true;
+velocidad_max = 0.04;   % m/s
+giro_max = 1.8;        % rad/s
+if clientID < 0
+    error('No se pudo conectar a CoppeliaSim');
+end
+disp('Conectado a CoppeliaSim');
+
+
+
+% Obtener handles
+[returnCode, leftMotor] = sim.simxGetObjectHandle(clientID, 'dr20_leftWheelJoint_', sim.simx_opmode_blocking);
+[returnCode, rightMotor] = sim.simxGetObjectHandle(clientID, 'dr20_rightWheelJoint_', sim.simx_opmode_blocking);
+[returnCode, robot] = sim.simxGetObjectHandle(clientID, 'dr20', sim.simx_opmode_blocking);
+
+% Iniciar streaming de pose
+sim.simxGetObjectPosition(clientID, robot, -1, sim.simx_opmode_streaming);
+sim.simxGetObjectOrientation(clientID, robot, -1, sim.simx_opmode_streaming);
+pause(0.2);
+% Parámetros
+r = 0.043;     % radio rueda (m)
+L = 0.25;     % distancia entre ruedas (m)
+
+goal = [0.95, 0.9];  % objetivo, mismo sistema de arena2025 (escala 8 * 0.8)
+
+K_att = 5;
+K_rep = 0.7;
+d0 = 0.32;     % umbral sigmoidal
+a = 5;       % pendiente sigmoide
+
+%Obtener mapa de obstáculos
+% [CC, RC, k] = arena2025();  % visualización y datos
+
+% obstaculos = CC;
+% obstaculos_radios = RC;
+
+% Loop de navegación
+CC = k*0.1*[3 -7;-5 -5;0 0;-8 6;1 6; 7 4]; % centros
+RC = k*0.1*[1 1.5 2.5 1 1.2 2];            % radios
+
+while true
+    % Obtener pose
+    [returnCode, pos] = sim.simxGetObjectPosition(clientID, robot, -1, sim.simx_opmode_buffer);
+    [returnCode, ori] = sim.simxGetObjectOrientation(clientID, robot, -1, sim.simx_opmode_buffer);
+
+    x = pos(1);
+    y = pos(2);
+    theta = ori(3);  % orientación en Z
+
+    % Campo potencial
+    if norm([x y]-[goal(1) goal(2)]) <= 0.2
+        att =  K_att*([x y]-[goal(1) goal(2)]);
+        disp('ca1')
+    else 
+        att = 0.5/norm([goal(1) goal(2)]-[x y]) * K_att*([goal(1) goal(2)]-[x y]);
+        disp('ca2')
+    end
+    % att = K_att * (goal - [x, y]);
+
+    rep = [0, 0];
+
+
+    for i = 1:size(CC, 1)
+        obs = CC(i, :);
+        radio_obs = RC(i);
+        diff = [x, y] - obs;
+        d = norm(diff) - radio_obs;
+        if d < d0
+            sigma = 1 / (1 + exp(-a * (d - d0)));
+            dsigma_dd = a * sigma * (1 - sigma);
+            grad = diff / (norm(diff) + 1e-6);  % dirección hacia afuera del obstáculo
+            tangent = [-grad(2), grad(1)];      % dirección perpendicular
+            rep = rep + K_rep * (dsigma_dd / (d + radio_obs + 1e-6)) * (grad + 0.4 * tangent);
+        end
+    end
+    disp('REPULSION')
+    disp(rep)
+    F = att + rep;
+    disp('Fuerza')
+    disp(F)
+    if usar_escala_fuerza
+        F = 0.5 * F;  % Escalar fuerza total
+    end
+
+    %% Modelo cinemático
+    Fx = F(1); Fy = F(2);
+    v = Fx * cos(theta) + Fy * sin(theta);
+    w = (-Fx * sin(theta) + Fy * cos(theta)) / 0.2;
+
+    % Limitar velocidades
+    if usar_escala_fuerza
+        v = max(min(v, velocidad_max), -velocidad_max);
+        w = max(min(w, giro_max), -giro_max);
+    end
+    % if norm(rep)>10
+    %     vL = (2*v - w*L)/(2*r)+1;
+    %     vR = (2*v + w*L)/(2*r)-1;
+    % else
+    %     v=max(min(v, velocidad_max), -velocidad_max);
+    %     vL = (2*v - w*L)/(2*r);
+    %     vR = (2*v + w*L)/(2*r);
+    % end
+    % Modelo diferencial: velocidades de rueda
+    vL = (2*v - w*L)/(2*r);
+    vR = (2*v + w*L)/(2*r);
+    
+    disp('Velocidad de rueda L')
+    disp(vL)
+    disp('Velocidad de rueda R')
+    disp(vR)
+    % Enviar a motores
+    sim.simxSetJointTargetVelocity(clientID, leftMotor, vL, sim.simx_opmode_streaming);
+    sim.simxSetJointTargetVelocity(clientID, rightMotor, vR, sim.simx_opmode_streaming);
+
+    % Condición de llegada
+    if norm([x - goal(1), y - goal(2)]) < 0.15
+        disp('🏁 Meta alcanzada');
+        vl=0;
+        vR=0;
+        break;
+    end
+
+    pause(0.05);
+end
+%% Finalizar
+
+sim.simxSetJointTargetVelocity(clientID, leftMotor, 0, sim.simx_opmode_streaming);
+sim.simxSetJointTargetVelocity(clientID, rightMotor, 0, sim.simx_opmode_streaming);
+sim.simxFinish(clientID);
+sim.delete();
+
+disp('🚩 Navegación finalizada.');
