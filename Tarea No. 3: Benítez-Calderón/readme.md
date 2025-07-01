@@ -116,7 +116,7 @@ Estas trayectorias funcionaban a base del siguiente campo vectorial:
 
 Como se observa, la mayor influencia es generada por el punto de llegada, y los obstáculos generan una repulsión en una pequeña área circundante a ellos mismos, permitiendo que el robot se dirija en dirección a la meta y evite obstáculos cuando sea necesario.
 
-##Simulación en CoppeliaSim
+## Simulación en CoppeliaSim
 Para la simulación en CoppeliaSim se generó una escena que involucra los 6 obstáculos propuestos en el ejercicio, además del robot dr20 correspondiente a esta actividad, los obstáculos se ubicaron en base a el factor de correción k y sus dimensiones también se encuentran ajustadas en función de este mismo valor de correción, los obstáculos se encuentran fijados por sensores de fuerza al suelo, permitiendo que no sean desplazados por el robot en caso de una colisión, la siguiente imagen muestra la escena en el software.
 
 ![image](https://github.com/user-attachments/assets/ead6e34f-f0c9-4eaa-9ff1-7ced937e88c4)
@@ -127,19 +127,20 @@ El código en CoppeliaSim implementa campos potenciales artificiales (APF). Dura
 
 https://github.com/user-attachments/assets/61aa0548-805e-4de6-adab-8ef610d04e78
 
-## Conclusiones y dificultades
 
+## Conclusiones y dificultades
 
 -Se evidenció que la implementación de la función sigmoidal permite un control más fino de la zona de repulsión, pero su efecto puede ser difícil de apreciar visualmente si no se ajustan correctamente los parámetros de pendiente (k) y distancia de activación (d₀).
 
 -Al utilizar la sigmoide, se redujeron las fuerzas bruscas cerca de los obstáculos en comparación con el campo paraboloide, sin embargo, también aumentó la probabilidad de que el robot no reaccionara a tiempo ante ciertos obstáculos si el gradiente era demasiado suave.
 
--En varias pruebas, cuando el valor de k era bajo o d₀ muy pequeño, el robot presentaba trayectorias menos reactivas, lo que generaba colisiones o acercamientos peligrosos.
+-En varias pruebas, cuando el valor d₀ muy pequeño, el robot presentaba trayectorias menos reactivas, lo que generaba colisiones o acercamientos peligrosos.
 
 -Se observó que al combinar la función sigmoidal con un campo de atracción constante, el movimiento del robot era más fluido, aunque en entornos con obstáculos densos aún se presentaban puntos muertos si no se ajustaba bien la ganancia de repulsión.
 
 -El comportamiento suave de la sigmoide reduce el efecto de “vibración” o “zigzagueo” del robot, pero también puede dificultar su capacidad de escapar de trampas locales si no se complementa con estrategias adicionales.
 
+-Cuando se presentan objetos cercanos entre sí, sus campos de repulsión pueden ocasionar que se genere un estancamiento en el moviemiento del robot por la gran influencia de esta suma de campos repulsivos, para solucionar esto es necesario modificar los parámetros relacionados con esta repulsión, permitiendo generar un pasillo vectorial que permita el paso del robot.
 
 
 
