@@ -130,14 +130,30 @@ Para producir estas trayectorias fue necesario modificar los parámetros que mod
 
 Estas trayectorias funcionaban a base del siguiente campo vectorial:
 
-![image](https://github.com/user-attachments/assets/31945472-9c4f-4b3b-8007-8bf074f53138)
+<div align="center">
+    
+<img src="https://github.com/user-attachments/assets/31945472-9c4f-4b3b-8007-8bf074f53138" alt="fig1" width="500"/>
+
+Figura 6: Campo Vectorial
+
+</div>
+
+
 
 Como se observa, la mayor influencia es generada por el punto de llegada, y los obstáculos generan una repulsión en una pequeña área circundante a ellos mismos, permitiendo que el robot se dirija en dirección a la meta y evite obstáculos cuando sea necesario.
 
 ## Simulación en CoppeliaSim
 Para la simulación en CoppeliaSim se generó una escena que involucra los 6 obstáculos propuestos en el ejercicio, además del robot dr20 correspondiente a esta actividad, los obstáculos se ubicaron en base a el factor de correción k y sus dimensiones también se encuentran ajustadas en función de este mismo valor de correción, los obstáculos se encuentran fijados por sensores de fuerza al suelo, permitiendo que no sean desplazados por el robot en caso de una colisión, la siguiente imagen muestra la escena en el software.
 
-![image](https://github.com/user-attachments/assets/ead6e34f-f0c9-4eaa-9ff1-7ced937e88c4)
+<div align="center">
+    
+<img src="https://github.com/user-attachments/assets/ead6e34f-f0c9-4eaa-9ff1-7ced937e88c4" alt="fig1" width="500"/>
+
+Figura 7: Mapa en CoppeliaSim
+
+</div>
+
+
 
 
 
