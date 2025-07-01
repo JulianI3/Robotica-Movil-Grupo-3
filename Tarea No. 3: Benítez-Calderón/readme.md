@@ -44,13 +44,20 @@ w = r/L * (v_R - v_L)<br>
 v_L = v - (wL)/2<br>
 v_R = v + (wL)/2<br>
 
-## Mapa
-A continuación se presenta el mapa binario generado en Matlab:
+## Mapas
+El radio del circulo circunscrito al robot presenta un valor de 0,125 metros; por lo tanto el valor de corrección k tendrá un valor igual a 1,25.
 
-![image](https://github.com/user-attachments/assets/558a9989-bca9-424b-b365-0fc17da6350e)
+El mapa denominado "arena2025", con la aplicación de k, corresponderá al siguiente:
+
+![image](https://github.com/user-attachments/assets/0ade7b8a-a56b-4832-b87c-72ff4e7abd03)
+
+A continuación se muestran los valores de las posiciones de los puntos de llegada y salida:
 
 
-Posteriormente se realiza el inflado del mapa, que corresponde a la mitad del valor de la trocha del robot la cuál, según el modelo de coppeliaSim es de 0.25 metros <br>
+Luego se realiza la navegación por campos potenciales con 3 diferentes orientaciones iniciales, 
+
+
+
 
 ![image](https://github.com/user-attachments/assets/c1b6f823-c42a-4439-9ac0-e45fa560081d)
 
