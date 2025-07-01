@@ -84,10 +84,36 @@ El mapa denominado "arena2025", con la aplicación de k, corresponderá al sigui
 
 ![image](https://github.com/user-attachments/assets/0ade7b8a-a56b-4832-b87c-72ff4e7abd03)
 
-A continuación se muestran los valores de las posiciones de los puntos de llegada y salida:
+A continuación se muestran los valores de las posiciones de los puntos de llegada y salida, teniendo como referencia que la posición 0 se encuentra en el centro del obstáculo de mayor tamaño:
+
+| Punto  |     X      |     Y      |
+|--------|------------|------------|
+| Inicio | -1.0625    | -1.1250    |
+| Meta   |  1.1875    |  1.1250    |
+
+Luego se realiza la navegación por campos potenciales con 3 diferentes orientaciones iniciales; 45 grados, 30 grados y 60 grados respecto al eje horizontal, para esta simulación se utiliza Matlab.   Los resultados de las simulaciones se observan a continuación:
+### Orientación inicial 45 grados:
+![image](https://github.com/user-attachments/assets/4ea55855-67f0-49ef-9ecc-331bcb749754)
+
+### Orientación inicial 30 grados:
+![image](https://github.com/user-attachments/assets/2aa0f3a3-ef77-459d-a67b-d890aad75147)
+
+### Orientación inicial 60 grados:
+![image](https://github.com/user-attachments/assets/7f111dad-24fa-45cc-bc1c-4cd374070bc7)
 
 
-Luego se realiza la navegación por campos potenciales con 3 diferentes orientaciones iniciales, 
+Para producir estas trayectorias fue necesario modificar l
+
+| Parámetro | Valor  |
+|-----------|--------|
+| ζ (zeta)  | 1.0    |
+| η (eta)   | 0.02   |
+| Q\*       | 0.3    |
+
+Estas trayectorias 
+
+
+
 
 
 
