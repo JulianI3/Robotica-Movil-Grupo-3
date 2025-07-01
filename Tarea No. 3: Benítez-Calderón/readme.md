@@ -62,9 +62,7 @@ En navegación robótica, puede usarse para construir el **campo de repulsión d
 
 Una posible forma del campo:
 
-\[
-U_{rep}(d) = \frac{1}{1 + e^{k(d - d_0)}}
-\]
+`U_rep(d) = 1 / (1 + exp(k * (d - d0)))`
 
 Donde:
 - \( d \): distancia al obstáculo  
