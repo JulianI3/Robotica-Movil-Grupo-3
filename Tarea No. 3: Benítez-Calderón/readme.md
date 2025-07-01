@@ -129,15 +129,16 @@ https://github.com/user-attachments/assets/61aa0548-805e-4de6-adab-8ef610d04e78
 
 ## Conclusiones y dificultades
 
--El uso de la Remote API permite controlar robots virtuales desde MATLAB, lo que facilita la implementación, prueba y depuración de algoritmos de navegación sin necesidad de hardware físico.
 
--Fue necesario alinear correctamente laS rutas PRM y RRT con el sistema de coordenadas de CoppeliaSim, ya que el mapa en MATLAB y el entorno de simulación no siempre comparten el mismo origen o escala.
+-Se evidenció que la implementación de la función sigmoidal permite un control más fino de la zona de repulsión, pero su efecto puede ser difícil de apreciar visualmente si no se ajustan correctamente los parámetros de pendiente (k) y distancia de activación (d₀).
 
--PRM y RRT son métodos efectivos para planificar trayectorias en mapas binarios, cada uno con ventajas distintas. PRM genera rutas más suaves en espacios abiertos, mientras que RRT es más eficiente en entornos complejos con muchos obstáculos.
+-Al utilizar la sigmoide, se redujeron las fuerzas bruscas cerca de los obstáculos en comparación con el campo paraboloide, sin embargo, también aumentó la probabilidad de que el robot no reaccionara a tiempo ante ciertos obstáculos si el gradiente era demasiado suave.
 
--La lectura de rutas desde archivos externos (como .xls o .xlm) puede causar errores de formato o incompatibilidad con readmatrix/xlsread, complicando el flujo de trabajo si no se estandarizan correctamente.
+-En varias pruebas, cuando el valor de k era bajo o d₀ muy pequeño, el robot presentaba trayectorias menos reactivas, lo que generaba colisiones o acercamientos peligrosos.
 
--Se probaron diferentes rutas ya que algunas daban muy justas y el robot lograba chocar con las paredes, por lo tanto es importante verificar la ruta antes de implementar.
+-Se observó que al combinar la función sigmoidal con un campo de atracción constante, el movimiento del robot era más fluido, aunque en entornos con obstáculos densos aún se presentaban puntos muertos si no se ajustaba bien la ganancia de repulsión.
+
+-El comportamiento suave de la sigmoide reduce el efecto de “vibración” o “zigzagueo” del robot, pero también puede dificultar su capacidad de escapar de trampas locales si no se complementa con estrategias adicionales.
 
 
 
