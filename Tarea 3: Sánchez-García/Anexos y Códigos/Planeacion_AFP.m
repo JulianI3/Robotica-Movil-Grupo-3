@@ -1,0 +1,210 @@
+clear all; close all; clc;
+% Definición de las características del modelo
+
+% Pose de la ENTRADA
+x = -1.20;
+y = -1.27;
+theta = 45*pi/180;  %Ángulo de entrada
+
+% Posición de la SALIDA
+x_goal = 1.34;
+y_goal = 1.27;
+position_accuracy = 0.05;
+
+% APF parameters
+zeta = 1.1547;
+eta = 0.0732;
+dstar = 0.3;
+Qstar = 0.2 ; %0.75
+
+% Parameters related to kinematic model
+error_theta_max = deg2rad(45);
+v_max = 0.2;
+Kp_omega = 1.5;
+omega_max = 0.5*pi; 
+%% Creación de los obstáculos
+
+% Número de puntos para representar cada círculo
+num_points = 100;
+
+% Función para generar un círculo de puntos dados centro (cx, cy) y radio r
+generate_circle = @(cx, cy, r) [cx + r*cos(linspace(0, 2*pi, num_points));
+                                cy + r*sin(linspace(0, 2*pi, num_points))];
+
+% ---------------------------
+% Define los centros y radios
+% ---------------------------
+centros = [ 0.4242, -0.9898;
+            -0.707, -0.707;
+            0, 0;
+            -1.1312, 0.8484;
+            0.1414, 0.8484;
+            0.9898, 0.5656 ];  % (x, y) de cada círculo
+
+radios = [0.1414, 0.2121, 0.3535, 0.1414, 0.1697, 0.2828];  % radios respectivos
+
+% ---------------------------
+% Generar los obstáculos
+% ---------------------------
+obst1_points = generate_circle(centros(1,1), centros(1,2), radios(1));
+obst2_points = generate_circle(centros(2,1), centros(2,2), radios(2));
+obst3_points = generate_circle(centros(3,1), centros(3,2), radios(3));
+obst4_points = generate_circle(centros(4,1), centros(4,2), radios(4));
+obst5_points = generate_circle(centros(5,1), centros(5,2), radios(5));
+obst6_points = generate_circle(centros(6,1), centros(6,2), radios(6));
+%% Cálculos del campo potencial
+
+figure(1); 
+t = 1;
+dT = 0.1;
+t_max = 1000;
+X = zeros(1,t_max);
+Y = zeros(1,t_max);
+X(1) = x;
+Y(1) = y;
+
+while norm([x_goal y_goal] - [x y]) > position_accuracy || t > t_max   
+    % Calculate Attractive Potential
+    if norm([x y]-[x_goal y_goal]) <= dstar
+        nablaU_att =  zeta*([x y]-[x_goal y_goal]);
+    else 
+        nablaU_att = dstar/norm([x y]-[x_goal y_goal]) * zeta*([x y]-[x_goal y_goal]);
+    end
+
+    % Find the minimum distance from the obstacle
+    [obst1_idx, obst1_dist] = dsearchn(obst1_points', [x y]);
+    [obst2_idx, obst2_dist] = dsearchn(obst2_points', [x y]);
+    [obst3_idx, obst3_dist] = dsearchn(obst3_points', [x y]);
+    [obst4_idx, obst4_dist] = dsearchn(obst4_points', [x y]);
+    [obst5_idx, obst5_dist] = dsearchn(obst5_points', [x y]);
+    [obst6_idx, obst6_dist] = dsearchn(obst6_points', [x y]);
+
+    % Calculate Repulsive Potential
+    nablaU_rep = [0 0];
+    if obst1_dist <= Qstar     
+        nablaU_rep = nablaU_rep + (eta*(1/Qstar - 1/obst1_dist) * 1/obst1_dist^2)*([x y] - [obst1_points(1,obst1_idx)  obst1_points(2,obst1_idx)]);
+    end
+    if obst2_dist <= Qstar  && ~inpolygon(x,y,obst2_points(1,:),obst2_points(2,:))          
+        nablaU_rep = nablaU_rep + (eta*(1/Qstar - 1/obst2_dist) * 1/obst2_dist^2)*([x y] - [obst2_points(1,obst2_idx)  obst2_points(2,obst2_idx)]);
+    end
+    if obst3_dist <= Qstar  && ~inpolygon(x,y,obst3_points(1,:),obst3_points(2,:))          
+        nablaU_rep = nablaU_rep + (eta*(1/Qstar - 1/obst3_dist) * 1/obst3_dist^2)*([x y] - [obst3_points(1,obst3_idx)  obst3_points(2,obst3_idx)]);
+    end
+    if obst4_dist <= Qstar  && ~inpolygon(x,y,obst4_points(1,:),obst4_points(2,:))          
+        nablaU_rep = nablaU_rep + (eta*(1/Qstar - 1/obst4_dist) * 1/obst4_dist^2)*([x y] - [obst4_points(1,obst4_idx)  obst4_points(2,obst4_idx)]);
+    end
+    if obst5_dist <= Qstar  && ~inpolygon(x,y,obst5_points(1,:),obst5_points(2,:))          
+        nablaU_rep = nablaU_rep + (eta*(1/Qstar - 1/obst5_dist) * 1/obst5_dist^2)*([x y] - [obst5_points(1,obst5_idx)  obst5_points(2,obst5_idx)]);
+    end
+    if obst6_dist <= Qstar  && ~inpolygon(x,y,obst6_points(1,:),obst6_points(2,:))          
+        nablaU_rep = nablaU_rep + (eta*(1/Qstar - 1/obst6_dist) * 1/obst6_dist^2)*([x y] - [obst6_points(1,obst6_idx)  obst6_points(2,obst6_idx)]);
+    end
+    % Calculate final potential
+    nablaU = nablaU_att+nablaU_rep;
+
+    % Calculate reference value of linear velocity (v_ref) and orientation (theta_ref)
+    theta_ref = atan2(-nablaU(2), -nablaU(1));
+
+    error_theta = theta_ref - theta;
+    if abs(error_theta) <= error_theta_max
+        alpha = (error_theta_max - abs(error_theta)) / error_theta_max;
+        v_ref = min( alpha*norm(-nablaU), v_max );
+    else
+        v_ref = 0;
+    end
+
+    % Simple kinematic mobile robot model
+    % Omitted dynamics.
+    omega_ref = Kp_omega * error_theta;
+    omega_ref = min( max(omega_ref, -omega_max), omega_max);
+    theta = theta + omega_ref * dT;
+    x = x + v_ref*cos(theta) * dT;
+    y = y + v_ref*sin(theta) * dT;
+
+    t = t + 1;
+
+    % Archive and plot it
+    X(t) = x;
+    Y(t) = y;
+    cla;
+    daspect([1 1 1]); 
+    xlim([-2,2]);  ylim([-1.5 1.5]);
+    box on; hold on;
+    plot(obst1_points(1,:), obst1_points(2,:), '-r');
+    plot(obst2_points(1,:), obst2_points(2,:), '-r');
+    plot(obst3_points(1,:), obst3_points(2,:), '-r');
+    plot(obst4_points(1,:), obst4_points(2,:), '-r');
+    plot(obst5_points(1,:), obst5_points(2,:), '-r');
+    plot(obst6_points(1,:), obst6_points(2,:), '-r');
+    plot(x_goal, y_goal, 'ob');
+    plot(X(1:t), Y(1:t), '-b'); % Plot traveled path
+    plot([x x+0.2*cos(theta_ref)], [y y+0.2*sin(theta_ref)], '-g'); % Plot reference orientation of the robot
+    plot([x x+0.2*cos(theta)], [y y+0.2*sin(theta)], '-r'); % Plot orientation of the robot
+    drawnow;
+    pause(dT);
+end
+t = t*dT; % scale from itetations to [s]
+
+disp("Travel time: " + t);
+%% Graficación del campo potencial
+
+[Xgrid, Ygrid] = meshgrid(-2:0.15:2, -1.5:0.15:1.5);
+Fx = zeros(size(Xgrid));
+Fy = zeros(size(Ygrid));
+
+for ix = 1:size(Xgrid, 1)
+    for iy = 1:size(Xgrid, 2)
+        x_pos = Xgrid(ix, iy);
+        y_pos = Ygrid(ix, iy);
+
+        % --- Campo atractivo ---
+        dist_to_goal = norm([x_pos, y_pos] - [x_goal, y_goal]);
+        if dist_to_goal <= dstar
+            Fatt = -zeta * ([x_pos, y_pos] - [x_goal, y_goal]);
+        else
+            Fatt = -zeta * dstar / dist_to_goal * ([x_pos, y_pos] - [x_goal, y_goal]);
+        end
+
+        % --- Campo repulsivo ---
+        Frep = [0 0];
+        for j = 1:size(centros,1)
+            obs = centros(j,:);
+            r = radios(j);
+
+            delta_o = [x_pos, y_pos] - obs;
+            dist_to_obs = norm(delta_o) - r;
+
+            if dist_to_obs <= Qstar && dist_to_obs > 0
+                Frep = Frep + eta * (1/dist_to_obs - 1/Qstar) * (1/(dist_to_obs^2)) * (delta_o / norm(delta_o));
+            end
+        end
+
+        % Fuerza total
+        Ftotal = Fatt + Frep;
+        if norm(Ftotal) ~= 0
+            Ftotal = Ftotal / norm(Ftotal);  % Normalizar dirección
+        end
+        Fx(ix, iy) = Ftotal(1);
+        Fy(ix, iy) = Ftotal(2);
+    end
+end
+
+
+% --- Gráfica del campo ---
+figure;
+quiver(Xgrid, Ygrid, Fx, Fy, 0.3 , 'AutoScale', 'off');
+hold on; axis equal; grid on;
+title('Campo vectorial total (atractivo + repulsivo)');
+xlabel('X'); ylabel('Y');
+
+% Obstáculos
+theta = linspace(0, 2*pi, 100);
+for j = 1:size(centros,1)
+    x_circ = centros(j,1) + radios(j)*cos(theta);
+    y_circ = centros(j,2) + radios(j)*sin(theta);
+    fill(x_circ, y_circ, 'r', 'FaceAlpha', 0.3, 'EdgeColor','r');
+end
+
+% Meta
+plot(x_goal, y_goal, 'go', 'MarkerSize',10, 'LineWidth',2);
+legend('Campo vectorial', 'Obstáculos', 'Meta');
