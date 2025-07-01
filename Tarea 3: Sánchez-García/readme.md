@@ -92,6 +92,27 @@ Figura 6: Gradiente del Campo Potencial de navegación
 
 </div>
 
+## Coppelia
+
+La simulacion de coppelia se realizo con el siguiente montaje
+
+<div align="center">
+    
+![Captura de pantalla de 2025-07-01 13-54-09](https://github.com/user-attachments/assets/a896a449-e0a0-40c3-a1a0-a65dfd1f9510)
+
+</div>
+
+Dando como resultado:
+
+
+
+https://github.com/user-attachments/assets/dc9c5fad-8539-417a-9ef5-6541912d11c0
+
+
+
 ## Conclusiones
-Presentar los resultados obtenidos, comentarios sobre los parametros usados, dificultades tecnicas y posibles mejoras. 
+- Se preserntaron variaos problemas tecnicos al momento de realizar la simulacion en coppelia puesto que el robot terminava quedando en puntos muertos varias veces, teniento de modificar las constantes de repulsion y atracción hasta llegar a un punto optimo de movimiento.
+- Al momento de realizar la simulaion el efecto de la sigmoide varias veces no se veia, con el movimiento del robot no se veia ese cambio suve ademas de presenta un libre bamboleo de la direccion.
+- Si el diametro minimo para la repulsion era muy grande era más propenso a quedar en puntos muertos el robot  
+
 
