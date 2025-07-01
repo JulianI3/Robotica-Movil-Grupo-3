@@ -160,6 +160,8 @@ https://github.com/user-attachments/assets/61aa0548-805e-4de6-adab-8ef610d04e78
 
 -Cuando se presentan objetos cercanos entre sí, sus campos de repulsión pueden ocasionar que se genere un estancamiento en el moviemiento del robot por la gran influencia de esta suma de campos repulsivos, para solucionar esto es necesario modificar los parámetros relacionados con esta repulsión, permitiendo generar un pasillo vectorial que permita el paso del robot.
 
+-Se concluye que el ángulo inicial del robot no tuvo un impacto significativo en la trayectoria, ya que el robot rápidamente ajustó su orientación hacia la meta desde el inicio. La estrategia de navegación basada en campos potenciales permitió corregir la dirección eficientemente, manteniendo una trayectoria estable e invariable hacia el objetivo.
+
 
 
 
