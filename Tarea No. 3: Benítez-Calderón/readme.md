@@ -102,251 +102,28 @@ Luego se realiza la navegación por campos potenciales con 3 diferentes orientac
 ![image](https://github.com/user-attachments/assets/7f111dad-24fa-45cc-bc1c-4cd374070bc7)
 
 
-Para producir estas trayectorias fue necesario modificar l
+Para producir estas trayectorias fue necesario modificar los parámetros que modifican la relevancia de fuerza potencia que generan los objetos dentro del escenario, para la fuerza potencial de la llegada se modifica el valor de ζ, se dejó un valor estándar de 1, respecto al valor de η se implementó un valor mucho menor al valor de ζ, permitiendo que su fuerza de repulsión se presente de forma leve frente a la atracción general del mapa; finalmente Q\* define la distancia de influencia de los obstáculos, define el radio dentro del cual un obstáculo afecta al robot; permitiendo la detección temprana de un obstáculo por parte del robot.
 
 | Parámetro | Valor  |
 |-----------|--------|
-| ζ (zeta)  | 1.0    |
-| η (eta)   | 0.02   |
+| ζ         | 1.0    |
+| η         | 0.02   |
 | Q\*       | 0.3    |
 
-Estas trayectorias 
+Estas trayectorias funcionaban a base del siguiente campo vectorial:
+
+![image](https://github.com/user-attachments/assets/31945472-9c4f-4b3b-8007-8bf074f53138)
+
+Como se observa, la mayor influencia es generada por el punto de llegada, y los obstáculos generan una repulsión en una pequeña área circundante a ellos mismos, permitiendo que el robot se dirija en dirección a la meta y evite obstáculos cuando sea necesario.
+
+##Simulación en CoppeliaSim
+Para la simulación en CoppeliaSim se generó una escena que involucra los 6 obstáculos propuestos en el ejercicio, además del robot dr20 correspondiente a esta actividad, los obstáculos se ubicaron en base a el factor de correción k y sus dimensiones también se encuentran ajustadas en función de este mismo valor de correción, los obstáculos se encuentran fijados por sensores de fuerza al suelo, permitiendo que no sean desplazados por el robot en caso de una colisión, la siguiente imagen muestra la escena en el software.
+
+![image](https://github.com/user-attachments/assets/ead6e34f-f0c9-4eaa-9ff1-7ced937e88c4)
 
 
 
-
-
-
-
-![image](https://github.com/user-attachments/assets/c1b6f823-c42a-4439-9ac0-e45fa560081d)
-
-Ahora se realiza la ruta óptima por planeación PRM, para ello se utilizan los siguientes parámetros:
-MaxNumNodes: 300
-MaxConnectionDistance: 5.00
-
-
-![image](https://github.com/user-attachments/assets/e2fab62e-aa91-4a6b-b3af-116f78fae8fb)
-
-Ruta óptima (tabla):<br>
-| Punto |     X      |     Y      |
-|-------|------------|------------|
-| 1     | 6.0000     | 0.2000     |
-| 2     | 6.1093     | 0.2913     |
-| 3     | 5.8411     | 0.9569     |
-| 4     | 5.8718     | 2.1775     |
-| 5     | 6.0323     | 4.3446     |
-| 6     | 4.6045     | 4.5314     |
-| 7     | 4.3644     | 5.5040     |
-| 8     | 2.3795     | 5.6634     |
-| 9     | 0.2203     | 6.0818     |
-| 10    | 0.1500     | 6.0500     |
-
-
-Costo total de la ruta óptima: 11.40 metros
-
-Finalmente se realiza la ruta por planeación RRT, para ello se utilizan los siguientes parámetros:
-MinIterations: 2000
-ConnectionDistance: 2.50
-
-![image](https://github.com/user-attachments/assets/50f82954-ce8b-4f2f-8014-9ac7551e5b5c)
-
-| Punto |     X      |     Y      |
-|-------|------------|------------|
-| 1     | 6.0000     | 0.2000     |
-| 2     | 5.6198     | 2.6500     |
-| 3     | 5.2534     | 2.7228     |
-| 4     | 5.6960     | 2.5375     |
-| 5     | 6.0755     | 3.2219     |
-| 6     | 5.8168     | 4.5380     |
-| 7     | 5.8165     | 4.5728     |
-| 8     | 4.3493     | 4.2371     |
-| 9     | 4.4771     | 4.3274     |
-| 10    | 4.2312     | 6.0482     |
-| 11    | 4.6360     | 5.8744     |
-| 12    | 4.0438     | 5.7817     |
-| 13    | 3.7956     | 5.9304     |
-| 14    | 3.6233     | 5.6919     |
-| 15    | 3.4241     | 5.4407     |
-| 16    | 1.0018     | 5.8915     |
-| 17    | 0.1500     | 6.0500     |
-
-
-Costo total de la ruta óptima (RRT): 16.15 met
-
-## Simulacion en Matlab y CoppeliaSim
-Para la simulación en CoppeliaSim se utilizó la escena de mapa2.ttt y se agregó el robot dr20 , al cual se le proporcionó el siguiente script enlazado para poder manipular su moviento a través de Matlab:
-```lua
-function sysCall_init()
-    sim = require('sim')
-    simRemoteApi.start(19999)
-    -- do some initialization here
-end
-
-function sysCall_actuation()
-    -- put your actuation code here
-end
-
-function sysCall_sensing()
-    -- put your sensing code here
-end
-
-function sysCall_cleanup()
-    -- do some clean-up here
-end
-
--- See the user manual or the available code snippets for additional callback functions and details
-```
-En la siguiente imagen se pueden observar las dimensiones del laberinto el cual posee una forma cuadrada de 6.5m x 6.5m y una altura de pared de 0.4m, esto es suficiente para verse bien representado el movimiento del robot a demás de ser fiel a los mapas encontrados anteriormente 
-
-
-![image](https://github.com/user-attachments/assets/3480665e-57a4-40d5-bc78-a6b7b8b887db)
-
-Para incluir las rutas PRM y RRT a CoppeliaSim utilizamos el siguiente código: el cual incluye ambas rutas y traza una a partir de las dos, para esto utiliza unos archivos denominados PATH los cuales son archivos de ubicaciones que representan el movimiento a lo largo del laberinto, además de poder ajustar la posición inicial y la velocidad a la que el robot se desplaza, este código tambien permite observar la ruta planeada antes de ejecutarse en CoppeliaSim.
-
-
-![image](https://github.com/user-attachments/assets/ae531d3d-b968-45ef-a4e9-e00a98076822)
-
-``` Matlab
-function dr20_prm_pursuit()
-    %% 1. Cargar y preparar el mapa
-    load('Celdas_binarias_ejercicio.mat','sm4b');
-    resolution = 8;               % celdas/m para DR20
-    map = binaryOccupancyMap(sm4b, resolution);
-    robotWidth = 0.25;            % ancho del DR20
-    inflate(map, robotWidth/2);   % inflar obstáculos
-
-    %% 2. Definir puntos de inicio y meta (Inf-Der → Sup-Izq)
-    startMap = [map.XWorldLimits(2)-0.5, map.YWorldLimits(1)+0.2];
-    goalMap  = [map.XWorldLimits(1)+0.15, map.YWorldLimits(2)-0.45];
-
-    %% 3. Planificar PRM automático
-    prm = robotics.PRM(map);
-    prm.NumNodes           = 300;
-    prm.ConnectionDistance = 5;
-    pathPRM_auto = findpath(prm, startMap, goalMap);
-    if isempty(pathPRM_auto)
-        error('❌ No se encontró ruta PRM automática.');
-    end
-
-    %% 4. Cargar rutas desde .xlm con importdata
-    S1 = importdata('pathPRM.xlm');
-    if isstruct(S1)
-        pathPRM = S1.data(:,1:2);
-    else
-
-        
-        pathPRM = S1(:,1:2);
-    end
-
-    S2 = importdata('pathRRT.xlm');
-    if isstruct(S2)
-        pathRRT = S2.data(:,1:2);
-    else
-        pathRRT = S2(:,1:2);
-    end
-
-    %% 5. Visualizar rutas en el mapa MATLAB
-    figure('Name','Rutas en coordenadas de mapa','NumberTitle','off');
-    show(prm); hold on;
-      plot(pathPRM_auto(:,1), pathPRM_auto(:,2), 'r--','LineWidth',1.5);
-      plot(pathPRM(:,1),      pathPRM(:,2),      'm-','LineWidth',2);
-      plot(pathRRT(:,1),      pathRRT(:,2),      'b-','LineWidth',2);
-      plot(startMap(1), startMap(2), 'go','MarkerSize',8,'LineWidth',2);
-      plot(goalMap(1),  goalMap(2),  'kx','MarkerSize',8,'LineWidth',2);
-    legend('PRM auto','PRM cargada','RRT cargada','Inicio','Meta','Location','best');
-    title('Rutas en coordenadas de mapa'); grid on; hold off;
-    disp('Presiona ENTER para conectar con CoppeliaSim y transformar...');
-    input('','s'); close;
-
-    %% 6. Conectar con CoppeliaSim y leer pose inicial
-    sim = remApi('remoteApi');
-    sim.simxFinish(-1);
-    clientID = sim.simxStart('127.0.0.1',19999,true,true,5000,5);
-    assert(clientID > -1,'No se pudo conectar a CoppeliaSim.');
-    sim.simxSynchronous(clientID,true);
-    sim.simxStartSimulation(clientID, sim.simx_opmode_blocking);
-
-    [~, leftMotor]  = sim.simxGetObjectHandle(clientID,'dr20_leftWheelJoint_',  sim.simx_opmode_blocking);
-    [~, rightMotor] = sim.simxGetObjectHandle(clientID,'dr20_rightWheelJoint_', sim.simx_opmode_blocking);
-    [~, robotBase]  = sim.simxGetObjectHandle(clientID,'dr20',                sim.simx_opmode_blocking);
-
-    sim.simxGetObjectPosition(clientID,robotBase,-1,sim.simx_opmode_streaming);
-    sim.simxGetObjectOrientation(clientID,robotBase,-1,sim.simx_opmode_streaming);
-    pause(0.5);
-    [~, pos0] = sim.simxGetObjectPosition(clientID,robotBase,-1,sim.simx_opmode_buffer);
-    [~, ori0] = sim.simxGetObjectOrientation(clientID,robotBase,-1,sim.simx_opmode_buffer);
-    initPose = [pos0(1), pos0(2), ori0(3)];
-
-    %% 7. Transformar waypoints al frame de CoppeliaSim
-    offset = initPose(1:2) - startMap;
-    pathPRM_sim  = pathPRM  + offset;
-    pathRRT_sim  = pathRRT  + offset;
-    pathAuto_sim = pathPRM_auto + offset;
-    goalSim      = goalMap + offset;
-
-    %% 8. Visualizar rutas transformadas
-    figure('Name','Rutas transformadas en Sim','NumberTitle','off');
-    plot(pathAuto_sim(:,1), pathAuto_sim(:,2), 'r--','LineWidth',1.5); hold on;
-    plot(pathPRM_sim(:,1),  pathPRM_sim(:,2),  'm-','LineWidth',2);
-    plot(pathRRT_sim(:,1),  pathRRT_sim(:,2),  'b-','LineWidth',2);
-    plot(initPose(1), initPose(2), 'go','MarkerSize',8,'LineWidth',2);
-    plot(goalSim(1),    goalSim(2),    'kx','MarkerSize',8,'LineWidth',2);
-    legend('PRM auto','PRM cargada','RRT cargada','InicioSim','MetaSim','Location','best');
-    title('Rutas en frame de CoppeliaSim'); grid on; hold off;
-    disp('Presiona ENTER para iniciar seguimiento...'); input('','s'); close;
-
-    %% 9. Configurar controlador PurePursuit
-    controller = robotics.PurePursuit;
-    controller.Waypoints = pathPRM_sim;      % o pathRRT_sim
-    controller.DesiredLinearVelocity = 0.5;
-    controller.MaxAngularVelocity   = 1.2;
-    controller.LookaheadDistance     = 0.10;
-    release(controller);
-
-    %% 10. Seguir la ruta con debug
-    currentPose = initPose;
-    goalRadius  = 0.1;
-    pathReached = false;
-    loopCount   = 0;
-
-    while ~pathReached && loopCount < 5000
-        loopCount = loopCount + 1;
-        [v, w] = controller(currentPose);
-        vL = v - (w * robotWidth)/2;
-        vR = v + (w * robotWidth)/2;
-
-        sim.simxSetJointTargetVelocity(clientID, leftMotor,  vL, sim.simx_opmode_streaming);
-        sim.simxSetJointTargetVelocity(clientID, rightMotor, vR, sim.simx_opmode_streaming);
-        sim.simxSynchronousTrigger(clientID);
-
-        [~, pos] = sim.simxGetObjectPosition(clientID,robotBase,-1,sim.simx_opmode_buffer);
-        [~, ori] = sim.simxGetObjectOrientation(clientID,robotBase,-1,sim.simx_opmode_buffer);
-        currentPose = [pos(1), pos(2), ori(3)];
-
-        dists = vecnorm(controller.Waypoints - currentPose(1:2),2,2);
-        [~, idx] = min(dists);
-        nextWP = controller.Waypoints(idx,:);
-        fprintf('Iter %d → Pose: [%.2f,%.2f]  NextWP [%d]: [%.2f,%.2f]\n',...
-                loopCount, currentPose(1),currentPose(2), idx, nextWP(1),nextWP(2));
-
-        if norm(currentPose(1:2)-goalSim) < goalRadius
-            pathReached = true;
-        end
-    end
-
-    %% 11. Finalizar simulación
-    sim.simxSetJointTargetVelocity(clientID, leftMotor,  0, sim.simx_opmode_oneshot);
-    sim.simxSetJointTargetVelocity(clientID, rightMotor, 0, sim.simx_opmode_oneshot);
-    sim.simxStopSimulation(clientID, sim.simx_opmode_blocking);
-    sim.simxFinish(clientID);
-    sim.delete();
-
-    fprintf('\n✅ Llegada en Sim: [%.2f,%.2f] tras %d iteraciones\n',...
-            currentPose(1), currentPose(2), loopCount);
-end
-
-```
-A partir de esto obtenemos en la simulación el siguiente resultado:
+El código en CoppeliaSim implementa campos potenciales artificiales (APF). Durante el bucle principal, el robot obtiene su posición y orientación, calcula una fuerza atractiva hacia la meta y una fuerza repulsiva desde los obstáculos cercanos. La fuerza total se convierte en velocidades lineales y angulares, que a su vez se traducen en velocidades de rueda usando el modelo cinemático diferencial.  Esto permite que el robot avance en direcció al objetivo y gire cuando detecte una repulsión, el siguiente video muestra el comportamiento del robot.
 
 https://github.com/user-attachments/assets/61aa0548-805e-4de6-adab-8ef610d04e78
 
