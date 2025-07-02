@@ -8,6 +8,10 @@
 
 # Laboratorio 3: Algoritmos bug y solución de laberinto </h3>
 ## Grupo 3
+- Julián David Benítez Martínez
+- Jhon Alexander Calderón Suárez
+- Juan Pablo García Galvis
+- Juan Diego Sánchez Forero
 </div>
 
 ## 1. Resumen
