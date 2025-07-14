@@ -1,0 +1,15 @@
+<launch>
+  <!-- Kobuki -->
+  <include file="$(find kobuki_node)/launch/minimal.launch">
+    <arg name="device_port" value="/dev/ttyUSB0"/>
+    <arg name="cmd_vel_topic" value="/mobile_base/commands/velocity"/>
+  </include>
+
+  <node name="rplidar" pkg="rplidar_custom" type="rplidar_node.py" output="screen">
+    <param name="serial_port" value="/dev/ttyUSB1"/>
+    <param name="frame_id" value="laser"/>
+  </node>
+
+  <!-- Seguidor -->
+  <node name="kobuki_follow_target_lidar" pkg="rplidar_custom" type="follow_target_lidar.py" output="screen" />
+</launch>
