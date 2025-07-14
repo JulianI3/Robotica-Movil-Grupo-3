@@ -1,0 +1,14 @@
+<launch>
+  <param name="device_port" value="/dev/kobuki"/>
+
+  <include file="$(find kobuki_node)/launch/minimal.launch" />
+
+  <node pkg="rplidar_ros" type="rplidarNode" name="rplidar" output="screen">
+    <param name="serial_port" type="string" value="/dev/rplidar"/>
+    <param name="serial_baudrate" type="int" value="115200"/>
+    <param name="frame_id" type="string" value="laser"/>
+  </node>
+
+  <node pkg="kobuki_follow" type="follow.py" name="kobuki_follow" output="screen" respawn="true"/>
+</launch>
+

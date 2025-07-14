@@ -1,0 +1,3 @@
+<launch>
+  <node pkg="kobuki_follow" type="move_1m.py" name="kobuki_move_1m" output="screen" />
+</launch>
