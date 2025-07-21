@@ -34,6 +34,9 @@ El proyecto requiere del desarrollo de dos robots móviles, donde se necesita qu
 2. El robot lider debe utilizar algoritmos de navegación para movilizarse correctamente.
 3. El robot seguidor debe rastrear y seguir al robot lider planificando una ruta que lo lleve a él.
 
+Adicional a esto, se creó una página web donde se presentan los robots de forma más sencilla, y con un enfoque hacia vender la idea como si fuese un modelo de negocio y los robots unos productos. La página web es accesible desde [aquí](https://contrabass-garlic-xgj9.squarespace.com/), donde se ingresa la contraseña "robotica" para acceder.
+
+
 ### 2.2 Materiales y métodos
 Para esta tarea, se requirió el uso de:
 1. Dos robots Kobuki.
@@ -41,6 +44,19 @@ Para esta tarea, se requirió el uso de:
 3. El uso del software ROS
 4. Simulaciones en CoppeliaSim
 5. El sensor RPLidar
+
+<div align="center">
+    
+<img src="https://github.com/user-attachments/assets/982f36f5-3516-4e8f-a5da-d05a05a1208d" width="400">
+
+Figura 1: Robot Kobuki lider
+
+<img src="https://github.com/user-attachments/assets/39a44263-efc4-4c81-8e6e-bf1767d12095" width="400">
+
+Figura 2: Robot Kobuki seguidor
+
+</div>
+
    
 ## 3. Procedimiento
 Teniendo los dos robots Kobuki, el primer paso fue crear el código necesario para que el robot lider siguiera una ruta establecida, 
@@ -48,31 +64,29 @@ Teniendo los dos robots Kobuki, el primer paso fue crear el código necesario pa
 ### 3.1 Código
 
 ## 4. Funcionamiento
-[Hypertexto](enlace)
+
+<div align="center">
+    
+<img src="https://github.com/user-attachments/assets/ad88ccc7-c450-42d8-a79a-0eae1c334167" width="400">
+
+Figura 3: Fotografia de los dos robots en funcionamiento.
+
+</div>
+
 ### 4.1 Simulación en CoppeliaSim
 
-<div align="center">
-    
-![Precisión y Exactitud](https://github.com/user-attachments/assets/c2a33800-0c77-4539-8101-6da1acff9278)
-
-Figura 3: Montaje físico del sistema de obstáculos
-
-</div>
 
 ### 4.2 Funcionamiento en un entorno real
-<div align="center">
-    
-![Precisión y Exactitud](https://github.com/user-attachments/assets/c2a33800-0c77-4539-8101-6da1acff9278)
-
-Figura 3: Montaje físico del sistema de obstáculos
-
-</div>
 
 <p align="center">
-  <a href="https://www.youtube.com/watch?v=PIAAdvywirU">
-    <img src="https://img.youtube.com/vi/PIAAdvywirU/0.jpg" alt="Ver video en YouTube: PIAAdvywirU" width="600">
+  <a href="https://video.squarespace-cdn.com/content/v1/687b037e7ef6e3334151ac3d/94f54668-cb02-4825-83b1-c6e594d9bfdf/thumbnail&quot">
+    <img src="https://github.com/user-attachments/assets/ad88ccc7-c450-42d8-a79a-0eae1c334167" width="600">
   </a>
+Video 1: Grabación de los dos robots funcionando coordinadamente.
+
 </p>
+
+
 ## 5. Resultados del proyecto
 ### Dificultades
 
