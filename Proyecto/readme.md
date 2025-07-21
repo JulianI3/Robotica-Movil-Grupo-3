@@ -80,10 +80,11 @@ Figura 3: Fotografia de los dos robots en funcionamiento.
 
 <p align="center">
   <a href="https://video.squarespace-cdn.com/content/v1/687b037e7ef6e3334151ac3d/94f54668-cb02-4825-83b1-c6e594d9bfdf/thumbnail&quot">
-    <img src="https://github.com/user-attachments/assets/ad88ccc7-c450-42d8-a79a-0eae1c334167" width="600">
+    <img src="https://video.squarespace-cdn.com/content/v1/687b037e7ef6e3334151ac3d/94f54668-cb02-4825-83b1-c6e594d9bfdf/thumbnail" width="600">
   </a>
+    
 Video 1: Grabación de los dos robots funcionando coordinadamente.
-
+Por arreglar xd
 </p>
 
 
