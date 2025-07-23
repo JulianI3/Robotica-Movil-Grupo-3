@@ -75,11 +75,17 @@ Figura 3: Fotografia de los dos robots en funcionamiento.
 
 ### 4.1 Simulación en CoppeliaSim
 
+<p align="center">
+  <a href="https://youtu.be/KqK5t52ybKo">
+    <img src="https://img.youtube.com/vi/KqK5t52ybKo/0.jpg" alt="Ver video en YouTube: Control LEGO EV3" width="600">
+  </a>
+</p>
+
 
 ### 4.2 Funcionamiento en un entorno real
 
 <p align="center">
-  <a href="https://video.squarespace-cdn.com/content/v1/687b037e7ef6e3334151ac3d/94f54668-cb02-4825-83b1-c6e594d9bfdf/thumbnail&quot">
+  <a href="https://youtu.be/juj5Y9sdpFU">
     <img src="https://video.squarespace-cdn.com/content/v1/687b037e7ef6e3334151ac3d/94f54668-cb02-4825-83b1-c6e594d9bfdf/thumbnail" width="600">
   </a>
     
