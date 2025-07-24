@@ -1,0 +1,8 @@
+<launch>
+  <include file="$(find kobuki_node)/launch/minimal.launch">
+    <arg name="device_port" value="/dev/ttyUSB0"/>
+    <arg name="cmd_vel_topic" value="/mobile_base/commands/velocity"/>
+  </include>
+  
+  <node pkg="kobuki_follow" type="move_1m.py" name="kobuki_move_1m" output="screen" />
+</launch>
