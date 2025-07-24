@@ -59,9 +59,17 @@ Figura 2: Robot Kobuki seguidor
 
    
 ## 3. Procedimiento
-Teniendo los dos robots Kobuki, el primer paso fue crear el código necesario para que el robot lider siguiera una ruta establecida. Para este primer paso se realizó el código en ROS 1, utilizando los nodos de seguimiento de rutas (nombre) y el nodo del Minimal Launch para hacer la conexión con los motores del Kobuki. Este robot seguía una ruta fija, sin evitar obstáculos o "analizar su entorno", simplemente siguiendo una órden de velocidades y tiempos.
-
-El código de ROS utilizado para esta función fue:
+Teniendo los dos robots Kobuki, el primer paso fue crear el código necesario para que el robot lider siguiera una ruta establecida. Para este primer paso se realizó el código en ROS 1, utilizando los nodos de seguimiento de rutas (nombre) y el nodo del Minimal Launch para hacer la conexión con los motores del Kobuki. Este robot seguía una ruta fija, sin evitar obstáculos o "analizar su entorno", simplemente siguiendo una órden de velocidades y tiempos. El código de ROS utilizado para esta función puede ser encontrado en el directorio, en la sección del código del robot lider, y es el siguiente:
+```
+<launch>
+  <include file="$(find kobuki_node)/launch/minimal.launch">
+    <arg name="device_port" value="/dev/ttyUSB0"/>
+    <arg name="cmd_vel_topic" value="/mobile_base/commands/velocity"/>
+  </include>
+  
+  <node pkg="kobuki_follow" type="move_1m.py" name="kobuki_move_1m" output="screen" />
+</launch>
+```
 
 
 El segundo robot, el "Robot Seguidor", buscaba al Robot Lider utilizando el sensor RPLidar. Una problemática encontrada fue que al usar el nodo del sensor este no entregaba información, por lo que era esencialmente imposible su correcto uso. Para esto se utilizó un código en Python que leía los datos del sensor y estos datos fueron tratados para solo tener en cuenta información de objetos a menos de un metro de distancia, y con el sensor limitado a solo medir a 70º frente a él, para evitar que el sensor sensara el propio cuerpo del Kobuki. El código Python utilizado para sensar fue:
@@ -69,10 +77,7 @@ El segundo robot, el "Robot Seguidor", buscaba al Robot Lider utilizando el sens
 
 Una vez se tenía la información del sensor se utilizó el nodo de Minimal Launch para poder generar movimiento en el seguidor basado en la posición relativa del robot lider. Donde se generó un perfil de velocidades a partir de la posición del robot, si el robot lider estaba frente al seguidor el robot se movería de forma recta, y la velocidad variaría de forma proporcional de acuerdo a la distancia entre ambos robots.
 
-Para generar las velocidades se tenía una distancia objetivo de 0.4 metros; si el lider estaba entre 40 a 100 centímetros el seguidor buscaría al lider con una velocidad máxima de XX metros por segundo, y si el lider estaba a menos de 40 cm de distancia se generaría una velocidad "negativa", 1.5 veces mayor al movimiento frontal, para alejarse del lider y mantener siempre la distancia objetivo.
-
-El código de ROS utilizado para la programación del Robot Seguidor fue:
-
+Para generar las velocidades se tenía una distancia objetivo de 0.4 metros; si el lider estaba entre 40 a 100 centímetros el seguidor buscaría al lider con una velocidad lineal máxima de 0.5 metros por segundo y una velocidad angular máxima de 0.5 radianes por segundo, y si el lider estaba a menos de 40 cm de distancia se generaría una velocidad "negativa", 1.5 veces mayor al movimiento frontal, para alejarse del lider y mantener siempre la distancia objetivo. El código de ROS utilizado para esta función puede ser encontrado en el directorio, en la sección del código del robot seguidor.
 
 
 ## 4. Funcionamiento
