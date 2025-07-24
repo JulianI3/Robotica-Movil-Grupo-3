@@ -123,6 +123,3 @@ El proyecto cumplió con el alcance que buscaba el equipo, que era un alcance mu
 
 ### Dificultades
 1. Una dificultad inicial fue en el intento por usar una CPU Raspberry Pi, pues la versión de Ubuntu que podría ser instalada en la Raspberry era la versión 24.04, y en esta versión no podía ser utilizado ROS 1 sino ROS 2, y el equipo encontró limitante utilizar ROS 2 por las dificultades que podríamos tener con los drivers necesarios o el apoyo de la comunidad o IA para resolver errores.
-2. Otra dificultad fue
-### Autoevaluación del equipo
-5.0
