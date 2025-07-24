@@ -59,11 +59,27 @@ Figura 2: Robot Kobuki seguidor
 
    
 ## 3. Procedimiento
-Teniendo los dos robots Kobuki, el primer paso fue crear el código necesario para que el robot lider siguiera una ruta establecida, 
+Teniendo los dos robots Kobuki, el primer paso fue crear el código necesario para que el robot lider siguiera una ruta establecida. Para este primer paso se realizó el código en ROS 1, utilizando los nodos de seguimiento de rutas (nombre) y el nodo del Minimal Launch para hacer la conexión con los motores del Kobuki. Este robot seguía una ruta fija, sin evitar obstáculos o "analizar su entorno", simplemente siguiendo una órden de velocidades y tiempos.
 
-### 3.1 Código
+El código de ROS utilizado para esta función fue:
+
+
+El segundo robot, el "Robot Seguidor", buscaba al Robot Lider utilizando el sensor RPLidar. Una problemática encontrada fue que al usar el nodo del sensor este no entregaba información, por lo que era esencialmente imposible su correcto uso. Para esto se utilizó un código en Python que leía los datos del sensor y estos datos fueron tratados para solo tener en cuenta información de objetos a menos de un metro de distancia, y con el sensor limitado a solo medir a 70º frente a él, para evitar que el sensor sensara el propio cuerpo del Kobuki. El código Python utilizado para sensar fue:
+
+
+Una vez se tenía la información del sensor se utilizó el nodo de Minimal Launch para poder generar movimiento en el seguidor basado en la posición relativa del robot lider. Donde se generó un perfil de velocidades a partir de la posición del robot, si el robot lider estaba frente al seguidor el robot se movería de forma recta, y la velocidad variaría de forma proporcional de acuerdo a la distancia entre ambos robots.
+
+Para generar las velocidades se tenía una distancia objetivo de 0.4 metros; si el lider estaba entre 40 a 100 centímetros el seguidor buscaría al lider con una velocidad máxima de XX metros por segundo, y si el lider estaba a menos de 40 cm de distancia se generaría una velocidad "negativa", 1.5 veces mayor al movimiento frontal, para alejarse del lider y mantener siempre la distancia objetivo.
+
+El código de ROS utilizado para la programación del Robot Seguidor fue:
+
+
 
 ## 4. Funcionamiento
+En la anterior sección se mostraron los parámetros de movimiento, donde la velocidad máxima de aproximamiento es de XX metros por segundo, y la velocidad máxima de alejamiento es de 1.5 veces.
+
+
+Para poder correr el código de ROS se probó a utilizar una CPU de Raspberry Pi, pero al no ser posible se decidió utilizar dos computadores portátiles conectados a cada Kobuki, con una configuración como se observa en la siguiente imagen:
 
 <div align="center">
     
@@ -74,27 +90,34 @@ Figura 3: Fotografia de los dos robots en funcionamiento.
 </div>
 
 ### 4.1 Simulación en CoppeliaSim
+Para conocer el posible resultado de la configuración de los robots se realizó previamente una simulación en CoppeliaSim de los dos robots, con un robot siguiendo una ruta y el otro siguiendolo activamente.
 
 <p align="center">
   <a href="https://youtu.be/KqK5t52ybKo">
     <img src="https://img.youtube.com/vi/KqK5t52ybKo/0.jpg" alt="Ver video en YouTube: Control LEGO EV3" width="600">
   </a>
+
+Video 1: Simulación realizada en CoppeliaSIM.
+    
 </p>
 
 
 ### 4.2 Funcionamiento en un entorno real
+Una vez comprobado el funcionamiento del sistema de robots se hizo una prueba física, donde se observa el correcto funcionamiento de los robots. Pero sin realizar alteraciones al funcionamiento, como interferir con el sensor o mover obligadamente a algún robot.
 
 <p align="center">
   <a href="https://youtu.be/juj5Y9sdpFU">
     <img src="https://video.squarespace-cdn.com/content/v1/687b037e7ef6e3334151ac3d/94f54668-cb02-4825-83b1-c6e594d9bfdf/thumbnail" width="600">
   </a>
     
-Video 1: Grabación de los dos robots funcionando coordinadamente.
-Por arreglar xd
+Video 2: Grabación de los dos robots funcionando coordinadamente.
 </p>
 
-
 ## 5. Resultados del proyecto
-### Dificultades
+El proyecto cumplió con el alcance que buscaba el equipo, que era un alcance muy básico para el objetivo de solo perseguir a un robot. Un límite muy claro es que el sensor seguirá a los cuerpos que encuentre a menos de un metro y tengan una geometría "alargada", pues el robot lider se configuró con un cuaderno en la parte posterior para generar un área grande que encuentre el sensor y se configuró el seguidor para que siga cuerpos con un área "grande".
 
+### Dificultades
+1. Una dificultad inicial fue en el intento por usar una CPU Raspberry Pi, pues la versión de Ubuntu que podría ser instalada en la Raspberry era la versión 24.04, y en esta versión no podía ser utilizado ROS 1 sino ROS 2, y el equipo encontró limitante utilizar ROS 2 por las dificultades que podríamos tener con los drivers necesarios o el apoyo de la comunidad o IA para resolver errores.
+2. Otra dificultad fue
 ### Autoevaluación del equipo
+5.0
